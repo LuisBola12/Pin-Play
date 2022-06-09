@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Login } from './Pages/login';
+import { Register } from './Pages/register';
+import { Unauthoraized } from './Pages/unauthoraized';
+import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
+import { Home } from './Pages/home';
 
 function App() {
+  
+  const userRoll = useSelector((state) => state.user.user);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='no-autorizado' element={<Unauthoraized />} />
+        <Route path='registrarse' element={<Register />} />
+        <Route path='home' element={<Home />} />
+
+        {/* Routes for the employer */}
+        {userRoll && userRoll.Roles === 'admin' ? 
+        (
+          <Route element={<PrivateRoute allowedRoles={['admin']} />}>
+          {/* <Route path='/' element={<SelectProject />} /> */}
+          
+          </Route>
+        ) : (
+          <Route element={<PrivateRoute allowedRoles={['emp']} />}>
+          
+          </Route>
+        ) }
+          
+
+        
+      </Routes>
+    </Router>
   );
 }
 
