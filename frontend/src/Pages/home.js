@@ -4,7 +4,7 @@ import '../App.css';
 
 export const Home = () => {
   return (
-    <>
+    <div className='complete-page'>
       <div className='sticky-navbar'>
         <Navbar />
       </div>
@@ -12,6 +12,6 @@ export const Home = () => {
         <h1>Esto es el home page de la App</h1>
       </div>
       <footer>&copy; PinPlay - UCR</footer> 
-    </>
+    </div>
   );
 };

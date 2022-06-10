@@ -15,14 +15,16 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   color: white;
+  border: solid red;
+  font-size: 20px;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
   &.active {
     color: #52d6d3;
   }
@@ -37,6 +39,8 @@ export const NavMenu = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  border: solid yellow;
+  width: 90%;
   @media screen and (max-width: 768px) {
     flex-direction:column;
   }
