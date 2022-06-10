@@ -27,6 +27,12 @@
     border-radius: 7px;
     cursor: pointer;
 }
+.btn--i{
+    font-family: "Roboto",sans-serif;
+    font-weight: 400;
+    border-radius: 7px;
+    cursor: pointer;
+}
 .btn--t:hover{
     text-decoration: underline white;
 }

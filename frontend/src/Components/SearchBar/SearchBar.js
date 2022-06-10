@@ -74,17 +74,18 @@ const SearchBar = ({ placeholder, data }) => {
               <tbody>
                 {filteredData.slice(0,10).map((value, key) => (
                   <tr className="fila-tabla" key={key}>
-                    <td>{value.Foto}</td>
+                    <td className="left-td">{value.Foto}</td>
                     <td>{value.Nombre}</td>
-                    <td>{value.Carnet}</td>
-                    <td>
+                    <td>{`Carnet: ${value.Carnet}`}</td>
+                    <td className="right-td">
                         <Button onClick={()=>{
                             console.log("JAJAJA")
                         }}
-                        type="button"
-                        buttonStyle="btn--primary--outline"
-                        buttonSize="btn--medium"
-                        >Detalles
+                        buttonType="btn--i"
+                        buttonStyle="btn--transparent--solid"
+                        buttonSize="medium--btn"
+                        >
+                            <AiOutlineArrowRight className="arrow-icon"/>
                         </Button>
                     </td>
                   </tr>

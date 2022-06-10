@@ -8,7 +8,7 @@ import { Unauthoraized } from './Pages/unauthoraized';
 import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 import { Home } from './Pages/home';
 import { Jugadores } from './Pages/jugadores';
-
+import PlayerProfile from './Pages/playerProfile';
 function App() {
   
   const userRoll = useSelector((state) => state.user.user);
@@ -24,7 +24,7 @@ function App() {
         <Route path='jugadores' element={<Jugadores />} />
         <Route path='torneos' element={<Home />} />
         <Route path='clasificacion' element={<Home />} />
-        <Route path='perfilJugador' element={<Home />} />
+        <Route path='perfilJugador' element={<PlayerProfile />} />
 
         {/* Routes for the employer */}
         {userRoll && userRoll.Roles === 'admin' ? 
