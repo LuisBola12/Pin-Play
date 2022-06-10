@@ -10,9 +10,12 @@ const STYLES = [
   "btn--warning--outline",
   "btn--danger--outline",
   "btn--success--outline",
-  "btn--transparent-solid",
+  "btn--transparent--solid",
+  "btn--register--navbar"
 ];
-const SIZES = ["medium-btn", "small-btn"];
+
+const SIZES = ["medium--btn", "small--btn"];
+
 export const Button = ({
   children,
   type,
@@ -24,6 +27,9 @@ export const Button = ({
     ? buttonStyle
     : STYLES[0];
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+  console.log(checkButtonStyle)
+  console.log(checkButtonSize)
+  console.log(`btn ${checkButtonStyle} ${checkButtonSize}`)
   return (
     <button
       className={`btn ${checkButtonStyle} ${checkButtonSize}`}

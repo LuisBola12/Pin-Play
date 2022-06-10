@@ -14,13 +14,17 @@ export const LoginComp = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const handleClick = () => {
+  const handleRegister = () => {
     navigate('/registrarse');
   };
 
   const logBtn = async () => {
     dispatch(setLogIn(email));
   };
+
+  const handleForgotPassword = () => {
+    console.log('beunas')
+  }
 
   return userIsLoggedIn ? (
     <Navigate to='/home' />
@@ -75,10 +79,10 @@ export const LoginComp = () => {
             }
           </div>
           <div className='logIn-forgetpassword-box'>
-            <button className='logIn-forgetpassword'>¿Olvidaste tu contraseña?</button>
+            <button className='logIn-forgetpassword' onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
           </div>
           {/* <hr className='linea-horizontal'></hr> */}
-          <button className='logIn-btn-CheckIn' onClick={handleClick}>
+          <button className='logIn-btn-CheckIn' onClick={handleRegister}>
             Registrarse
           </button>
         </div>

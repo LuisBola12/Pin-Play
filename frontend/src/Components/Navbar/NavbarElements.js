@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
   background: #3673be;
-  height:80px;
+  height:60px;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem calc((100vw-1000px)/2);
@@ -15,20 +15,23 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   color: white;
+  width: 300px;
+  // border: solid red;
+  font-size: 18px;
   display: flex;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  margin-left: 50px;
-  margin-right: 50px;
+  // margin-left: 10px;
+  // margin-right: 20px;
   &.active {
-    color: #52d6d3;
+    text-decoration: underline white;
   }
   &:hover {
-    color: #52d6d3;
-    opacity: 80%
+    font-size: 20px;
   }
 `;
 
@@ -37,6 +40,8 @@ export const NavMenu = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  // border: solid yellow;
+  width: 90%;
   @media screen and (max-width: 768px) {
     flex-direction:column;
   }

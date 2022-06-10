@@ -39,16 +39,16 @@
 }
 
 .register-full-form {
-    gap: 0.5rem;
+    gap: 3vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8rem;
+    margin-top: 10vh;
     background-color: #58b6e865;
-    width: 100vh;
-    height: 40vh;
+    width: 70vh;
+    padding: 3.5vh;
     justify-content: center;
     border-radius:1.5vh;
     box-shadow: 0px 0px 4px 0px #051d2c;
@@ -57,12 +57,19 @@
 .register-form {
     justify-content: center;
     display: flex;
-    gap: 0.6rem;
+    gap: 1.2vh;
 }
 
-.register-animated-input-name {
+.register-form-email{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.register-row-email {
   position: relative;
-  width: 12rem;
+  width: 63vh;
   height: 2.6rem;
 
   &__input {
@@ -119,8 +126,8 @@
   
 }
 
-.register-animated-input-name__input:focus~.register-animated-input-name__label,
-.register-animated-input-name__input:not(:placeholder-shown).register-animated-input-name__input:not(:focus)~.register-animated-input-name__label {
+.register-row-email__input:focus~.register-row-email__label,
+.register-row-email__input:not(:placeholder-shown).register-row-email__input:not(:focus)~.register-row-email__label {
   top: -0.5rem;
   font-size: 0.6rem;
   left: 0.8rem;
@@ -134,8 +141,8 @@
 
 .register-row {
     position: relative;
-    width: 18.3rem;
-    height: 2.6rem;
+    width: 31vh;
+    height: 6vh;
   
     &__input {
       position: absolute;
@@ -175,18 +182,19 @@
     &__label {
       position: absolute;
       left: 0.8rem;
-      top: 0.8rem;
+      top: 0.55rem;
       padding: 0 0.5rem;
       color: black;
       cursor: text;
-      font-size: 0.8rem;
+      font-size: 1.3rem;
+      font-weight: 600;
       transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
-      background-color: #58b6e865;
+      background-color: none;
     }
   
       .req {
         color: darkred;
-        font-size: 0.8rem;
+        font-size: 1.3rem;
         margin: 3px;
       }
     
@@ -194,8 +202,8 @@
 
 .register-row__input:focus~.register-row__label,
 .register-row__input:not(:placeholder-shown).register-row__input:not(:focus)~.register-row__label {
-  top: -0.5rem;
-  font-size: 0.6rem;
+  top: -0.8rem;
+  font-size: 1rem;
   left: 0.8rem;
 
   .req {
@@ -215,17 +223,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.2vh;
   }
 
 .register-btn {
-  padding: 2px;
+  margin-top: 10vh;
   border-radius: 8px;
   color: white;
   font-weight: bold;
   border-color: white;
   border-style: none;
-  width: 15rem;
+  width: 31vh;
+  height: 6vh;
   font-size: 1.6rem;
 }
 

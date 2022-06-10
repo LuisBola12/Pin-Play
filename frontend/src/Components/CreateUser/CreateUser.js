@@ -61,17 +61,17 @@ export const CreateUser = () => {
       <div className='register-full-form'>        
         <div className='register-form'>
           <div>
-            <div className='register-animated-input-name'>
+            <div className='register-row'>
               <input 
                 type='text' 
                 id='name_register' 
-                className='register-animated-input-name__input' 
+                className='register-row__input' 
                 value = {formValues.name_register || ''} 
                 maxLength={15} 
                 onChange={handleInputChange} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='name_register' className='register-animated-input-name__label'> Name <span className='req'>*</span></label>
+              <label htmlFor='name_register' className='register-row__label'> Nombre <span className='req'>*</span></label>
             </div>
             <div>
               <label className='register-error' id='register_error_name'>{errors.name_register}</label>
@@ -79,40 +79,59 @@ export const CreateUser = () => {
           </div>
 
           <div>
-            <div className='register-animated-input-name'>
+            <div className='register-row'>
               <input 
                 type='text' 
                 id='lastname1_register'
-                className='register-animated-input-name__input' 
+                className='register-row__input' 
                 value={formValues.lastname1_register || ''} 
                 maxLength={15} 
                 onChange={handleInputChange} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='lastname1_register' className='register-animated-input-name__label'>First Last Name<span className='req'>*</span></label>
+              <label htmlFor='lastname1_register' className='register-row__label'>Apellidos<span className='req'>*</span></label>
             </div>
             <div>
               <label className='register-error' id='register_error_name'>{errors.lastname1_register} </label>
             </div>
-          </div>
+          </div>         
+        </div>
 
+        <div className='register-form-email'>
           <div>
-            <div className='register-animated-input-name'>
+            <div className='register-row-email'>
               <input 
                 type='text' 
-                id='lastname2_register' 
-                className='register-animated-input-name__input' 
-                value={formValues.lastname2_register || ''}
-                maxLength={15}
+                id='email_register' 
+                className='register-row-email__input' 
+                value={formValues.email_register || ''}
+                maxLength={50}
                 onChange={handleInputChange}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='lastname2_register' className='register-animated-input-name__label'>Second Last Name<span className='req'>*</span></label>
+              <label htmlFor='email_register' className='register-row-email__label'> Correo <span className='req'>*</span> </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_lastname2'>{errors.lastname2_register}</label>
+              <label className='register-error' id='register_error_email'>{errors.email_register}</label>
             </div>
-          </div>          
+          </div>
+          <div>
+            <div className='register-row-email'>
+              <input 
+                type='password' 
+                id='password_register' 
+                className='register-row-email__input' 
+                value={formValues.password_register || ''}
+                maxLength={20}
+                onChange={handleInputChange}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='password_register' className='register-row-email__label'> Contraseña <span className='req'>*</span> </label>
+            </div>
+            <div>
+              <label className='register-error' id='register_error_password'>{errors.password_register}</label>
+            </div>
+          </div>
         </div>
 
         <div className='register-form'>
@@ -127,7 +146,7 @@ export const CreateUser = () => {
                 onChange={handleInputChange} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='id_register' className='register-row__label'>Id<span className='req'>*</span></label>
+              <label htmlFor='id_register' className='register-row__label'> Foto De Perfil <span className='req'>*</span></label>
             </div>
             <div>
               <label className='register-error' id='register_error_ID'>{errors.id_register}</label>
@@ -144,7 +163,7 @@ export const CreateUser = () => {
                 onChange={handleInputChange}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='phoneNumber_register' className='register-row__label'>Phone Number</label>
+              <label htmlFor='phoneNumber_register' className='register-row__label'> Fecha De Nacimiento </label>
             </div>
             <div>
               <label className='register-error' id='register_error_phoneNumber'>{errors.phoneNumber_register}</label>
@@ -152,42 +171,7 @@ export const CreateUser = () => {
           </div>
         </div>
 
-        <div className='register-form'>
-          <div>
-            <div className='register-row'>
-              <input 
-                type='text' 
-                id='email_register' 
-                className='register-row__input' 
-                value={formValues.email_register || ''}
-                maxLength={50}
-                onChange={handleInputChange}
-                autoComplete='off' 
-                placeholder=' '/>
-              <label htmlFor='email_register' className='register-row__label'> Email <span className='req'>*</span> </label>
-            </div>
-            <div>
-              <label className='register-error' id='register_error_email'>{errors.email_register}</label>
-            </div>
-          </div>
-          <div>
-            <div className='register-row'>
-              <input 
-                type='password' 
-                id='password_register' 
-                className='register-row__input' 
-                value={formValues.password_register || ''}
-                maxLength={20}
-                onChange={handleInputChange}
-                autoComplete='off' 
-                placeholder=' '/>
-              <label htmlFor='password_register' className='register-row__label'> Password <span className='req'>*</span> </label>
-            </div>
-            <div>
-              <label className='register-error' id='register_error_password'>{errors.password_register}</label>
-            </div>
-          </div>
-        </div>
+
 
         <div className='register-btn-box'>
           <button className='register-btn r-sumbit' onClick={handleSubmit}>
