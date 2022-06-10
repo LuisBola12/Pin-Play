@@ -78,3 +78,9 @@ footer{
 td{
   padding: 15px;
 }
+
+.dropdown-button{
+  width: 100%;
+  margin-top: 3%;
+  margin-left: 7%;
+}
