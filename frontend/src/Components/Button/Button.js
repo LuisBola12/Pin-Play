@@ -11,14 +11,17 @@ const STYLES = [
   "btn--danger--outline",
   "btn--success--outline",
   "btn--transparent--solid",
-  "btn--register--navbar"
+  "btn--register--navbar",
+  "btn--logIn--logIn",
+  "btn--logIn--register",
 ];
 
-const SIZES = ["medium--btn", "small--btn"];
+const SIZES = ["medium--btn", "small--btn", "extra--large--btn"];
+const BUTTONSTYPES = ["btn", "btn--t"];
 
 export const Button = ({
   children,
-  type,
+  buttonType,
   onClick,
   buttonStyle,
   buttonSize,
@@ -27,14 +30,11 @@ export const Button = ({
     ? buttonStyle
     : STYLES[0];
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
-  console.log(checkButtonStyle)
-  console.log(checkButtonSize)
-  console.log(`btn ${checkButtonStyle} ${checkButtonSize}`)
+  const checkButtonType = BUTTONSTYPES.includes(buttonType) ? buttonType : BUTTONSTYPES[0];
   return (
     <button
-      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+      className={`${checkButtonType} ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
-      type={type}
     >
       {children}
     </button>

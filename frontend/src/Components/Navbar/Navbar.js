@@ -56,8 +56,8 @@ export const Navbar = () => {
               {
                 userLogIn ? 
                 <div className="box-btns">
-                <Button type="button" onClick={handleClick} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>Iniciar Sesion</Button>
-                <Button type="button" onClick={handleClick} buttonStyle="btn--register--navbar" buttonSize='small--btn'>Registrarse</Button>
+                <Button buttonType="btn--t" onClick={handleClick} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>Iniciar Sesion</Button>
+                <Button onClick={handleClick} buttonStyle="btn--register--navbar" buttonSize='small--btn'>Registrarse</Button>
                </div>
                  : 
                  <div>
