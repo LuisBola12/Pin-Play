@@ -18,7 +18,7 @@ const STYLES = [
 ];
 
 const SIZES = ["medium--btn", "small--btn", "large--btn", "extra--large--btn"];
-const BUTTONSTYPES = ["btn", "btn--t"];
+const BUTTONSTYPES = ["btn", "btn--t", "btn--i"];
 
 export const Button = ({
   children,

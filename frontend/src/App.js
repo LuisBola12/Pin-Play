@@ -9,6 +9,7 @@ import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 import { Home } from './Pages/home';
 import { Jugadores } from './Pages/jugadores';
 import { Clasificacion } from'./Pages/clasificacion';
+import PlayerProfile from './Pages/playerProfile';
 
 function App() {
   
@@ -25,7 +26,7 @@ function App() {
         <Route path='jugadores' element={<Jugadores />} />
         <Route path='torneos' element={<Home />} />
         <Route path='clasificacion' element={<Clasificacion />} />
-        <Route path='perfilJugador' element={<Home />} />
+        <Route path='perfilJugador' element={<PlayerProfile />} />
 
         {/* Routes for the employer */}
         {userRoll && userRoll.Roles === 'admin' ? 
