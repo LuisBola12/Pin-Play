@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root{
+    --primary: #4628ff;
+    --warning: #ffd028;
+    --danger: #eb3f27;
+    --success: #75fa83;
+    --white: #fdfdfd;
+    --dark: #181717;
+    --gray: rgb(182, 182, 182);
+}
+
+.btn{
+    font-family: "Roboto",sans-serif;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.btn:hover{
+    transform: translateY(-3px);
+}
+.btn--warning-solid{
+    background-color: var(--warning);
+    color: var(--dark);
+    border: none;
+}
+.btn--danger-solid{
+    background-color: var(--danger);
+    color: var(--white);
+    border: none;
+}
+.btn--success-solid{
+    background-color: var(--success);
+    color: var(--white);
+    border: none;
+}
+.btn--primary-outline{
+    background-color: var(--transparent);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+.btn--warning-outline{
+    background-color: var(--transparent);
+    color: var(--warning);
+    border: 2px solid var(--warning);
+}
+.btn--danger-outline{
+    background-color: var(--transparent);
+    color: var(--danger);
+    border: 2px solid var(--danger);
+}
+.btn--success-outline{
+    background-color: var(--transparent);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+.btn--transparent-solid{
+    background-color: var(--transparent);
+    color: var(--gray);
+    border: none;
+}
+.btn--small{
+    font-size: 18px;
+    padding: 10px 20px;
+}
+.btn--medium{
+    font-size: 20px;
+    padding: 15px 30px;
+}

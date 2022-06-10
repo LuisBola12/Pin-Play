@@ -7,6 +7,7 @@ import { Register } from './Pages/register';
 import { Unauthoraized } from './Pages/unauthoraized';
 import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 import { Home } from './Pages/home';
+import { Jugadores } from './Pages/jugadores';
 
 function App() {
   
@@ -20,6 +21,10 @@ function App() {
         <Route path='no-autorizado' element={<Unauthoraized />} />
         <Route path='registrarse' element={<Register />} />
         <Route path='home' element={<Home />} />
+        <Route path='jugadores' element={<Jugadores />} />
+        <Route path='torneos' element={<Home />} />
+        <Route path='clasificacion' element={<Home />} />
+        <Route path='perfilJugador' element={<Home />} />
 
         {/* Routes for the employer */}
         {userRoll && userRoll.Roles === 'admin' ? 

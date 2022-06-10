@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+*:focus {
+  outline: none;
+}
 
 .App-logo {
   height: 40vmin;
@@ -53,4 +56,18 @@
   position: sticky;
   top: 0;
 }
-
+.fila-tabla{
+  background-color: rgb(240, 239, 239);
+  border: none;
+}
+.tabla {
+  text-align: center;
+  margin-bottom: 100px;
+  width: 90%;
+  border: none;
+  border-collapse:separate;
+  border-spacing:0 25px;
+}
+td{
+  padding: 15px;
+}
