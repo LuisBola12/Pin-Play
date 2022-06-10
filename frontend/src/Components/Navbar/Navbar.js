@@ -4,6 +4,7 @@ import { Nav, NavLink, NavMenu } from "./NavbarElements";
 import { logout } from "../../Slices/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { Button } from "../Button/Button";
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user.roles);
@@ -54,14 +55,14 @@ export const Navbar = () => {
             <div className="register-logIn-btns">
               {
                 userLogIn ? 
-                <div>
-                <button onClick={handleClick}>Iniciar Sesion</button>
-                <button onClick={handleClick}>Registrarse</button>
+                <div className="box-btns">
+                <Button type="button" onClick={handleClick} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>Iniciar Sesion</Button>
+                <Button type="button" onClick={handleClick} buttonStyle="btn--register--navbar" buttonSize='small--btn'>Registrarse</Button>
                </div>
                  : 
                  <div>
-                  <button onClick={handleClick}>Iniciar Sesion</button>
-                  <button onClick={handleClick}>Registrarse</button>
+                  <Button onClick={handleClick}>Iniciar Sesion</Button>
+                  <Button onClick={handleClick}>Registrarse</Button>
                  </div>
                   
               }

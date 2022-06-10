@@ -7,11 +7,16 @@
   background-image: url(../../icons/logo.png);
   background-repeat: no-repeat;
   background-size: contain;
-  border: solid black;
+  /* border: solid black; */
 }
 
 .register-logIn-btns{
-  border: solid black;
+  /* border: solid black; */
   width: 100%;
-  text-align: right;
+}
+
+.box-btns{
+  display: flex;
+  gap: 10px;
+  justify-content: right;
 }
