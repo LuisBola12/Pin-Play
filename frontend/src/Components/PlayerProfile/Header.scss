@@ -1,0 +1,44 @@
+.player-profile-header{
+    margin-top: 2%;
+    width: 80%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+.player-image{
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    line-height: 250px;
+    font-size: 100px;
+    background-color: #133c54;
+    width: 250px;
+    height: 250px;
+}
+.vertical-line{
+    border-left: 6px solid green;
+}
+.player-profile-table{
+    display: flex;
+    margin-left: 150px;
+    font-size: 24px;
+}
+.player-key-values{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 50px;
+    width: 100%;
+    border-right: 2px solid lightgray;
+
+}
+.player-values{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 50px;
+}   
+
+
