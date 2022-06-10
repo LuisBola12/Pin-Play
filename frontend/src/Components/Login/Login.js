@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLogIn } from '../../Slices/user/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { React, useState } from 'react';
+import { Button } from '../Button/Button';
 import './LoginStyle.scss';
 
 export const LoginComp = () => {
@@ -18,7 +19,7 @@ export const LoginComp = () => {
     navigate('/registrarse');
   };
 
-  const logBtn = async () => {
+  const logInBtn = async () => {
     dispatch(setLogIn(email));
   };
 
@@ -68,9 +69,9 @@ export const LoginComp = () => {
         </div>
            
         <div className='logIn-btn-box'>
-          <button className='logIn-btn-login'  onClick={logBtn}>
+          <Button onClick={logInBtn} buttonStyle="btn--logIn--logIn" buttonSize='extra--large--btn'>
             Iniciar Sesion
-          </button>
+          </Button>
           <div>
             {
               errorMessage && (
@@ -79,12 +80,12 @@ export const LoginComp = () => {
             }
           </div>
           <div className='logIn-forgetpassword-box'>
-            <button className='logIn-forgetpassword' onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
+            <Button buttonType="btn--t" onClick={handleForgotPassword} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>¿Olvidaste tu contraseña?</Button>
           </div>
           {/* <hr className='linea-horizontal'></hr> */}
-          <button className='logIn-btn-CheckIn' onClick={handleRegister}>
+          <Button onClick={handleRegister} buttonStyle="btn--logIn--register" buttonSize='extra--large--btn'>
             Registrarse
-          </button>
+          </Button>
         </div>
       </div>
       <footer className='logIn-footerCopyRights'> &copy; PinPlay </footer>
