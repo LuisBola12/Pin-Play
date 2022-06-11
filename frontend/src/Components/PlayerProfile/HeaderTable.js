@@ -4,7 +4,7 @@ export const HeaderTable = ({ userData }) => {
   return (
     <>
       {userData.map((value, key) => (
-        <div className="player-profile-table">
+        <div className="player-profile-table" key={value.Nombre}>
           <div className="player-key-values">
             <div>Nombre</div>
             <div>Club</div>
@@ -13,7 +13,7 @@ export const HeaderTable = ({ userData }) => {
             <div>Sexo</div>
           </div>
           {/* <div className="vertical-line"></div> */}
-          <div className="player-values">
+          <div className="player-values" key={value.Nombre}>
             <div>{value.Nombre}</div>
             <div>{value.Club}</div>
             <div>{value.Edad}</div>

@@ -3,8 +3,13 @@ import "./SearchBar.scss";
 import { FaSearch } from "react-icons/fa";
 import {AiOutlineArrowRight} from "react-icons/ai"
 import { Button } from "../Button/Button";
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ placeholder, data }) => {
+  const navigate = useNavigate();
+  const handleClick = () =>{
+    navigate("/perfilJugador");
+  }
   const [filteredData, setFilteredData] = useState([]);
   const handleInputChange = (event) =>{
     const searchWord = event.target.value;
@@ -78,9 +83,7 @@ const SearchBar = ({ placeholder, data }) => {
                     <td>{value.Nombre}</td>
                     <td>{`Carnet: ${value.Carnet}`}</td>
                     <td className="right-td">
-                        <Button onClick={()=>{
-                            console.log("JAJAJA")
-                        }}
+                        <Button onClick={handleClick}
                         buttonType="btn--i"
                         buttonStyle="btn--transparent--solid"
                         buttonSize="medium--btn"
