@@ -12,37 +12,17 @@ const PlayerProfile = () => {
       Posicion:1,
       PuntosGanados:"+65"
     },{
-      NombreTorneo:"Clasificación Mayor",
+      NombreTorneo:"Clasificación Menor",
       Fecha:"25/5/2022",
       Posicion:1,
       PuntosGanados:"+65"
     },{
-      NombreTorneo:"Clasificación Mayor",
+      NombreTorneo:"Torneo Benéfico Heredia",
       Fecha:"25/5/2022",
       Posicion:1,
       PuntosGanados:"+65"
     },{
-      NombreTorneo:"Clasificación Mayor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación Mayor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación Mayor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación Mayor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación Mayor",
+      NombreTorneo:"Clasificación La Nación",
       Fecha:"25/5/2022",
       Posicion:1,
       PuntosGanados:"+65"
