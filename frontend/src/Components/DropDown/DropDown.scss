@@ -1,9 +1,9 @@
 .clasify-dropdwon{
   height: 35px;
-  width: 130px;
+  width: 150px;
   color: white;
-  border-radius: 7px;
   font-size: 25px;
+  border-radius: 7px;
   border: none;
   background: #3673be;
   position:relative;
@@ -16,23 +16,18 @@ select {
   padding-left: 8px;
   color: white;
   height: 35px;
-  width: 130px;
+  width: 150px;
 }
 
 select:focus{ 
   outline: none;
 }
- option{
-  color: black;
-  font-size: 20px;
- }
-// .clasify-category{
-//   background: white;
-//   color: black;
-//   border: 1px solid #3673be;
-//   border-radius: 7px;
-// }
 
+option{
+  color: black;
+  font-size: 18px;
+ }
+ 
 .clasify-dropdwon::after{
   content:"\025be";
   border-radius: 7px;
