@@ -9,7 +9,8 @@
     --lightblue: #00B4D8;
     --gray: rgb(182, 182, 182);
     --blue: #3673be;
-    --green: #0FB465;
+    --green: #13a35d;
+    --darkred: #B40F19;
 }
 
 .btn{
@@ -86,20 +87,22 @@
     color: var(--white);
     border: none;
 }
-/* .btn--transparent--solid:hover{
-    text-decoration: underline white;
-} */
+
 .btn--logIn--logIn{
     color: var(--white);
-    font-size: 4vh;
     background: var(--blue);
     border: none;
     margin-bottom: 4vh;
 }
-.btn--logIn--register{
+.btn--register{
     color: var(--white);
-    font-size: 4vh;
     background: var(--green);
+    border: none;
+    margin-top: 5vh;
+}
+.btn--cancel{
+    color: var(--white);
+    background: var(--darkred);
     border: none;
     margin-top: 5vh;
 }
@@ -111,7 +114,15 @@
     font-size: 18px;
     padding: 10px 20px;
 }
+.large--btn{
+    width: 32vh;
+    height: 6vh;
+    font-size: 4vh;
+    font-weight: 600;
+}
 .extra--large--btn{
     width: 60vh;
     height: 8vh;
+    font-size: 4vh;
+    font-weight: 600;
 }

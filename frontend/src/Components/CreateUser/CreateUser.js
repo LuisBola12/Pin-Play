@@ -7,6 +7,7 @@ import { validAnEntity } from '../../Utils/validAnEntity';
 import usePost from '../../shared/hooks/usePost';
 import validate from '../../Utils/CreateUser/createUserValidations';
 import useForm from '../../shared/hooks/useForm';
+import { Button } from '../Button/Button';
 import './CreateUserStyle.scss';
 
 export const CreateUser = () => {
@@ -47,7 +48,7 @@ export const CreateUser = () => {
   const { formValues, handleInputChange, handleSubmit, setIsSubmitting, errors } = useForm(sendToDatabase, validate);
 
   const navigate = useNavigate();
-  const handleClick = () => {
+  const handleCancel = () => {
     dispatch(resetErrorMsg());
     navigate('/');
   }
@@ -163,7 +164,7 @@ export const CreateUser = () => {
                 onChange={handleInputChange}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='phoneNumber_register' className='register-row__label'> Fecha De Nacimiento </label>
+              <label htmlFor='phoneNumber_register' className='register-row__label'> Fecha De Nacimiento <span className='req'>*</span></label>
             </div>
             <div>
               <label className='register-error' id='register_error_phoneNumber'>{errors.phoneNumber_register}</label>
@@ -174,12 +175,12 @@ export const CreateUser = () => {
 
 
         <div className='register-btn-box'>
-          <button className='register-btn r-sumbit' onClick={handleSubmit}>
-            Create
-          </button>
-          <button className='register-btn r-cancel' onClick={handleClick}>
+          <Button onClick={handleSubmit} buttonStyle="btn--register" buttonSize='large--btn'>
+            Register
+          </Button>
+          <Button onClick={handleCancel} buttonStyle="btn--cancel" buttonSize='large--btn'>
             Cancel
-          </button>
+          </Button>
         </div>
       </div>
       <footer className='register-footerCopyRights'> &copy; PinPlay </footer>

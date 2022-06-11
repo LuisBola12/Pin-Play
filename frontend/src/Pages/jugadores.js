@@ -5,7 +5,7 @@ import SearchBar from '../Components/SearchBar/SearchBar';
 
 export const Jugadores = () => {
   return (
-    <>
+    <div className='background-page'>
       <div className='sticky-navbar'>
         <Navbar />
       </div>
@@ -13,6 +13,6 @@ export const Jugadores = () => {
         <SearchBar placeholder='Ingrese el nombre de un jugador'/>
       </div>
       <footer>&copy; PinPlay - UCR</footer> 
-    </>
+    </div>
   )
 }

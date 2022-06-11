@@ -1,0 +1,44 @@
+.clasify-dropdwon{
+  height: 35px;
+  width: 150px;
+  color: white;
+  font-size: 25px;
+  border-radius: 7px;
+  border: none;
+  background: #3673be;
+  position:relative;
+}
+
+select {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  padding-left: 8px;
+  color: white;
+  height: 35px;
+  width: 150px;
+}
+
+select:focus{ 
+  outline: none;
+}
+
+option{
+  color: black;
+  font-size: 18px;
+ }
+ 
+.clasify-dropdwon::after{
+  content:"\025be";
+  border-radius: 7px;
+  background: #3673be;
+  display:table-cell;
+  text-align:center;
+  line-height: 35px;
+  width:45px;
+  height: 35px;
+  position:absolute;
+  top:0;
+  right:0;
+  pointer-events: none;
+}

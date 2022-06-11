@@ -13,11 +13,12 @@ const STYLES = [
   "btn--transparent--solid",
   "btn--register--navbar",
   "btn--logIn--logIn",
-  "btn--logIn--register",
+  "btn--register",
+  "btn--cancel"
 ];
 
-const SIZES = ["medium--btn", "small--btn", "extra--large--btn"];
-const BUTTONSTYPES = ["btn", "btn--t","btn--i"];
+const SIZES = ["medium--btn", "small--btn", "large--btn", "extra--large--btn"];
+const BUTTONSTYPES = ["btn", "btn--t", "btn--i"];
 
 export const Button = ({
   children,

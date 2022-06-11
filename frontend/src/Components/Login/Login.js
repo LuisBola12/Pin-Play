@@ -83,7 +83,7 @@ export const LoginComp = () => {
             <Button buttonType="btn--t" onClick={handleForgotPassword} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>¿Olvidaste tu contraseña?</Button>
           </div>
           {/* <hr className='linea-horizontal'></hr> */}
-          <Button onClick={handleRegister} buttonStyle="btn--logIn--register" buttonSize='extra--large--btn'>
+          <Button onClick={handleRegister} buttonStyle="btn--register" buttonSize='extra--large--btn'>
             Registrarse
           </Button>
         </div>
