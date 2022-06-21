@@ -10,6 +10,7 @@ import { Home } from './Pages/home';
 import { Jugadores } from './Pages/jugadores';
 import { Clasificacion } from'./Pages/clasificacion';
 import PlayerProfile from './Pages/playerProfile';
+import Tournaments from './Pages/tournaments';
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
         <Route path='registrarse' element={<Register />} />
         <Route path='home' element={<Home />} />
         <Route path='jugadores' element={<Jugadores />} />
-        <Route path='torneos' element={<Home />} />
+        <Route path='torneos' element={<Tournaments />} />
         <Route path='clasificacion' element={<Clasificacion />} />
         <Route path='perfilJugador' element={<PlayerProfile />} />
 
