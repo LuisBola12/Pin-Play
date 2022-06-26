@@ -118,18 +118,20 @@ const Tournaments = () => {
   ];
 
   return (
-    <>
-      <Navbar />
-      <div className="background" />
-      <main className="tournaments">
-        <div className="tournaments__header">
+    <div className='background-page'>
+      <div className='sticky-navbar'>
+        <Navbar />
+      </div>
+      <div className='page-content'>
+      <div className="tournaments__header">
           <p className="tournaments__title">Torneos</p>
           {/* TODO: create tournament functionality */}
           <AddTournamentButton />
         </div>
         <TournamentGrid tournaments={dummyTournaments} />
-      </main>
-    </>
+      </div>
+      <footer>&copy; PinPlay - UCR</footer> 
+    </div>
   );
 };
 
