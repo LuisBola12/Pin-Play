@@ -1,0 +1,223 @@
+export const players = [
+    {
+        name: "Gerardo",
+        firstLastname : "Rodriguez",
+        secondLastname : "Perez",
+        s3Id: "jugador_711",
+        club: "Perez Zeledon",
+        age: 17,
+        category: "Primera",
+        licenseNumber: 711,
+        genre: "Masculino"
+    },
+    {
+        name: "Jimena",
+        firstLastname : "Ruiz",
+        secondLastname : "Chacón",
+        s3Id: "jugador_812",
+        club: "Liberia",
+        age: 21,
+        category: "Segunda",
+        licenseNumber: 812,
+        genre: "Femenino"
+    },
+    {
+        name: "Jose",
+        firstLastname : "Murillo",
+        secondLastname : "Lopez",
+        s3Id: "jugador_211",
+        club: "Escazú",
+        age: 31,
+        category: "Primera",
+        licenseNumber: 211,
+        genre: "Masculino"
+    },
+    {
+        name: "Angela",
+        firstLastname : "Valverde",
+        secondLastname : "Esquivel",
+        s3Id: "jugador_560",
+        club: "Heredia",
+        age: 19,
+        category: "Tercera",
+        licenseNumber: 560,
+        genre: "Femenino"
+    },
+    {
+        name: "Luis",
+        firstLastname : "Bolanos",
+        secondLastname : "Valverde",
+        s3Id: "jugador_644",
+        club: "Puntarenas",
+        age: 21,
+        category: "Segunda",
+        licenseNumber: 644,
+        genre: "Masculino"
+    },
+    {
+        name: "Guillermo",
+        firstLastname : "Rodriguez",
+        secondLastname : "Lopez",
+        s3Id: "jugador_921",
+        club: "Perez Zeledon",
+        age: 15,
+        category: "Tercera",
+        licenseNumber: 921,
+        genre: "Masculino"
+    },
+    {
+        name: "Angie",
+        firstLastname : "Rodriguez",
+        secondLastname : "Hodgson",
+        s3Id: "jugador_359",
+        club: "Alajuela",
+        age: 17,
+        category: "Primera",
+        licenseNumber: 359,
+        genre: "Femenino"
+    },
+    {
+        name: "Sofía",
+        firstLastname : "Jimnez",
+        secondLastname : "Calvo",
+        s3Id: "jugador_912",
+        club: "Heredia",
+        age: 27,
+        category: "Tercera",
+        licenseNumber: 912,
+        genre: "Femenino"
+    },
+    {
+        name: "David",
+        firstLastname : "Atias",
+        secondLastname : "Alpoena",
+        s3Id: "jugador_512",
+        club: "Escazú",
+        age: 17,
+        category: "Primera",
+        licenseNumber: 512,
+        genre: "Masculino"
+    },
+    {
+        name: "Camila",
+        firstLastname : "Rodriguez",
+        secondLastname : "Valverde",
+        s3Id: "jugador_908",
+        club: "Heredia",
+        age: 21,
+        category: "Segunda",
+        licenseNumber: 908,
+        genre: "Femenino"
+    },
+    {
+        name: "Angelo",
+        firstLastname : "Calvo",
+        secondLastname : "Murillo",
+        s3Id: "jugador_98",
+        club: "Perez Zeledon",
+        age: 32,
+        category: "Primera",
+        licenseNumber: 98,
+        genre: "Masculino"
+    },
+    {
+        name: "Kenneth",
+        firstLastname : "Ali",
+        secondLastname : "Perez",
+        s3Id: "jugador_918",
+        club: "Alajuela",
+        age: 19,
+        category: "Tercera",
+        licenseNumber: 918,
+        genre: "Masculino"
+    },
+    {
+        name: "Yohan",
+        firstLastname : "Blake",
+        secondLastname : "Perez",
+        s3Id: "jugador_930",
+        club: "Santa Ana",
+        age: 19,
+        category: "Tercera",
+        licenseNumber: 930,
+        genre: "Masculino"
+    },
+    {
+        name: "Rebeca",
+        firstLastname : "Perez",
+        secondLastname : "Perez",
+        s3Id: "jugador_121",
+        club: "Barva",
+        age: 19,
+        category: "Segunda",
+        licenseNumber: 121,
+        genre: "Femenino"
+    },
+    {
+        name: "Melanny",
+        firstLastname : "Arias",
+        secondLastname : "Rodriguéz",
+        s3Id: "jugador_119",
+        club: "Alajuela",
+        age: 21,
+        category: "Tercera",
+        licenseNumber: 119,
+        genre: "Femenino"
+    },
+    {
+        name: "Gerardo",
+        firstLastname : "Bustamante",
+        secondLastname : "Lopez",
+        s3Id: "jugador_798",
+        club: "Heredia",
+        age: 21,
+        category: "Primera",
+        licenseNumber: 798,
+        genre: "Masculino"
+    },
+    {
+        name: "Carmen",
+        firstLastname : "Valverde",
+        secondLastname : "Sanchéz",
+        s3Id: "jugador_961",
+        club: "Puntarenas",
+        age: 26,
+        category: "Segunda",
+        licenseNumber: 961,
+        genre: "Femenino"
+    },
+    {
+        name: "Jesus",
+        firstLastname : "Navarro",
+        secondLastname : "Perez",
+        s3Id: "jugador_972",
+        club: "Escazú",
+        age: 23,
+        category: "Tercera",
+        licenseNumber: 972,
+        genre: "Masculino"
+    },
+    {
+        name: "Jordan",
+        firstLastname : "Calvo",
+        secondLastname : "Bolanos",
+        s3Id: "jugador_315",
+        club: "Barva",
+        age: 22,
+        category: "Primera",
+        licenseNumber: 315,
+        genre: "Masculino"
+    },
+
+    {
+        name: "Julio",
+        firstLastname : "Lopez",
+        secondLastname : "Perez",
+        s3Id: "jugador_13",
+        club: "Perez Zeledon",
+        age: 32,
+        category: "Primera",
+        licenseNumber: 13,
+        genre: "Masculino"
+    },
+]

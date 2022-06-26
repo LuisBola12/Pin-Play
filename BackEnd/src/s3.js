@@ -3,7 +3,7 @@ import fs from 'fs';
 import { config } from 'dotenv';
 config();
 
-const bucketName =  process.env.AWS_BUCKECT_NAME;
+const bucketName =  process.env.AWS_BUCKET_NAME;
 const region = process.env.AWS_BUCKET_REGION;
 const accessKeyId = process.env.AWS_KEY_ID;
 const secretAccessKey = process.env.AWS_KEY_SECRET;
@@ -28,9 +28,14 @@ export const uploadImageToAWS = (file) =>{
 
 //download an image from s3
 export const getImageFromAWS = (fileKey) => {
-    const downloadParams = {
-        Key:fileKey,
-        Bucket:bucketName
+    try {
+        const downloadParams = {
+            Key:fileKey,
+            Bucket:bucketName
+        }
+        console.log("AAAAAA")
+        return s3.getObject(downloadParams).createReadStream();
+    } catch (error) {
+        console.log("Error al intentar conseguir imagen");
     }
-    return s3.getObject(downloadParams).createReadStream();
 };
