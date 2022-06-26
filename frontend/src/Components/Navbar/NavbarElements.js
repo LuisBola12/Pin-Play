@@ -25,13 +25,20 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  // margin-left: 10px;
-  // margin-right: 20px;
   &.active {
     text-decoration: underline white;
+    font-size: 20px;
+    font-weight: bold;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    height: 80%;
+    margin-top: 0.9%;
+    background-color: #356bac;
+    // padding-bottom: 12px;
   }
   &:hover {
     font-size: 20px;
+    font-weight: bold;
   }
 `;
 
