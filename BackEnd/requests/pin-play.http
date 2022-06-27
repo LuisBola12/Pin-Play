@@ -1,8 +1,0 @@
-@apiPlayers = http://localhost:4000/players
-@apiPlayersImage = http://localhost:4000/playerImage
-
-
-get {{apiPlayers}}
-
-###
-get {{apiPlayersImage}}/jugador_798
