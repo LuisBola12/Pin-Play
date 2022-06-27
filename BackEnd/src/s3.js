@@ -1,14 +1,12 @@
 import S3 from 'aws-sdk/clients/s3';
 import fs from 'fs';
-import { config } from 'dotenv';
-config();
-
-const bucketName =  process.env.AWS_BUCKET_NAME;
-const region = process.env.AWS_BUCKET_REGION;
-const accessKeyId = process.env.AWS_KEY_ID;
-const secretAccessKey = process.env.AWS_KEY_SECRET;
+import config from './config';
 
 
+const region = config.region;
+const accessKeyId = config.accessKeyId;
+const secretAccessKey = config.secretAccessKey;
+const bucketName = config.bucketName;
 const s3 = new S3({
     region,
     accessKeyId,
@@ -33,7 +31,6 @@ export const getImageFromAWS = (fileKey) => {
             Key:fileKey,
             Bucket:bucketName
         }
-        console.log("AAAAAA")
         return s3.getObject(downloadParams).createReadStream();
     } catch (error) {
         console.log("Error al intentar conseguir imagen");

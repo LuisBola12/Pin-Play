@@ -1,8 +1,7 @@
-import { players } from "../Data/players.data";
+import { players } from "../data/players.data";
 import { getImageFromAWS } from "../s3";
 export const getAllPlayers = (req,res) =>{
     try {   
-        console.log('Request received');
         res.status(200).json(players).send();
         console.log('Players info sent');
     } catch (error) {
@@ -12,10 +11,11 @@ export const getAllPlayers = (req,res) =>{
 export const getPlayerImage = (req,res) =>{
     const {s3Id} = req.params;
     try {
+        const bucketId = `jugadores/${s3Id}.jpg`
         const exists = s3IdExist(s3Id);
         if(exists === true){
             try {
-                const readStream = getImageFromAWS(s3Id);
+                const readStream = getImageFromAWS(bucketId);
                 console.log(readStream)
                 readStream.pipe(res);
             } catch (error) {

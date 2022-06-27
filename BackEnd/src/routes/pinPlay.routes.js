@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllPlayers, getPlayerImage } from "../controllers/players.controller";
+import { getAllPlayers, getPlayerImage } from "../controller/players.controller";
 const router = Router();
 //Players
 router.get('/players',getAllPlayers);
