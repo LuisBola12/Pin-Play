@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { getAllPlayers, getPlayerImage } from "../controller/players.controller";
 import { createUser } from "../controller/user.Controller";
-
+import { getAllPlayers,getPlayerTourneys ,getPlayerImage } from "../controller/players.controller";
 const router = Router();
 
 //Players
 router.get('/players',getAllPlayers);
+router.get('/playerTourneys',getPlayerTourneys);
 router.get('/playerImage/:s3Id',getPlayerImage);
 
 // users

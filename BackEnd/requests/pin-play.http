@@ -1,8 +1,12 @@
 @apiPlayers = http://localhost:4000/players
 @apiPlayersImage = http://localhost:4000/playerImage
+@apiTourneysPlayed = http://localhost:4000/playerTourneys
 
 
 get {{apiPlayers}}
 
 ###
 get {{apiPlayersImage}}/jugador_798
+
+###
+get {{apiTourneysPlayed}}

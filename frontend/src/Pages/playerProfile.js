@@ -5,29 +5,6 @@ import { RecentTourneys } from "../Components/PlayerProfile/RecentTourneys";
 import "../App.css";
 
 const PlayerProfile = () => {
-  const tourneysData = [
-    {
-      NombreTorneo:"Clasificación Mayor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación Menor",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Torneo Benéfico Heredia",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    },{
-      NombreTorneo:"Clasificación La Nación",
-      Fecha:"25/5/2022",
-      Posicion:1,
-      PuntosGanados:"+65"
-    }
-  ]
   return (
     <div className="complete-page">
       <div className="sticky-navbar">
@@ -38,7 +15,7 @@ const PlayerProfile = () => {
             <Header />
           </div>
           <div className="player-recent-tourneys">
-            <RecentTourneys tourneyData={tourneysData}/>
+            <RecentTourneys/>
           </div>
       </div>
       <footer>&copy; PinPlay - UCR</footer>
