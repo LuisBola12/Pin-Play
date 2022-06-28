@@ -22,26 +22,14 @@ export const validateName = (name) =>{
     );
 };
 
-export const validateId = (id) => {
-  return String(id)
-    .toLowerCase()
-    .match(
-      /^[1-9]-?\d{4}-?\d{4}$/
-    );
-};
-
-export const validatePhoneNumber = (phoneNumber) => {
-  return String(phoneNumber)
-    .toLowerCase()
-    .match(
-      /^[1-9]{8}$/
-    );
-}
-
 export const validateNumber = (number) => {
   return String(number)
     .toLowerCase()
     .match(
       /^[1-9]$/
     );
+}
+
+export const valideImage = (file) => {
+  
 }

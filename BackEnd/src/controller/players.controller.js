@@ -1,5 +1,6 @@
 import { players } from "../data/players.data";
 import { getImageFromAWS } from "../s3";
+
 export const getAllPlayers = (req,res) =>{
     try {   
         res.status(200).json(players).send();

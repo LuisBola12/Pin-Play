@@ -16,7 +16,6 @@ export const useForm = (onSubmit, validate) => {
     if (event) event.preventDefault();
     setErrors(validate(formValues));
     setIsSubmitting(true);
-
   };
 
   const handleInputChange = (event) => {

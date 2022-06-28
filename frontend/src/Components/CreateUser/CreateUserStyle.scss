@@ -18,7 +18,7 @@
   min-height: 100vh;
 }
 .register-bar {
-    padding-top: 3rem;
+    padding-top: 2rem;
     text-align: center;
 }
 
@@ -59,6 +59,7 @@
     justify-content: center;
     display: flex;
     gap: 2vh;
+    // border: solid black;
 }
 
 .register-form-email{
@@ -216,44 +217,98 @@
   }
 }
 
-.register-input-file{
-  display: none;
-  width: 40vh;
-  height: 6vh;
+// .register-input-file{
+//   display: none;
+//   width: 40vh;
+//   height: 6vh;
+// }
+// .register-label-file{
+//   color: black;
+//   font-weight: bold;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   padding-right: 21.3vh;
+//   padding-left: 2vh;
+//   padding-top: 1.5vh;
+//   padding-bottom: 1.2vh;
+// }
+.register-image{
+  position: relative;
+  border: white solid;
+  background-color: transparent;
+  background-image: url(../../icons/upload.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 4vh;
+  height: 4vh;
+  margin-left: 11rem;
+  top: 0.4rem;
 }
-.register-label-file{
-  // margin-left: 3vh;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  padding-right: 21.3vh;
-  padding-left: 2vh;
-  padding-top: 1.5vh;
-  padding-bottom: 1.2vh;
-}
+
 .register-row-file{
   width: 40vh;
+  // width: 16.39rem;
   height: 6vh;
+  // height: 2.5rem;
   border: 1px solid gray;
   border-radius: 5px;
   background: #f9f9f9;
-  line-height: 6vh;
+  // line-height: 6vh;
+
+  &__label-tile{
+    position: relative;
+    top: -1.1rem;
+    font-size: 0.8rem;
+    left: 1.2rem;
+    font-weight: bold;
+    // border: solid red 1px;
+  }
+  &__input{
+    display: none;
+  }
+  &__label{
+    position: relative;
+    top: -1.18rem;
+    display: block;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    // border: solid red 1px;
+    line-height: 6vh;
+    padding-left: 1.16rem;
+  }
+
+  &__span{
+    width: 100%;
+    height: 100%;
+  }
 }
-.register-name-file{
-  width: 40vh;
-  height: 6vh;
-  // border: 1px solid gray;
-  // font-size: 10px;
+
+.register-row-file__input:focus~.register-row-file__label,
+.register-row-file__input:not(:placeholder-shown).register-row-file__input:not(:focus)~.register-row-file__label {
+  top: -0.8rem;
+  font-size: 0.8rem;
+  left: 0.8rem;
+
+  .req {
+    opacity: 0;
+    font-size: 0px;
+    margin: 0px;
+  }
 }
-.register-image{
-  width: 6vh;
-  height: 6vh;
-}
+
 .register-error{
     color: #D8000C;
     text-align: center;
     font-size: 0.7rem;
+}
+
+.register-error-input,
+.register-error-input:hover,
+.register-error-input:focus{
+  border: red 1px solid;
 }
 
 .register-btn-box {
