@@ -23,6 +23,7 @@
     display: flex;
     margin-left: 150px;
     font-size: 24px;
+    width: 50%;
 }
 .player-key-values{
     font-weight: bold;
@@ -30,7 +31,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 25px 50px;
-    width: 100%;
+    width: 40%;
     border-right: 2px solid lightgray;
 
 }
@@ -39,6 +40,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 25px 50px;
+    width: 100%;
 }   
 
 

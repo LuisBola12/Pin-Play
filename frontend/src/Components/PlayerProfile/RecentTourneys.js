@@ -1,8 +1,14 @@
-import React from 'react';
+import {React,useState,useEffect} from 'react';
 import './RecentTourneys.scss';
+import { getPlayerTourneys } from '../../Utils/getPlayersData/getPlayersData';
 
-export const RecentTourneys = ({tourneyData}) => {
-  return (
+export const RecentTourneys = () => {
+  const [infoReceived,setInfoReceived] = useState(false);
+  const [tourneyData,setTourneyData] = useState([]);
+  useEffect(() => {
+    getPlayerTourneys(setTourneyData,setInfoReceived);
+  }, []);
+  return !infoReceived ? <div className='loader'></div> :(
     <div className='player-tourneys'>
       <h2>Historial de Torneos Recientes</h2>
       <table className='recent-tourneys-table'>
@@ -16,11 +22,11 @@ export const RecentTourneys = ({tourneyData}) => {
         </thead>
         <tbody>
           {tourneyData.map((element) => (
-            <tr className= "recent-tourneys-data-tr"key={element.NombreTorneo}>
-              <td className='left-tourneys-td'>{element.NombreTorneo}</td>
-              <td className='center-td'>{element.Fecha}</td>
-              <td className='center-right-tourneys-td'>{element.Posicion}</td>
-              <td className='right-tourneys-td'>{element.PuntosGanados}</td>
+            <tr className= "recent-tourneys-data-tr"key={element.Name}>
+              <td className='left-tourneys-td'>{element.Name}</td>
+              <td className='center-td'>{element.Date}</td>
+              <td className='center-right-tourneys-td'>{element.Position}</td>
+              <td className='right-tourneys-td'>{`+${element.PtsEarned}`}</td>
             </tr>
           ))}
         </tbody>
