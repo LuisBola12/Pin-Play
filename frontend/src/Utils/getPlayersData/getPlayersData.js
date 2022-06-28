@@ -1,5 +1,5 @@
 export const getPlayersData = async(setPlayersData,setInfoReceived) =>{
-    const playersUrl = `http://localhost:4000/players`;
+    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}players`;
     try {
         const response = await fetch(playersUrl);
         const data = await response.json();
@@ -10,7 +10,7 @@ export const getPlayersData = async(setPlayersData,setInfoReceived) =>{
     }   
 }
 export const getPlayerTourneys = async(setPlayerTourneys,setInfoReceived) =>{
-    const playersUrl = `http://localhost:4000/playerTourneys`;
+    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}playerTourneys`;
     try {
         const response = await fetch(playersUrl);
         const data = await response.json();
