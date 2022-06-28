@@ -39,7 +39,7 @@
 }
 
 .register-full-form {
-    gap: 3vh;
+    gap: 5vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -47,7 +47,8 @@
     align-items: center;
     margin-top: 8vh;
     background-image: linear-gradient(#FFF, #7cc3c5);
-    width: 70vh;
+    // width: 70vh;
+    width: 90vh;
     padding: 3.5vh;
     justify-content: center;
     border-radius:1.5vh;
@@ -57,20 +58,20 @@
 .register-form {
     justify-content: center;
     display: flex;
-    gap: 1.2vh;
+    gap: 2vh;
 }
 
 .register-form-email{
   justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 3vh;
+  gap: 5vh;
 }
 
 .register-row-email {
   position: relative;
-  width: 65vh;
-  height: 2.6rem;
+  width: 82vh;
+  height: 6vh;
 
   &__input {
     position: absolute;
@@ -144,9 +145,8 @@
 
 .register-row {
     position: relative;
-    width: 32vh;
+    width: 40vh;
     height: 6vh;
-  
     &__input {
       position: absolute;
       top: 0;
@@ -216,6 +216,40 @@
   }
 }
 
+.register-input-file{
+  display: none;
+  width: 40vh;
+  height: 6vh;
+}
+.register-label-file{
+  // margin-left: 3vh;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  padding-right: 21.3vh;
+  padding-left: 2vh;
+  padding-top: 1.5vh;
+  padding-bottom: 1.2vh;
+}
+.register-row-file{
+  width: 40vh;
+  height: 6vh;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background: #f9f9f9;
+  line-height: 6vh;
+}
+.register-name-file{
+  width: 40vh;
+  height: 6vh;
+  // border: 1px solid gray;
+  // font-size: 10px;
+}
+.register-image{
+  width: 6vh;
+  height: 6vh;
+}
 .register-error{
     color: #D8000C;
     text-align: center;

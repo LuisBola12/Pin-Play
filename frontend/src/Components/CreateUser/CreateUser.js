@@ -1,6 +1,6 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
 import { postLogin } from '../../Slices/user/requests/postLogin';
 import { resetErrorMsg } from '../../Slices/user/userSlice';
 import { validAnEntity } from '../../Utils/validAnEntity';
@@ -13,7 +13,21 @@ import './CreateUserStyle.scss';
 export const CreateUser = () => {
   const dispatch = useDispatch();
   const { post } = usePost('http://localhost:4000/createEmployer');
-  
+  // const { image, serImage } = useState('');
+  const parseRoute = (route) => {
+    let newRoute = '';
+    if(route !== undefined){
+      let size = route.length;
+      for(let i = 0; i <= size; i++){
+        if(route.charAt(size-i) !== '\\'){
+          newRoute = route.charAt(size-i) + newRoute;
+        }else{
+          break;
+        }
+      }
+    }
+    return newRoute;
+  } 
   const sendToDatabase = async () =>{      
     const user = await validAnEntity('users/',formValues.email_register);
     const employee = await validAnEntity('employer/', formValues.id_register);
@@ -137,17 +151,22 @@ export const CreateUser = () => {
 
         <div className='register-form'>
           <div>
-            <div className='register-row'>
+            <div className='register-row-file'>
+              <label htmlFor='id_register' className='register-label-file'>
               <input 
-                type='text' 
+                type='file' 
                 id='id_register' 
-                className='register-row__input' 
+                className='register-input-file' 
                 value={formValues.id_register || ''} 
                 maxLength={15} 
                 onChange={handleInputChange} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='id_register' className='register-row__label'> Foto De Perfil <span className='req'>*</span></label>
+                { parseRoute(formValues.id_register) ? 
+                (<span className='register-name-file'>{ parseRoute(formValues.id_register)}</span> ) : 
+                (<label>Foto De Perfil</label>) }
+              </label>
+              {/* <label htmlFor='id_register' className='register-row__label'> Foto De Perfil <span className='req'>*</span></label> */}
             </div>
             <div>
               <label className='register-error' id='register_error_ID'>{errors.id_register}</label>
@@ -156,7 +175,7 @@ export const CreateUser = () => {
           <div>
             <div className='register-row'>
               <input 
-                type='text' 
+                type='date' 
                 id='phoneNumber_register' 
                 className='register-row__input'
                 value={formValues.phoneNumber_register || ''}
@@ -171,9 +190,6 @@ export const CreateUser = () => {
             </div>
           </div>
         </div>
-
-
-
         <div className='register-btn-box'>
           <Button onClick={handleSubmit} buttonStyle="btn--register" buttonSize='large--btn'>
             Register

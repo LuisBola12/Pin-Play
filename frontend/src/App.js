@@ -23,7 +23,6 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='no-autorizado' element={<Unauthoraized />} />
         <Route path='registrarse' element={<Register />} />
-        <Route path='home' element={<Home />} />
         <Route path='jugadores' element={<Jugadores />} />
         <Route path='torneos' element={<Tournaments />} />
         <Route path='clasificacion' element={<Clasificacion />} />

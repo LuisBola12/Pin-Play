@@ -1,17 +1,14 @@
 .navBar-logo {
   width: 200px;
   height: 100%;
-  /* margin-top: 50px; */
   line-height: 50px;
   background-color: transparent;
   background-image: url(../../icons/logo.png);
   background-repeat: no-repeat;
   background-size: contain;
-  /* border: solid black; */
 }
 
 .register-logIn-btns{
-  /* border: solid black; */
   width: 100%;
 }
 
@@ -19,4 +16,5 @@
   display: flex;
   gap: 10px;
   justify-content: right;
+
 }

@@ -28,9 +28,10 @@ export const LoginComp = () => {
   }
 
   return userIsLoggedIn ? (
-    <Navigate to='/home' />
+    <Navigate to='/torneos' />
   ) : (
     <div className='logIn-page'>
+      <div className='logIn-AppName-Media'>PinPlay</div>
       <div className='logIn-logo-box'>
         <div className='logIn-logo-AppName'>
           {/* <div className='logIn-logo'></div> */}
@@ -80,9 +81,8 @@ export const LoginComp = () => {
             }
           </div>
           <div className='logIn-forgetpassword-box'>
-            <Button buttonType="btn--t" onClick={handleForgotPassword} buttonStyle="btn--transparent--solid" buttonSize='small--btn'>¿Olvidaste tu contraseña?</Button>
+            <Button buttonType="btn--t" onClick={handleForgotPassword} buttonStyle="btn--transparent" buttonSize='medium--btn'>¿Olvidaste tu contraseña?</Button>
           </div>
-          {/* <hr className='linea-horizontal'></hr> */}
           <Button onClick={handleRegister} buttonStyle="btn--register" buttonSize='extra--large--btn'>
             Registrarse
           </Button>
