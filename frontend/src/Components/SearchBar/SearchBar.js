@@ -39,17 +39,17 @@ const SearchBar = ({placeholder}) => {
         </div>
         { filteredData.length !== 0 && (
           <div className="data-buscar">
-            <table className="tabla">
+            <table className="find-players-table">
               <tbody>
                 {filteredData.slice(0,10).map((value, key) => (
-                  <tr className="fila-tabla" key={key}>
-                    <td className="left-td center-td">
+                  <tr key={key}>
+                    <td>
                       <img className= "img-players" src={`${value.s3Id}`} alt=""></img>
                     </td>
                     <td>{`${value.name} ${value.firstLastname}
                     ${value.secondLastname}`}</td>
-                    <td className="left-td">{`Carnet: ${value.licenseNumber}`}</td>
-                    <td className="right-td">
+                    <td>{`Carnet: ${value.licenseNumber}`}</td>
+                    <td className=" right-td">
                         <Button onClick={()=>handleClick(value)}
                         buttonType="btn--i"
                         buttonStyle="btn--transparent--solid"

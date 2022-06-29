@@ -13,7 +13,7 @@ export const HeaderTable = ({ userData }) => {
             <div>Categoría</div>
             <div>Género</div>
           </div>
-          {/* <div className="vertical-line"></div> */}
+          <div className="vertical-line"></div>
           <div className="player-values" key={value.Nombre}>
             <div>{value.Nombre}</div>
             <div>{value.Club}</div>
