@@ -7,7 +7,7 @@ import { Register } from './Pages/register';
 import { Unauthoraized } from './Pages/unauthoraized';
 import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 import { Home } from './Pages/home';
-import { Jugadores } from './Pages/jugadores';
+import { Players } from './Pages/players';
 import { Clasificacion } from'./Pages/clasificacion';
 import PlayerProfile from './Pages/playerProfile';
 import Tournaments from './Pages/tournaments';
@@ -24,7 +24,7 @@ function App() {
         <Route path='no-autorizado' element={<Unauthoraized />} />
         <Route path='registrarse' element={<Register />} />
         <Route path='home' element={<Home />} />
-        <Route path='jugadores' element={<Jugadores />} />
+        <Route path='jugadores' element={<Players />} />
         <Route path='torneos' element={<Tournaments />} />
         <Route path='clasificacion' element={<Clasificacion />} />
         <Route path='perfilJugador' element={<PlayerProfile />} />

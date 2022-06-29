@@ -3,7 +3,7 @@ import { Navbar } from '../Components/Navbar/Navbar';
 import SearchBar from '../Components/SearchBar/SearchBar';
 
 
-export const Jugadores = () => {
+export const Players = () => {
   return (
     <div className='background-page'>
       <div className='sticky-navbar'>

@@ -1,70 +1,34 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import "./SearchBar.scss";
 import { FaSearch } from "react-icons/fa";
 import {AiOutlineArrowRight} from "react-icons/ai"
 import { Button } from "../Button/Button";
 import { useNavigate } from 'react-router-dom';
+import {getPlayersData } from "../../Utils/getPlayersData/getPlayersData";
 
-const SearchBar = ({ placeholder, data }) => {
+const SearchBar = ({placeholder}) => {
   const navigate = useNavigate();
-  const handleClick = () =>{
-    navigate("/perfilJugador");
+  const [infoReceived,setInfoReceived] = useState(false);
+  const [playersData,setPlayersData] = useState([]);
+  const handleClick = (element) =>{
+    navigate('/perfilJugador',{state:element});
   }
   const [filteredData, setFilteredData] = useState([]);
   const handleInputChange = (event) =>{
     const searchWord = event.target.value;
     const newFilter = playersData.filter((value)=>{
-        return value.Nombre.toLowerCase().includes(searchWord.toLowerCase());
+        return value.name.toLowerCase().includes(searchWord.toLowerCase());
     })
     if(searchWord === ""){
         setFilteredData([]);
     }else{
         setFilteredData(newFilter);
     }
-  } 
-  const playersData = [
-    {
-      Foto: "foto",
-      Nombre: "Roberto",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Soberto",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Ronerto",
-      Carnet: 681,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Soberto",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Poberto",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Poberta",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Loberta",
-      Carnet: 677,
-    },
-    {
-      Foto: "foto",
-      Nombre: "Loberte",
-      Carnet: 677,
-    },
-  ];
-  return (
+  }
+  useEffect(() => {
+    getPlayersData(setPlayersData,setInfoReceived);
+  }, []);
+  return !infoReceived ? <div className='loader'></div> : (
     <div className="pagina-jugadores">
       <div className="buscar">
         <div className="input-buscar">
@@ -75,15 +39,18 @@ const SearchBar = ({ placeholder, data }) => {
         </div>
         { filteredData.length !== 0 && (
           <div className="data-buscar">
-            <table className="tabla">
+            <table className="find-players-table">
               <tbody>
                 {filteredData.slice(0,10).map((value, key) => (
-                  <tr className="fila-tabla" key={key}>
-                    <td className="left-td">{value.Foto}</td>
-                    <td>{value.Nombre}</td>
-                    <td>{`Carnet: ${value.Carnet}`}</td>
-                    <td className="right-td">
-                        <Button onClick={handleClick}
+                  <tr key={key}>
+                    <td>
+                      <img className= "img-players" src={`${value.s3Id}`} alt=""></img>
+                    </td>
+                    <td>{`${value.name} ${value.firstLastname}
+                    ${value.secondLastname}`}</td>
+                    <td>{`Carnet: ${value.licenseNumber}`}</td>
+                    <td className=" right-td">
+                        <Button onClick={()=>handleClick(value)}
                         buttonType="btn--i"
                         buttonStyle="btn--transparent--solid"
                         buttonSize="medium--btn"

@@ -55,3 +55,69 @@
     display:grid;
     place-items: center;
 }
+.img-players{
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.center-td{
+    margin-top: 20px;
+}
+
+.find-players-table{
+    text-align: center;
+    margin-bottom: 100px;
+    width: 100%;
+    border: none;
+    border-collapse:separate;
+    border-spacing:0 25px;
+}
+.find-players-table tr{
+    background-color: rgb(240, 239, 239);
+    border: none;
+}
+.find-players-table td, .find-players-table tr{
+    padding: 12px, 15px;
+    text-align: center;
+    font-size: 16px;
+}
+@media(max-width:856px){
+    .icono-buscar{
+        display: none;
+    }
+    .buscar input{
+        background-color: lightgrey;
+        border: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        font-size: 20px;
+        height: 30px;
+        height: 60px;
+        width: 100%;
+        text-align: center;
+        
+    }
+}
+@media(max-width:690px){
+    .find-players-table{
+        border: none;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        font-size: 20px;
+    }
+    .find-players-table tr{
+        background-color: #ffffff;
+    }
+    .find-players-table tbody tr:nth-child(even){
+        background-color: #f5f5f5;
+    }
+    .find-players-table,
+    .find-players-table tbody,
+    .find-players-table td{
+        display: table;
+        width: 100%;
+    }
+}
