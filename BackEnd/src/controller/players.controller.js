@@ -10,9 +10,10 @@ export const getAllPlayers = (req,res) =>{
     }
 }
 export const getPlayerTourneys = (req,res) => {
+    const {licenseNumber} = req.params;
     try {   
         res.json(tourneysPlayedByPlayer);
-        console.log('Tourneys played by a player sent');
+        console.log(`Tourneys played by ${licenseNumber} sent`);
     } catch (error) {
         res.status(500);
         res.send("An error ocurred on the server");

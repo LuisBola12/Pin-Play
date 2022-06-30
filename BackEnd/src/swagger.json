@@ -1,0 +1,199 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API PinPlay.",
+    "description": "Esta API se encarga de responder los llamados del frontend de la aplicación PinPlay y responder con la información resguardada en la base de datos PinPlay.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:4000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "players",
+      "description": "Este endpoint maneja toda la información realacionda con los jugadores registrados."
+    }
+  ],
+  "paths": {
+    "/players": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Consigue la información de todos los jugadores registrados en la aplicación.",
+        "responses": {
+          "200": {
+            "description": "(OK) Los jugadores registrados en la aplicacion han sido retornados correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyGetPlayers"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/playerImage/{licenseNumber}": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Consigue el binario de la imagen de un jugador.",
+        "parameters": [
+          {
+            "name": "licenseNumber",
+            "in": "path",
+            "description": "Numero de carnet del jugador.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) Binario de la imagen buscada.",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/playerTourneys/{licenseNumber}": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Consigue los torneos en los que ha participado un jugador.",
+        "parameters": [
+          {
+            "name": "licenseNumber",
+            "in": "path",
+            "description": "Numero de carnet del jugador.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) Torneos del jugador.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyTorneosParticipados"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "NotFound": {
+        "description": "(NotFound) El recurso buscado no existe."
+      },
+      "ServerError": {
+        "description": "(ServerError) Error en el servidor."
+      }
+    },
+    "schemas": {
+      "BodyGetPlayers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Nombre del jugador."
+            },
+            "firstlastname": {
+              "type": "string",
+              "description": "Primer apellido del jugador."
+            },
+            "secondlastname": {
+              "type": "string",
+              "description": "Segundo apellido del jugador."
+            },
+            "s3Id": {
+              "type": "string",
+              "description": "Url de la imagen que se encuentra en un s3 bucket."
+            },
+            "club": {
+              "type": "string",
+              "description": "Nombre del club en el cual juega este jugador."
+            },
+            "age": {
+              "type": "number",
+              "description": "Edad del jugador."
+            },
+            "category": {
+              "type": "string",
+              "description": "Categoría de tennis de mesa en la cual se encuentra el jugador."
+            },
+            "licenseNumber": {
+              "type": "number",
+              "description": "Numero de carnet del jugador."
+            },
+            "genre": {
+              "type": "string",
+              "description": "Género del jugador"
+            }
+          }
+        }
+      },
+      "BodyTorneosParticipados": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "description": "Nombre del torneo."
+            },
+            "Date": {
+              "type": "string",
+              "description": "Fecha en la que el torneo fue realizado."
+            },
+            "Position": {
+              "type": "number",
+              "description": "Número de posición en la que quedo el jugador."
+            },
+            "PtsEarned": {
+              "type": "number",
+              "description": "Número de puntos conseguidos por el jugador en el torneo."
+            }
+          }
+        }
+      }
+    }
+  }
+}

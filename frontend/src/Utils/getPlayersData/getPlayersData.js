@@ -9,8 +9,8 @@ export const getPlayersData = async(setPlayersData,setInfoReceived) =>{
         console.log(error)
     }   
 }
-export const getPlayerTourneys = async(setPlayerTourneys,setInfoReceived) =>{
-    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}playerTourneys`;
+export const getPlayerTourneys = async(licenseNumber,setPlayerTourneys,setInfoReceived) =>{
+    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}playerTourneys/${licenseNumber}`;
     try {
         const response = await fetch(playersUrl);
         const data = await response.json();
