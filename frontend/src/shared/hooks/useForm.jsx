@@ -22,7 +22,7 @@ export const useForm = (onSubmit, validate) => {
     const { id, value } = event.target;
     setFormValues({ ...formValues, [id]: value });
   };
-
+  
   return {
     formValues,
     handleInputChange,

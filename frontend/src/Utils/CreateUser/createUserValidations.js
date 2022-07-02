@@ -1,6 +1,7 @@
 import { validateEmail, validatePassword, validateName } from '../../Validate';
 
 const validate = (values) => {
+  console.log(values)
   let errors = {};
   if(values.email_register){
     if(!validateEmail(values.email_register)){
@@ -32,10 +33,10 @@ const validate = (values) => {
     errors.name_registerCSS = 'register-error-input';
   }
   
-  if(values.lastnames_register){
-    if(!validateName(values.lastnames_register)){
-      errors.lastnames_register = 'Please enter a first last name.';
-      errors.lastnames_registerCSS = 'register-error-input';
+  if(values.lastNames_register){
+    if(!validateName(values.lastNames_register)){
+      errors.lastNames_register = 'Please enter your lastNames.';
+      errors.lastNames_registerCSS = 'register-error-input';
     }
   }else{
     errors.lastnames_register = 'Please enter a first last name.';
@@ -47,9 +48,9 @@ const validate = (values) => {
     errors.birth_date_registerCSS = 'register-error-input';
   }
 
-  if(!values.profile_photo_register){
-    errors.profile_photo_register = 'Please enter Profile Photo';
-    errors.profile_photo_registerCSS = 'register-error-input';
+  if(!values.image_register){
+    errors.image_register = 'Please enter Profile Photo';
+    errors.image_registerCSS = 'register-error-input';
   }
   return errors;
 };
