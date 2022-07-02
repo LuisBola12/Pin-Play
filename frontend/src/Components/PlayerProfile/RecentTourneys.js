@@ -33,6 +33,7 @@ export const RecentTourneys = () => {
           ))}
         </tbody>
       </table>
+      <label className='Empty-message'>{(tourneyData.length === 0) ? 'Este jugador no ha jugado ningún torneo todavía.' : ''}</label>
     </div>
   )
 }
