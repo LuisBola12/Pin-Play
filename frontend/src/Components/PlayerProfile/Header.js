@@ -16,8 +16,12 @@ export const Header = () => {
   }];
   return (
     <div className="player-profile-header">
-      <img className="player-image" src={location.state.s3Id} alt="user"></img>
+      <div className="image-div">
+        <img className="player-image" src={location.state.s3Id} alt="user"></img>
+      </div>
+      <div className="header-table-div">
         <HeaderTable userData={userData}/>
+      </div>
     </div>
   );
 };

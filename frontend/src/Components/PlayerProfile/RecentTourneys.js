@@ -1,36 +1,39 @@
 import {React,useState,useEffect} from 'react';
 import './RecentTourneys.scss';
 import { getPlayerTourneys } from '../../Utils/getPlayersData/getPlayersData';
+import { useLocation } from "react-router-dom";
 
 export const RecentTourneys = () => {
   const [infoReceived,setInfoReceived] = useState(false);
   const [tourneyData,setTourneyData] = useState([]);
+  const location = useLocation();
   useEffect(() => {
-    getPlayerTourneys(setTourneyData,setInfoReceived);
+    getPlayerTourneys(location.state.licenseNumber,setTourneyData,setInfoReceived);
   }, []);
   return !infoReceived ? <div className='loader'></div> :(
     <div className='player-tourneys'>
       <h2>Historial de Torneos Recientes</h2>
       <table className='recent-tourneys-table'>
         <thead>
-          <tr className='recent-tourneys-table-header'>
-            <th className='left-tourneys-td'>Nombre Torneo</th>
+          <tr>
+            <th>Nombre Torneo</th>
             <th>Fecha</th>
-            <th className='center-right-tourneys-td'>Posición</th>
-            <th className='right-tourneys-td'>Puntos Ganados</th>
+            <th>Posición</th>
+            <th>Puntos Ganados</th>
           </tr>
         </thead>
         <tbody>
           {tourneyData.map((element) => (
-            <tr className= "recent-tourneys-data-tr"key={element.Name}>
-              <td className='left-tourneys-td'>{element.Name}</td>
-              <td className='center-td'>{element.Date}</td>
-              <td className='center-right-tourneys-td'>{element.Position}</td>
-              <td className='right-tourneys-td'>{`+${element.PtsEarned}`}</td>
+            <tr key={element.Name}>
+              <td data-label="Nombre Torneo">{element.Name}</td>
+              <td data-label="Fecha">{element.Date}</td>
+              <td data-label="Posición">{element.Position}</td>
+              <td data-label="Puntos Ganados">{`+${element.PtsEarned}`}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <label className='Empty-message'>{(tourneyData.length === 0) ? 'Este jugador no ha jugado ningún torneo todavía.' : ''}</label>
     </div>
   )
 }

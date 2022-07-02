@@ -17,7 +17,7 @@ const router = Router();
 
 //Players
 router.get('/players',getAllPlayers);
-router.get('/playerTourneys',getPlayerTourneys);
+router.get('/playerTourneys/:licenseNumber',getPlayerTourneys);
 router.get('/playerImage/:s3Id',getPlayerImage);
 
 // users
