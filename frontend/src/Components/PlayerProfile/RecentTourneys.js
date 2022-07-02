@@ -1,12 +1,14 @@
 import {React,useState,useEffect} from 'react';
 import './RecentTourneys.scss';
 import { getPlayerTourneys } from '../../Utils/getPlayersData/getPlayersData';
+import { useLocation } from "react-router-dom";
 
 export const RecentTourneys = () => {
   const [infoReceived,setInfoReceived] = useState(false);
   const [tourneyData,setTourneyData] = useState([]);
+  const location = useLocation();
   useEffect(() => {
-    getPlayerTourneys(setTourneyData,setInfoReceived);
+    getPlayerTourneys(location.state.licenseNumber,setTourneyData,setInfoReceived);
   }, []);
   return !infoReceived ? <div className='loader'></div> :(
     <div className='player-tourneys'>
@@ -31,6 +33,7 @@ export const RecentTourneys = () => {
           ))}
         </tbody>
       </table>
+      <label className='Empty-message'>{(tourneyData.length === 0) ? 'Este jugador no ha jugado ningún torneo todavía.' : ''}</label>
     </div>
   )
 }

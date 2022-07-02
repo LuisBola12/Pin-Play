@@ -222,35 +222,178 @@ export const players = [
         genre: "Masculino"
     },
 ]
-export const tourneysPlayedByPlayer = [
+
+export const tourneysPlayersRelation = [
     {
-        Name: "Torneo Benéfico Scotiabank",
-        Date: "27/4/2022",
+        Tourney_id: 1,
+        licenseNumber: 711,
         Position:4,
         PtsEarned:95,
     },
     {
-        Name: "Torneo Nacional Mayor",
-        Date: "3/5/2022",
-        Position:2,
-        PtsEarned:111,
-    },
-    {
-        Name: "Torneo Costarricense Por La Paz",
-        Date: "8/5/2022",
-        Position:4,
-        PtsEarned:83,
-    },
-    {
-        Name: "Segunda Edición Juntos Por Los Niños",
-        Date: "15/5/2022",
+        Tourney_id: 1,
+        licenseNumber: 812,
         Position:3,
         PtsEarned:99,
     },
     {
+        Tourney_id: 1,
+        licenseNumber: 930,
+        Position:2,
+        PtsEarned:111,
+    },
+    {
+        Tourney_id: 1,
+        licenseNumber: 798,
+        Position:1,
+        PtsEarned:120,
+    },
+    {
+        Tourney_id: 2,
+        licenseNumber: 13,
+        Position:4,
+        PtsEarned:98,
+    },
+    {
+        Tourney_id: 2,
+        licenseNumber: 315,
+        Position:1,
+        PtsEarned:120,
+    },
+    {
+        Tourney_id: 2,
+        licenseNumber: 961,
+        Position:2,
+        PtsEarned:111,
+    },
+    {
+        Tourney_id: 2,
+        licenseNumber: 119,
+        Position:3,
+        PtsEarned:105,
+    },
+    {
+        Tourney_id: 3,
+        licenseNumber: 98,
+        Position:1,
+        PtsEarned:120,
+    },
+    {
+        Tourney_id: 3,
+        licenseNumber: 119,
+        Position:2,
+        PtsEarned:115,
+    },
+    {
+        Tourney_id: 3,
+        licenseNumber: 972,
+        Position:5,
+        PtsEarned:89,
+    },
+    {
+        Tourney_id: 3,
+        licenseNumber: 930,
+        Position:4,
+        PtsEarned:95,
+    },
+    {
+        Tourney_id: 4,
+        licenseNumber: 359,
+        Position:6,
+        PtsEarned:70,
+    },
+    {
+        Tourney_id: 4,
+        licenseNumber: 930,
+        Position:1,
+        PtsEarned:120,
+    },
+    {
+        Tourney_id: 4,
+        licenseNumber: 961,
+        Position:2,
+        PtsEarned:111,
+    },
+    {
+        Tourney_id: 4,
+        licenseNumber: 119,
+        Position:7,
+        PtsEarned:50,
+    },
+    {
+        Tourney_id: 4,
+        licenseNumber: 644,
+        Position:3,
+        PtsEarned:105,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 711,
+        Position:1,
+        PtsEarned:120,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 644,
+        Position:2,
+        PtsEarned:115,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 121,
+        Position:3,
+        PtsEarned:108,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 930,
+        Position:4,
+        PtsEarned:95,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 315,
+        Position:8,
+        PtsEarned:45,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 119,
+        Position:6,
+        PtsEarned:75,
+    },
+    {
+        Tourney_id: 5,
+        licenseNumber: 13,
+        Position:12,
+        PtsEarned:33,
+    },
+
+]
+export const tourneysPlayed = [
+    {
+        Tourney_id: 1,
+        Name: "Torneo Benéfico Scotiabank",
+        Date: "27/4/2022",
+    },
+    {
+        Tourney_id: 2,
+        Name: "Torneo Nacional Mayor",
+        Date: "3/5/2022",
+    },
+    {
+        Tourney_id: 3,
+        Name: "Torneo Costarricense Por La Paz",
+        Date: "8/5/2022",
+    },
+    {
+        Tourney_id: 4,
+        Name: "Segunda Edición Juntos Por Los Niños",
+        Date: "15/5/2022",
+    },
+    {
+        Tourney_id: 5,
         Name: "Clasificatorio Mayor Segunda Categoría",
         Date: "15/5/2022",
-        Position:1,
-        PtsEarned:121,
     },
 ]

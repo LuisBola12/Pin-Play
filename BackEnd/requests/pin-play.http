@@ -9,4 +9,4 @@ get {{apiPlayers}}
 get {{apiPlayersImage}}/jugador_798
 
 ###
-get {{apiTourneysPlayed}}
+get {{apiTourneysPlayed}}/908
