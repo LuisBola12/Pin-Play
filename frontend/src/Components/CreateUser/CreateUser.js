@@ -1,84 +1,61 @@
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import validate from '../../Utils/CreateUser/createUserValidations';
 // import { postLogin } from '../../Slices/user/requests/postLogin';
 import { resetErrorMsg } from '../../Slices/user/userSlice';
 // import { validAnEntity } from '../../Utils/validAnEntity';
-import usePost from '../../shared/hooks/usePost';
-import validate from '../../Utils/CreateUser/createUserValidations';
-import useForm from '../../shared/hooks/useForm';
 import { Button } from '../Button/Button';
 import './CreateUserStyle.scss';
-
+import {BsUpload} from "react-icons/bs"
+import {BiUserCircle} from "react-icons/bi"
 
 export const CreateUser = () => {
   const dispatch = useDispatch();
-  const { post } = usePost('http://localhost:4000/createEmployer');
-  // const { image, serImage } = useState('');
-  const parseRoute = (route) => {
-    let newRoute = '';
-    if(route !== undefined){
-      let size = route.length;
-      for(let i = 0; i <= size; i++){
-        if(route.charAt(size-i) !== '\\'){
-          newRoute = route.charAt(size-i) + newRoute;
-        }else{
-          break;
-        }
-      }
-    }
-    return newRoute;
-  } 
-  const sendToDatabase = async () =>{
-    console.log(formValues)  
-    let string = JSON.stringify(formValues);
-
-    string = JSON.stringify({
-        Name: formValues.name_register, 
-        LastNames: formValues.lastnames_register, 
-        Email: formValues.email_register, 
-        Password: formValues.password_register, 
-        profilePhoto: formValues.profile_photo_register, 
-        BirthDate: formValues.birth_date_register,
-        Roles: 'player'
-      });
-      post(string);   
-    // const user = await validAnEntity('users/',formValues.email_register);
-    // const employee = await validAnEntity('employer/', formValues.profile_photo_register);
-
-    // if (user === true && employee === true) {
-    //   console.log('prubea');
-    //   let string = JSON.stringify(formValues);
-
-    //   string = JSON.stringify({
-    //     Cedula: formValues.profile_photo_register,
-    //     Nombre: formValues.name_register,
-    //     Apellido1: formValues.lastnames_register,
-    //     Apellido2: formValues.lastname2_register,
-    //     Telefono: formValues.birth_date_register,
-    //     Email: formValues.email_register,
-    //     Contrasenia: formValues.password_register,
-    //     Roles: 'admin'
-    //   });
-
-    // post(string);
-    // dispatch(postLogin({
-    //   email: formValues.email_register, 
-    //   password: formValues.password_register
-    // }));
-    // navigate('/projectAdmin');
-    // }else{
-    //   setIsSubmitting(false);
-    //   alert('These user alredy exists.');
-    // }
-  };
-
-  const { formValues, handleInputChange, handleSubmit, errors } = useForm(sendToDatabase, validate);
+  const [name, setName] = useState('');
+  const [lastNames, setLastNames] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setpassword] = useState('');
+  const [image, setImage] = useState({ preview: '', data: '' })
+  const [birthDate, setBirthDate] = useState('');
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
   const handleCancel = () => {
     dispatch(resetErrorMsg());
     navigate('/');
+  }
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
+  
+  const handleSubmit1 = async (e) => {
+    e.preventDefault()
+    console.log('entraa')
+    const err = {
+      name_register: name,
+      lastNames_register: lastNames,
+      email_register: email,
+      password_register: password,
+      image_register: image.data.name,
+      birth_date_register: birthDate
+    }
+    setErrors(validate(err))
+    console.log(Object.keys(errors).length === 0)
+    if(Object.keys(errors).length === 0){
+      let formData = new FormData()
+      console.log(image.data)
+      formData.append('file', image.data)
+      const response = await fetch('http://localhost:4000/createUser', {
+        method: 'POST',
+        body: formData,
+      })
+      console.log(response)
+    }
   }
 
   return (
@@ -86,8 +63,18 @@ export const CreateUser = () => {
       <div className='register-bar'>
         <div className='register-title'> PinPlay </div>
       </div>
-        
-      <div className='register-full-form'>        
+      {/* <h1>Upload to server</h1> */}
+      {/* {image.preview && <img src={image.preview} width='100' height='100' />} */}
+      {/* <hr></hr> */}
+
+      <form className='register-full-form' onSubmit={handleSubmit1}>
+      <label> Profile Photo </label>
+        {image.data.name ? (
+            <img src={image.preview} className='preview_image' alt=''/> 
+          ) : (
+            <BiUserCircle className="register-user-icon"/>
+            // <img src={'https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?s=612x612'} className='preview_image' alt=''/> 
+          )}       
         <div className='register-form'>
           <div>
             <div className='register-row'>
@@ -95,15 +82,15 @@ export const CreateUser = () => {
                 type='text' 
                 id='name_register' 
                 className= {`register-row__input ${errors.name_registerCSS}`}
-                value = {formValues.name_register || ''} 
+                value = {name} 
                 maxLength={15} 
-                onChange={handleInputChange} 
+                onChange={(e) => {setName(e.target.value);}} 
                 autoComplete='off' 
                 placeholder=' '/>
               <label htmlFor='name_register' className='register-row__label'> Nombre <span className='req'>*</span></label>
             </div>
             <div>
-              <label className='register-error' id='register_error_name'>{errors.name_register}</label>
+              <label className='register-error'>{errors.name_register}</label>
             </div>
           </div>
 
@@ -113,15 +100,15 @@ export const CreateUser = () => {
                 type='text' 
                 id='lastnames_register'
                 className={`register-row__input ${errors.lastnames_registerCSS}`}
-                value={formValues.lastnames_register || ''} 
+                value={lastNames} 
                 maxLength={15} 
-                onChange={handleInputChange} 
+                onChange={(e) => {setLastNames(e.target.value);}} 
                 autoComplete='off' 
                 placeholder=' '/>
               <label htmlFor='lastnames_register' className='register-row__label'>Apellidos<span className='req'>*</span></label>
             </div>
             <div>
-              <label className='register-error' id='register_error_name'>{errors.lastnames_register} </label>
+              <label className='register-error'>{errors.lastnames_register} </label>
             </div>
           </div>         
         </div>
@@ -133,15 +120,15 @@ export const CreateUser = () => {
                 type='text' 
                 id='email_register' 
                 className= {`register-row-email__input ${errors.email_registerCSS}`}
-                value={formValues.email_register || ''}
+                value={email}
                 maxLength={50}
-                onChange={handleInputChange}
+                onChange={(e) => {setEmail(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
               <label htmlFor='email_register' className='register-row-email__label'> Correo <span className='req'>*</span> </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_email'>{errors.email_register}</label>
+              <label className='register-error'>{errors.email_register}</label>
             </div>
           </div>
           <div>
@@ -150,42 +137,46 @@ export const CreateUser = () => {
                 type='password' 
                 id='password_register' 
                 className= {`register-row-email__input ${errors.password_registerCSS}`}
-                value={formValues.password_register || ''}
+                value={password}
                 maxLength={20}
-                onChange={handleInputChange}
+                onChange={(e) => {setpassword(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
               <label htmlFor='password_register' className='register-row-email__label'> Contraseña <span className='req'>*</span> </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_password'>{errors.password_register}</label>
+              <label className='register-error'>{errors.password_register}</label>
             </div>
           </div>
         </div>
 
         <div className='register-form'>
           <div>
-            <div className={`register-row-file ${errors.profile_photo_registerCSS}`}>
+            <div className={`register-row-file ${errors.image_registerCSS}`}>
               <label className='register-row-file__label-tile'>Foto de Perfil</label>
               <label htmlFor='profile_photo_register' className='register-row-file__label'>
               <input 
                 type='file' 
                 id='profile_photo_register' 
-                className={`register-row-file__input ${errors.profile_photo_registerCSS}`}
-                value={formValues.profile_photo_register || ''} 
-                maxLength={15} 
-                onChange={handleInputChange} 
-                accept='image/*'
-                autoComplete='off' 
-                placeholder=' '/>
-                { parseRoute(formValues.profile_photo_register) ? 
-                (<span className='register-row-file__span'>{ parseRoute(formValues.profile_photo_register)}</span> ) : 
-                (<span>Subir <img alt='' className='register-image'></img></span>) }
+                className='register-row-file__input'
+                onChange={handleFileChange}
+                accept='image/*'/>
+                { image.data.name ? 
+                (<><span className='register-row-file__span'>{image.data.name}</span></>) : 
+                (
+                <span className='register-row-file__span2'>
+                  <label htmlFor='profile_photo_register' className='register-row-file__subLabel'>
+                  Subir
+                  </label >
+                  <label htmlFor='profile_photo_register' className='register-row-file__subLabel'>
+                  <BsUpload className="register-row-file__register-upload-icon"/>
+                  </label>
+                </span>) }
               </label>
-              {/* <label htmlFor='profile_photo_register' className='register-row__label'> Foto De Perfil <span className='req'>*</span></label> */}
+              {/* <img alt='' className='register-image'></img> */}
             </div>
             <div>
-              <label className='register-error' id='register_error_ID'>{errors.profile_photo_register}</label>
+              <label className='register-error'>{errors.image_register}</label>
             </div>
           </div>
           <div>
@@ -194,27 +185,28 @@ export const CreateUser = () => {
                 type='date' 
                 id='birth_date_register' 
                 className={`register-row__input ${errors.birth_date_registerCSS}`}
-                value={formValues.birth_date_register || ''}
+                value={birthDate}
                 maxLength={8}
-                onChange={handleInputChange}
+                onChange={(e) => {setBirthDate(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
               <label htmlFor='birth_date_register' className='register-row__label'> Fecha De Nacimiento <span className='req'>*</span></label>
             </div>
             <div>
-              <label className='register-error' id='register_error_phoneNumber'>{errors.birth_date_register}</label>
+              <label className='register-error'>{errors.birth_date_register}</label>
             </div>
           </div>
         </div>
+                    {/* posible lugar imagen */}
         <div className='register-btn-box'>
-          <Button onClick={handleSubmit} buttonStyle="btn--register" buttonSize='large--btn'>
+          <Button buttonStyle="btn--register" buttonSize='large--btn'>
             Registrarse
           </Button>
           <Button onClick={handleCancel} buttonStyle="btn--cancel" buttonSize='large--btn'>
             Cancelar
           </Button>
         </div>
-      </div>
+      </form>
       <footer className='register-footerCopyRights'> &copy; PinPlay </footer>
     </div>
   );
