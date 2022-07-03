@@ -10,7 +10,7 @@ export const validatePassword = (password) => {
   return String(password)
     .toLowerCase()
     .match(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
     );
 };
 
@@ -18,7 +18,7 @@ export const validateName = (name) =>{
   return String(name)
     .toLowerCase()
     .match(
-      /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
+      /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/
     );
 };
 

@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { createUser } from '../controller/user.Controller';
+import { createUser, login, recoverPassword, resetPassword } from '../controller/user.Controller';
 import { getAllPlayers,getPlayerTourneys ,getPlayerImage } from '../controller/players.controller';
 import multer from 'multer';
+import playerSchema from '../schema/player.schema';
+import { validateSchema } from '../middlewares/validate.schema';
+import { checkAuth } from '../middlewares/auth';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -21,7 +24,14 @@ router.get('/playerTourneys/:licenseNumber',getPlayerTourneys);
 router.get('/playerImage/:s3Id',getPlayerImage);
 
 // users
-router.post('/createUser', upload.single('file'), createUser)
+router.post('/createUser', [upload.single('image_register'), validateSchema(playerSchema)], createUser)
+router.post('/login', login)
+router.post('/recoverPassword', recoverPassword)
+router.post('/resetPassword', resetPassword)
+
+// router.post('/changePassword', [checkAuth], changePassword)
+
+
 
 
 export default router;

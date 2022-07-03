@@ -13,12 +13,16 @@ import {BiUserCircle} from "react-icons/bi"
 export const CreateUser = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
-  const [lastNames, setLastNames] = useState('');
+  const [lastName1, setLastName1] = useState('');
+  const [lastName2, setLastName2] = useState('');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [image, setImage] = useState({ preview: '', data: '' })
-  const [birthDate, setBirthDate] = useState('');
-  const [errors, setErrors] = useState({});
+  const [age, setAge] = useState('');
+  const [club, setClub] = useState('');
+  const [genre, setGenre] = useState('');
+  const [licenseNumber, setLicenseNumber] = useState('');
+  const [errors, setErrors] = useState({'err': 0});
 
   const navigate = useNavigate();
   const handleCancel = () => {
@@ -36,20 +40,34 @@ export const CreateUser = () => {
   const handleSubmit1 = async (e) => {
     e.preventDefault()
     console.log('entraa')
-    const err = {
+    let data = {
       name_register: name,
-      lastNames_register: lastNames,
+      lastname1_register: lastName1,
+      lastname2_register: lastName2,
       email_register: email,
       password_register: password,
-      image_register: image.data.name,
-      birth_date_register: birthDate
+      image_register: image.data,
+      age_register: age,
+      club_register: club,
+      genre_register: genre,
+      licenseNumber_register: licenseNumber
     }
-    setErrors(validate(err))
+    setErrors(validate(data))
     console.log(Object.keys(errors).length === 0)
     if(Object.keys(errors).length === 0){
+      data = JSON.stringify(data)
       let formData = new FormData()
       console.log(image.data)
-      formData.append('file', image.data)
+      formData.append('name_register', name)
+      formData.append('lastname1_register', lastName1)
+      formData.append('lastname2_register', lastName2)
+      formData.append('email_register', email)
+      formData.append('password_register', password)
+      formData.append('image_register', image.data)
+      formData.append('age_register', age)
+      formData.append('club_register', club)
+      formData.append('genre_register', genre)
+      formData.append('licenseNumber_register', licenseNumber)
       const response = await fetch('http://localhost:4000/createUser', {
         method: 'POST',
         body: formData,
@@ -68,26 +86,26 @@ export const CreateUser = () => {
       {/* <hr></hr> */}
 
       <form className='register-full-form' onSubmit={handleSubmit1}>
-      <label> Profile Photo </label>
+      <label className='register-profile-title'> Profile Photo</label>
         {image.data.name ? (
             <img src={image.preview} className='preview_image' alt=''/> 
           ) : (
-            <BiUserCircle className="register-user-icon"/>
-            // <img src={'https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?s=612x612'} className='preview_image' alt=''/> 
+            // <BiUserCircle className="register-user-icon"/>
+            <img src={'https://pin-play-ci0137.s3.amazonaws.com/user_icon2.png'} className='preview_image' alt=''/> 
           )}       
-        <div className='register-form'>
+        <div className='register-form-name-lastnames'>
           <div>
-            <div className='register-row'>
+            <div className='register-row-name-lastnames'>
               <input 
                 type='text' 
                 id='name_register' 
-                className= {`register-row__input ${errors.name_registerCSS}`}
+                className= {`register-row-name-lastnames__input ${errors.name_registerCSS}`}
                 value = {name} 
                 maxLength={15} 
                 onChange={(e) => {setName(e.target.value);}} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='name_register' className='register-row__label'> Nombre <span className='req'>*</span></label>
+              <label htmlFor='name_register' className='register-row-name-lastnames__label'> Nombre <span className='req'>*</span></label>
             </div>
             <div>
               <label className='register-error'>{errors.name_register}</label>
@@ -95,54 +113,72 @@ export const CreateUser = () => {
           </div>
 
           <div>
+            <div className='register-row-name-lastnames'>
+              <input 
+                type='text' 
+                id='lastname1_register'
+                className={`register-row-name-lastnames__input ${errors.lastname1_registerCSS}`}
+                value={lastName1} 
+                maxLength={15} 
+                onChange={(e) => {setLastName1(e.target.value);}} 
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='lastname1_register' className='register-row-name-lastnames__label'>Primer Apellido<span className='req'>*</span></label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.lastname1_register} </label>
+            </div>
+          </div>     
+
+          <div>
+            <div className='register-row-name-lastnames'>
+              <input 
+                type='text' 
+                id='lastname2_register'
+                className={`register-row-name-lastnames__input ${errors.lastname2_registerCSS}`}
+                value={lastName2} 
+                maxLength={15} 
+                onChange={(e) => {setLastName2(e.target.value);}} 
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='lastname2_register' className='register-row-name-lastnames__label'>Segundo Apellido<span className='req'>*</span></label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.lastname2_register} </label>
+            </div>
+          </div>     
+        </div>
+
+        <div className='register-form-row'>
+          <div>
             <div className='register-row'>
               <input 
                 type='text' 
-                id='lastnames_register'
-                className={`register-row__input ${errors.lastnames_registerCSS}`}
-                value={lastNames} 
-                maxLength={15} 
-                onChange={(e) => {setLastNames(e.target.value);}} 
-                autoComplete='off' 
-                placeholder=' '/>
-              <label htmlFor='lastnames_register' className='register-row__label'>Apellidos<span className='req'>*</span></label>
-            </div>
-            <div>
-              <label className='register-error'>{errors.lastnames_register} </label>
-            </div>
-          </div>         
-        </div>
-
-        <div className='register-form-email'>
-          <div>
-            <div className='register-row-email'>
-              <input 
-                type='text' 
                 id='email_register' 
-                className= {`register-row-email__input ${errors.email_registerCSS}`}
+                className= {`register-row__input ${errors.email_registerCSS}`}
                 value={email}
                 maxLength={50}
                 onChange={(e) => {setEmail(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='email_register' className='register-row-email__label'> Correo <span className='req'>*</span> </label>
+              <label htmlFor='email_register' className='register-row__label'> Correo <span className='req'>*</span> </label>
             </div>
             <div>
               <label className='register-error'>{errors.email_register}</label>
             </div>
           </div>
           <div>
-            <div className='register-row-email'>
+            <div className='register-row'>
               <input 
                 type='password' 
                 id='password_register' 
-                className= {`register-row-email__input ${errors.password_registerCSS}`}
+                className= {`register-row__input ${errors.password_registerCSS}`}
                 value={password}
                 maxLength={20}
                 onChange={(e) => {setpassword(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='password_register' className='register-row-email__label'> Contraseña <span className='req'>*</span> </label>
+              <label htmlFor='password_register' className='register-row__label'> Contraseña <span className='req'>*</span> </label>
             </div>
             <div>
               <label className='register-error'>{errors.password_register}</label>
@@ -150,11 +186,83 @@ export const CreateUser = () => {
           </div>
         </div>
 
-        <div className='register-form'>
+        <div className='register-form-row'>
           <div>
-            <div className={`register-row-file ${errors.image_registerCSS}`}>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='club_register' 
+                className= {`register-row__input ${errors.club_registerCSS}`}
+                value={club}
+                maxLength={50}
+                onChange={(e) => {setClub(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='club_register' className='register-row__label'> Club </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.club_register}</label>
+            </div>
+          </div>
+          <div>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='licenseNumber_register' 
+                className= {`register-row__input ${errors.licenseNumber_registerCSS}`}
+                value={licenseNumber}
+                maxLength={50}
+                onChange={(e) => {setLicenseNumber(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='licenseNumber_register' className='register-row__label'> Carnet <span className='req'>*</span> </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.licenseNumber_register}</label>
+            </div>
+          </div>
+        </div>
+
+        <div className='register-form-row'>
+        <div>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='genre_register' 
+                className= {`register-row__input ${errors.genre_registerCSS}`}
+                value={genre}
+                maxLength={20}
+                onChange={(e) => {setGenre(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='genre_register' className='register-row__label'> Genero </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.genre_register}</label>
+            </div>
+          </div>
+          <div>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='age_register' 
+                className={`register-row__input ${errors.age_registerCSS}`}
+                value={age}
+                maxLength={8}
+                onChange={(e) => {setAge(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='age_register' className='register-row__label'> Edad </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.age_register}</label>
+            </div>
+          </div>
+        </div>
+        <div>
+            <div className='register-row-file'>
               <label className='register-row-file__label-tile'>Foto de Perfil</label>
-              <label htmlFor='profile_photo_register' className='register-row-file__label'>
+              <label htmlFor='profile_photo_register' className={`register-row-file__label  ${errors.image_registerCSS}`}>
               <input 
                 type='file' 
                 id='profile_photo_register' 
@@ -179,24 +287,6 @@ export const CreateUser = () => {
               <label className='register-error'>{errors.image_register}</label>
             </div>
           </div>
-          <div>
-            <div className='register-row'>
-              <input 
-                type='date' 
-                id='birth_date_register' 
-                className={`register-row__input ${errors.birth_date_registerCSS}`}
-                value={birthDate}
-                maxLength={8}
-                onChange={(e) => {setBirthDate(e.target.value);}}
-                autoComplete='off' 
-                placeholder=' '/>
-              <label htmlFor='birth_date_register' className='register-row__label'> Fecha De Nacimiento <span className='req'>*</span></label>
-            </div>
-            <div>
-              <label className='register-error'>{errors.birth_date_register}</label>
-            </div>
-          </div>
-        </div>
                     {/* posible lugar imagen */}
         <div className='register-btn-box'>
           <Button buttonStyle="btn--register" buttonSize='large--btn'>
