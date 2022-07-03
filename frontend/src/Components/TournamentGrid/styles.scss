@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .tournaments {
   display: flex;
@@ -11,8 +12,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 1072px;
+    width: 70%;
     margin: 18px 0 42px 0;
+    
   }
 
   &__title {
@@ -24,6 +26,16 @@
     display: flex;
     align-items: center;
     color: #0077b6;
+
+    @media (max-width: 1280px) {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    @media (max-width: 781px) {
+      font-size: 30px;
+      line-height: 36px;
+    }
   }
 
   &__button {
@@ -36,6 +48,17 @@
     justify-content: center;
     border: none;
     cursor: pointer;
+
+    @media (max-width: 1280px) {
+      width: 120px;
+      height: 36px;
+    }
+
+    @media (max-width: 781px) {
+      width: 36px;
+      height: 36px;
+      border-radius: 100px;
+    }
 
     &:hover {
       background: #0076b6de;
@@ -53,6 +76,10 @@
       text-align: center;
       color: #ffffff;
       margin-left: -3px;
+
+      @media (max-width: 781px) {
+        display: none;
+      }
     }
 
     & img {
@@ -81,9 +108,9 @@
     justify-content: center;
     column-gap: 65.22px;
     row-gap: 15.97px;
-    width: 1072px;
-    height: 522px;
-    padding: 0;
+    width: 80%;
+    // height: 522px;
+    padding: 30px;
     flex-wrap: wrap;
     overflow: scroll;
   }
