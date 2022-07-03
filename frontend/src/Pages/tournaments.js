@@ -2,8 +2,11 @@ import { Navbar } from "../Components/Navbar/Navbar";
 import TournamentGrid from "../Components/TournamentGrid";
 import AddTournamentButton from "../Components/TournamentGrid/AddTournamentButton";
 import "../Components/TournamentGrid/styles.scss";
+import AddTournamentModal from "../Components/TournamentGrid/AddTournamentModal";
+import { useState } from "react";
 
 const Tournaments = () => {
+  const [isOpen, setIsOpen] = useState(false);
   // TODO: Get tournaments from API
   const dummyTournaments = [
     {
@@ -116,22 +119,28 @@ const Tournaments = () => {
       category: "Quinta Categoría",
     },
   ];
+  const addTournament = (data) => {
+    console.log(data);
+  }
+
 
   return (
-    <div className='background-page'>
-      <div className='sticky-navbar'>
-        <Navbar />
-      </div>
-      <div className='page-content'>
-      <div className="tournaments__header">
-          <p className="tournaments__title">Torneos</p>
-          {/* TODO: create tournament functionality */}
-          <AddTournamentButton />
+    <>
+      <AddTournamentModal isOpen={isOpen} setIsOpen={setIsOpen} addTournament={addTournament} />
+      <div className="background-page">
+        <div className="sticky-navbar">
+          <Navbar />
         </div>
-        <TournamentGrid tournaments={dummyTournaments} />
+        <div className="page-content">
+          <div className="tournaments__header">
+            <p className="tournaments__title">Torneos</p>
+            <AddTournamentButton onClick={() => setIsOpen(true)}/>
+          </div>
+          <TournamentGrid tournaments={dummyTournaments} />
+        </div>
+        <footer>&copy; PinPlay - UCR</footer>
       </div>
-      <footer>&copy; PinPlay - UCR</footer> 
-    </div>
+    </>
   );
 };
 
