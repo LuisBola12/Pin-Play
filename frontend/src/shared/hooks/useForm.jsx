@@ -16,14 +16,13 @@ export const useForm = (onSubmit, validate) => {
     if (event) event.preventDefault();
     setErrors(validate(formValues));
     setIsSubmitting(true);
-
   };
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setFormValues({ ...formValues, [id]: value });
   };
-
+  
   return {
     formValues,
     handleInputChange,

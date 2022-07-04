@@ -1,6 +1,6 @@
 export const players = [
     {
-        
+        userID: 1,
         name: "Gerardo",
         firstLastname : "Rodriguez",
         secondLastname : "Perez",
@@ -12,6 +12,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 2,
         name: "Jimena",
         firstLastname : "Ruiz",
         secondLastname : "Chacón",
@@ -23,6 +24,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 3,
         name: "Jose",
         firstLastname : "Murillo",
         secondLastname : "Lopez",
@@ -34,6 +36,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 4,
         name: "Angela",
         firstLastname : "Valverde",
         secondLastname : "Esquivel",
@@ -45,6 +48,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 5,
         name: "Luis",
         firstLastname : "Bolanos",
         secondLastname : "Valverde",
@@ -56,6 +60,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 6,
         name: "Guillermo",
         firstLastname : "Rodriguez",
         secondLastname : "Lopez",
@@ -67,6 +72,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 7,
         name: "Angie",
         firstLastname : "Rodriguez",
         secondLastname : "Hodgson",
@@ -78,6 +84,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 8,
         name: "Sofía",
         firstLastname : "Jimnez",
         secondLastname : "Calvo",
@@ -89,6 +96,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 9,
         name: "David",
         firstLastname : "Atias",
         secondLastname : "Alpoena",
@@ -100,6 +108,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 10,
         name: "Camila",
         firstLastname : "Rodriguez",
         secondLastname : "Valverde",
@@ -111,6 +120,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 11,
         name: "Angelo",
         firstLastname : "Calvo",
         secondLastname : "Murillo",
@@ -118,10 +128,11 @@ export const players = [
         club: "Perez Zeledon",
         age: 32,
         category: "Primera",
-        licenseNumber: 98,
+        licenseNumber: 985,
         genre: "Masculino"
     },
     {
+        userID: 12,
         name: "Kenneth",
         firstLastname : "Ali",
         secondLastname : "Perez",
@@ -133,6 +144,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 13,
         name: "Yohan",
         firstLastname : "Blake",
         secondLastname : "Perez",
@@ -144,6 +156,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 14,
         name: "Rebeca",
         firstLastname : "Perez",
         secondLastname : "Perez",
@@ -155,6 +168,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 15,
         name: "Melanny",
         firstLastname : "Arias",
         secondLastname : "Rodriguéz",
@@ -166,6 +180,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 16,
         name: "Gerardo",
         firstLastname : "Bustamante",
         secondLastname : "Lopez",
@@ -177,6 +192,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 17,
         name: "Carmen",
         firstLastname : "Valverde",
         secondLastname : "Sanchéz",
@@ -188,6 +204,7 @@ export const players = [
         genre: "Femenino"
     },
     {
+        userID: 18,
         name: "Jesus",
         firstLastname : "Navarro",
         secondLastname : "Perez",
@@ -199,6 +216,7 @@ export const players = [
         genre: "Masculino"
     },
     {
+        userID: 19,
         name: "Jordan",
         firstLastname : "Calvo",
         secondLastname : "Bolanos",
@@ -211,6 +229,7 @@ export const players = [
     },
 
     {
+        userID: 20,
         name: "Julio",
         firstLastname : "Lopez",
         secondLastname : "Perez",
@@ -218,7 +237,7 @@ export const players = [
         club: "Perez Zeledon",
         age: 32,
         category: "Primera",
-        licenseNumber: 13,
+        licenseNumber: 153,
         genre: "Masculino"
     },
 ];
@@ -250,7 +269,7 @@ export const tourneysPlayersRelation = [
     },
     {
         Tourney_id: 2,
-        licenseNumber: 13,
+        licenseNumber: 153,
         Position:4,
         PtsEarned:98,
     },
@@ -274,7 +293,7 @@ export const tourneysPlayersRelation = [
     },
     {
         Tourney_id: 3,
-        licenseNumber: 98,
+        licenseNumber: 985,
         Position:1,
         PtsEarned:120,
     },
@@ -364,8 +383,9 @@ export const tourneysPlayersRelation = [
     },
     {
         Tourney_id: 5,
-        licenseNumber: 13,
+        licenseNumber: 153,
         Position:12,
         PtsEarned:33,
     },
-];
+
+]
