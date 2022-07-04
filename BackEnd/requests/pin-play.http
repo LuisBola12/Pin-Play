@@ -1,7 +1,8 @@
 @apiPlayers = http://localhost:4000/players
 @apiPlayersImage = http://localhost:4000/playerImage
 @apiTourneysPlayed = http://localhost:4000/playerTourneys
-
+@apiPassword = http://localhost:4000/changePassword
+@apiRecoverPassword = http://localhost:4000/recoverPassword
 
 get {{apiPlayers}}
 
@@ -10,3 +11,18 @@ get {{apiPlayersImage}}/jugador_798
 
 ###
 get {{apiTourneysPlayed}}/908
+###
+post {{apiPassword}}
+Content-Type: application/json
+
+{
+  "email":"118706423",
+  "password":"Taquería Milagro"
+}
+###
+post {{apiRecoverPassword}}
+Content-Type: application/json
+
+{
+  "email":"jd",
+}

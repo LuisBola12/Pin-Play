@@ -18,7 +18,7 @@
   min-height: 100vh;
 }
 .register-bar {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
     text-align: center;
 }
 
@@ -39,38 +39,40 @@
 }
 
 .register-full-form {
-    gap: 3vh;
+    gap: 5vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8vh;
-    background-image: linear-gradient(#FFF, #7cc3c5);
-    width: 70vh;
+    margin-top: 5vh;
+    background-image: linear-gradient(#7cc3c5, #FFF);
+    // width: 70vh;
+    width: 114vh;
     padding: 3.5vh;
     justify-content: center;
     border-radius:1.5vh;
     box-shadow: 0px 0px 4px 0px #051d2c;
 }
 
-.register-form {
+.register-form-name-lastnames {
     justify-content: center;
     display: flex;
-    gap: 1.2vh;
+    gap: 2vh;
+    // border: solid black;
 }
 
-.register-form-email{
+.register-form-row{
   justify-content: center;
   display: flex;
-  flex-direction: column;
-  gap: 3vh;
+  // flex-direction: column;
+  gap: 2vh;
 }
 
-.register-row-email {
+.register-row-name-lastnames {
   position: relative;
-  width: 65vh;
-  height: 2.6rem;
+  width: 35vh;
+  height: 6vh;
 
   &__input {
     position: absolute;
@@ -129,8 +131,8 @@
   
 }
 
-.register-row-email__input:focus~.register-row-email__label,
-.register-row-email__input:not(:placeholder-shown).register-row-email__input:not(:focus)~.register-row-email__label {
+.register-row-name-lastnames__input:focus~.register-row-name-lastnames__label,
+.register-row-name-lastnames__input:not(:placeholder-shown).register-row-name-lastnames__input:not(:focus)~.register-row-name-lastnames__label {
   top: -0.8rem;
   font-size: 0.8rem;
   left: 0.8rem;
@@ -144,9 +146,8 @@
 
 .register-row {
     position: relative;
-    width: 32vh;
+    width: 53.5vh;
     height: 6vh;
-  
     &__input {
       position: absolute;
       top: 0;
@@ -216,10 +217,141 @@
   }
 }
 
+// .register-input-file{
+//   display: none;
+//   width: 40vh;
+//   height: 6vh;
+// }
+// .register-label-file{
+//   color: black;
+//   font-weight: bold;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   padding-right: 21.3vh;
+//   padding-left: 2vh;
+//   padding-top: 1.5vh;
+//   padding-bottom: 1.2vh;
+// }
+.register-user-icon{
+  width: 2.5vh;
+  height: 2.5vh;
+}
+.register-profile-title{
+  color: black;
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+.register-image{
+  // position: relative;
+  width:120px;
+  height:120px; 
+  // margin-left: 11.5rem;
+  // margin-bottom: 1rem;
+  // left: 11.5rem;
+  // top: -0.5rem;
+  // border: solid black;
+}
+.preview_image{
+  width:120px;
+  height:120px; 
+  border-radius: 100px;
+  background-color: lightgray;
+  border: none;
+  text-decoration: none;
+  // display: none;
+  // position:relative; 
+  // // top: 0.4rem;
+}
+.register-row-file{
+  width: 53.5vh;
+  height: 6vh;
+  // width: 16.39rem;
+  // height: 2.5rem;
+  // border: 1px solid gray;
+  // border-radius: 5px;
+  // background: #f9f9f9;
+  // line-height: 6vh;
+
+  &__label-tile{
+    position: relative;
+    top: -1.1rem;
+    font-size: 0.8rem;
+    left: 1.2rem;
+    font-weight: bold;
+    // border: solid red 1px;
+  }
+  &__input{
+    display: none;
+  }
+  &__label{
+    position: relative;
+    top: -1.18rem;
+    display: block;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    // border: solid red 1px;
+    line-height: 0.7vh;
+    // padding-left: 1.16rem;
+    // background: green;
+    // padding: 1.2rem;
+    padding: 1.25rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+
+  &__span{
+    width: 100%;
+    height: 100%;
+  }
+
+  &__span2{
+    position: relative;
+    top: -1vh;
+    display: flex;
+    justify-content: space-between;
+    // border: solid rebeccapurple;
+    align-items: center;
+  }
+
+  &__subLabel{
+    cursor: pointer;
+  }
+
+  &__register-upload-icon{
+    width: 2.5vh;
+    height: 2.5vh;
+
+  }
+}
+
+.register-row-file__input:focus~.register-row-file__label,
+.register-row-file__input:not(:placeholder-shown).register-row-file__input:not(:focus)~.register-row-file__label {
+  top: -0.8rem;
+  font-size: 0.8rem;
+  left: 0.8rem;
+
+  .req {
+    opacity: 0;
+    font-size: 0px;
+    margin: 0px;
+  }
+}
+
 .register-error{
     color: #D8000C;
     text-align: center;
     font-size: 0.7rem;
+}
+
+.register-error-input,
+.register-error-input:hover,
+.register-error-input:focus{
+  border: red 1px solid;
 }
 
 .register-btn-box {
@@ -230,8 +362,9 @@
   }
 
 .register-footerCopyRights{
-    position: absolute;
+    position: relative;
     bottom: 0;
     color: white;
+    margin-top: 1rem;
     font-size: 2.2vh;
 }

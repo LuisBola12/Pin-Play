@@ -14,7 +14,8 @@ const STYLES = [
   "btn--register--navbar",
   "btn--logIn--logIn",
   "btn--register",
-  "btn--cancel"
+  "btn--cancel",
+  "btn--transparent"
 ];
 
 const SIZES = ["medium--btn", "small--btn", "large--btn", "extra--large--btn"];

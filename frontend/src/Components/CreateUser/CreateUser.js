@@ -1,56 +1,79 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { postLogin } from '../../Slices/user/requests/postLogin';
-import { resetErrorMsg } from '../../Slices/user/userSlice';
-import { validAnEntity } from '../../Utils/validAnEntity';
-import usePost from '../../shared/hooks/usePost';
 import validate from '../../Utils/CreateUser/createUserValidations';
-import useForm from '../../shared/hooks/useForm';
+// import { postLogin } from '../../Slices/user/requests/postLogin';
+import { resetErrorMsg } from '../../Slices/user/userSlice';
+// import { validAnEntity } from '../../Utils/validAnEntity';
 import { Button } from '../Button/Button';
 import './CreateUserStyle.scss';
+import {BsUpload} from "react-icons/bs"
+// import {BiUserCircle} from "react-icons/bi"
 
 export const CreateUser = () => {
   const dispatch = useDispatch();
-  const { post } = usePost('http://localhost:4000/createEmployer');
-  
-  const sendToDatabase = async () =>{      
-    const user = await validAnEntity('users/',formValues.email_register);
-    const employee = await validAnEntity('employer/', formValues.id_register);
-
-    if (user === true && employee === true) {
-      console.log('prubea');
-      let string = JSON.stringify(formValues);
-
-      string = JSON.stringify({
-        Cedula: formValues.id_register,
-        Nombre: formValues.name_register,
-        Apellido1: formValues.lastname1_register,
-        Apellido2: formValues.lastname2_register,
-        Telefono: formValues.phoneNumber_register,
-        Email: formValues.email_register,
-        Contrasenia: formValues.password_register,
-        Roles: 'admin'
-      });
-
-    post(string);
-    dispatch(postLogin({
-      email: formValues.email_register, 
-      password: formValues.password_register
-    }));
-    navigate('/projectAdmin');
-    }else{
-      setIsSubmitting(false);
-      alert('These user alredy exists.');
-    }
-  };
-
-  const { formValues, handleInputChange, handleSubmit, setIsSubmitting, errors } = useForm(sendToDatabase, validate);
+  const [name, setName] = useState('');
+  const [lastName1, setLastName1] = useState('');
+  const [lastName2, setLastName2] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setpassword] = useState('');
+  const [image, setImage] = useState({ preview: '', data: '' })
+  const [age, setAge] = useState('');
+  const [club, setClub] = useState('');
+  const [genre, setGenre] = useState('');
+  const [licenseNumber, setLicenseNumber] = useState('');
+  const [errors, setErrors] = useState({'err': 0});
 
   const navigate = useNavigate();
   const handleCancel = () => {
     dispatch(resetErrorMsg());
     navigate('/');
+  }
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
+  
+  const handleSubmit1 = async (e) => {
+    e.preventDefault()
+    console.log('entraa')
+    let data = {
+      name_register: name,
+      lastname1_register: lastName1,
+      lastname2_register: lastName2,
+      email_register: email,
+      password_register: password,
+      image_register: image.data,
+      age_register: age,
+      club_register: club,
+      genre_register: genre,
+      licenseNumber_register: licenseNumber
+    }
+    setErrors(validate(data))
+    console.log(Object.keys(errors).length === 0)
+    if(Object.keys(errors).length === 0){
+      data = JSON.stringify(data)
+      let formData = new FormData()
+      console.log(image.data)
+      formData.append('name_register', name)
+      formData.append('lastname1_register', lastName1)
+      formData.append('lastname2_register', lastName2)
+      formData.append('email_register', email)
+      formData.append('password_register', password)
+      formData.append('image_register', image.data)
+      formData.append('age_register', age)
+      formData.append('club_register', club)
+      formData.append('genre_register', genre)
+      formData.append('licenseNumber_register', licenseNumber)
+      const response = await fetch('http://localhost:4000/createUser', {
+        method: 'POST',
+        body: formData,
+      })
+      console.log(response)
+    }
   }
 
   return (
@@ -58,131 +81,222 @@ export const CreateUser = () => {
       <div className='register-bar'>
         <div className='register-title'> PinPlay </div>
       </div>
-        
-      <div className='register-full-form'>        
-        <div className='register-form'>
+      {/* <h1>Upload to server</h1> */}
+      {/* {image.preview && <img src={image.preview} width='100' height='100' />} */}
+      {/* <hr></hr> */}
+
+      <form className='register-full-form' onSubmit={handleSubmit1}>
+      <label className='register-profile-title'> Profile Photo</label>
+        {image.data.name ? (
+            <img src={image.preview} className='preview_image' alt=''/> 
+          ) : (
+            // <BiUserCircle className="register-user-icon"/>
+            <img src={'https://pin-play-ci0137.s3.amazonaws.com/user_icon2.png'} className='preview_image' alt=''/> 
+          )}       
+        <div className='register-form-name-lastnames'>
           <div>
-            <div className='register-row'>
+            <div className='register-row-name-lastnames'>
               <input 
                 type='text' 
                 id='name_register' 
-                className='register-row__input' 
-                value = {formValues.name_register || ''} 
+                className= {`register-row-name-lastnames__input ${errors.name_registerCSS}`}
+                value = {name} 
                 maxLength={15} 
-                onChange={handleInputChange} 
+                onChange={(e) => {setName(e.target.value);}} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='name_register' className='register-row__label'> Nombre <span className='req'>*</span></label>
+              <label htmlFor='name_register' className='register-row-name-lastnames__label'> Nombre <span className='req'>*</span></label>
             </div>
             <div>
-              <label className='register-error' id='register_error_name'>{errors.name_register}</label>
+              <label className='register-error'>{errors.name_register}</label>
             </div>
           </div>
 
           <div>
-            <div className='register-row'>
+            <div className='register-row-name-lastnames'>
               <input 
                 type='text' 
                 id='lastname1_register'
-                className='register-row__input' 
-                value={formValues.lastname1_register || ''} 
+                className={`register-row-name-lastnames__input ${errors.lastname1_registerCSS}`}
+                value={lastName1} 
                 maxLength={15} 
-                onChange={handleInputChange} 
+                onChange={(e) => {setLastName1(e.target.value);}} 
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='lastname1_register' className='register-row__label'>Apellidos<span className='req'>*</span></label>
+              <label htmlFor='lastname1_register' className='register-row-name-lastnames__label'>Primer Apellido<span className='req'>*</span></label>
             </div>
             <div>
-              <label className='register-error' id='register_error_name'>{errors.lastname1_register} </label>
+              <label className='register-error'>{errors.lastname1_register} </label>
             </div>
-          </div>         
+          </div>     
+
+          <div>
+            <div className='register-row-name-lastnames'>
+              <input 
+                type='text' 
+                id='lastname2_register'
+                className={`register-row-name-lastnames__input ${errors.lastname2_registerCSS}`}
+                value={lastName2} 
+                maxLength={15} 
+                onChange={(e) => {setLastName2(e.target.value);}} 
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='lastname2_register' className='register-row-name-lastnames__label'>Segundo Apellido<span className='req'>*</span></label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.lastname2_register} </label>
+            </div>
+          </div>     
         </div>
 
-        <div className='register-form-email'>
+        <div className='register-form-row'>
           <div>
-            <div className='register-row-email'>
+            <div className='register-row'>
               <input 
                 type='text' 
                 id='email_register' 
-                className='register-row-email__input' 
-                value={formValues.email_register || ''}
+                className= {`register-row__input ${errors.email_registerCSS}`}
+                value={email}
                 maxLength={50}
-                onChange={handleInputChange}
+                onChange={(e) => {setEmail(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='email_register' className='register-row-email__label'> Correo <span className='req'>*</span> </label>
+              <label htmlFor='email_register' className='register-row__label'> Correo <span className='req'>*</span> </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_email'>{errors.email_register}</label>
+              <label className='register-error'>{errors.email_register}</label>
             </div>
           </div>
           <div>
-            <div className='register-row-email'>
+            <div className='register-row'>
               <input 
                 type='password' 
                 id='password_register' 
-                className='register-row-email__input' 
-                value={formValues.password_register || ''}
+                className= {`register-row__input ${errors.password_registerCSS}`}
+                value={password}
                 maxLength={20}
-                onChange={handleInputChange}
+                onChange={(e) => {setpassword(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='password_register' className='register-row-email__label'> Contraseña <span className='req'>*</span> </label>
+              <label htmlFor='password_register' className='register-row__label'> Contraseña <span className='req'>*</span> </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_password'>{errors.password_register}</label>
+              <label className='register-error'>{errors.password_register}</label>
             </div>
           </div>
         </div>
 
-        <div className='register-form'>
+        <div className='register-form-row'>
           <div>
             <div className='register-row'>
               <input 
                 type='text' 
-                id='id_register' 
-                className='register-row__input' 
-                value={formValues.id_register || ''} 
-                maxLength={15} 
-                onChange={handleInputChange} 
+                id='club_register' 
+                className= {`register-row__input ${errors.club_registerCSS}`}
+                value={club}
+                maxLength={50}
+                onChange={(e) => {setClub(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='id_register' className='register-row__label'> Foto De Perfil <span className='req'>*</span></label>
+              <label htmlFor='club_register' className='register-row__label'> Club </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_ID'>{errors.id_register}</label>
+              <label className='register-error'>{errors.club_register}</label>
             </div>
           </div>
           <div>
             <div className='register-row'>
               <input 
                 type='text' 
-                id='phoneNumber_register' 
-                className='register-row__input'
-                value={formValues.phoneNumber_register || ''}
+                id='licenseNumber_register' 
+                className= {`register-row__input ${errors.licenseNumber_registerCSS}`}
+                value={licenseNumber}
+                maxLength={50}
+                onChange={(e) => {setLicenseNumber(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='licenseNumber_register' className='register-row__label'> Carnet <span className='req'>*</span> </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.licenseNumber_register}</label>
+            </div>
+          </div>
+        </div>
+
+        <div className='register-form-row'>
+        <div>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='genre_register' 
+                className= {`register-row__input ${errors.genre_registerCSS}`}
+                value={genre}
+                maxLength={20}
+                onChange={(e) => {setGenre(e.target.value);}}
+                autoComplete='off' 
+                placeholder=' '/>
+              <label htmlFor='genre_register' className='register-row__label'> Genero </label>
+            </div>
+            <div>
+              <label className='register-error'>{errors.genre_register}</label>
+            </div>
+          </div>
+          <div>
+            <div className='register-row'>
+              <input 
+                type='text' 
+                id='age_register' 
+                className={`register-row__input ${errors.age_registerCSS}`}
+                value={age}
                 maxLength={8}
-                onChange={handleInputChange}
+                onChange={(e) => {setAge(e.target.value);}}
                 autoComplete='off' 
                 placeholder=' '/>
-              <label htmlFor='phoneNumber_register' className='register-row__label'> Fecha De Nacimiento <span className='req'>*</span></label>
+              <label htmlFor='age_register' className='register-row__label'> Edad </label>
             </div>
             <div>
-              <label className='register-error' id='register_error_phoneNumber'>{errors.phoneNumber_register}</label>
+              <label className='register-error'>{errors.age_register}</label>
             </div>
           </div>
         </div>
-
-
-
+        <div>
+            <div className='register-row-file'>
+              <label className='register-row-file__label-tile'>Foto de Perfil</label>
+              <label htmlFor='profile_photo_register' className={`register-row-file__label  ${errors.image_registerCSS}`}>
+              <input 
+                type='file' 
+                id='profile_photo_register' 
+                className='register-row-file__input'
+                onChange={handleFileChange}
+                accept='image/*'/>
+                { image.data.name ? 
+                (<><span className='register-row-file__span'>{image.data.name}</span></>) : 
+                (
+                <span className='register-row-file__span2'>
+                  <label htmlFor='profile_photo_register' className='register-row-file__subLabel'>
+                  Subir
+                  </label >
+                  <label htmlFor='profile_photo_register' className='register-row-file__subLabel'>
+                  <BsUpload className="register-row-file__register-upload-icon"/>
+                  </label>
+                </span>) }
+              </label>
+              {/* <img alt='' className='register-image'></img> */}
+            </div>
+            <div>
+              <label className='register-error'>{errors.image_register}</label>
+            </div>
+          </div>
+                    {/* posible lugar imagen */}
         <div className='register-btn-box'>
-          <Button onClick={handleSubmit} buttonStyle="btn--register" buttonSize='large--btn'>
-            Register
+          <Button buttonStyle="btn--register" buttonSize='large--btn'>
+            Registrarse
           </Button>
           <Button onClick={handleCancel} buttonStyle="btn--cancel" buttonSize='large--btn'>
-            Cancel
+            Cancelar
           </Button>
         </div>
-      </div>
+      </form>
       <footer className='register-footerCopyRights'> &copy; PinPlay </footer>
     </div>
   );

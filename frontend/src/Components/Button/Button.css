@@ -35,7 +35,7 @@
     cursor: pointer;
 }
 .btn--t:hover{
-    text-decoration: underline white;
+    text-decoration: underline;
 }
 .btn--register--navbar{
     background: var(--lightblue);
@@ -87,6 +87,11 @@
     color: var(--white);
     border: none;
 }
+.btn--transparent{
+    background: none;
+    color: var(--dark);
+    border: none;
+}
 
 .btn--logIn--logIn{
     color: var(--white);
@@ -121,8 +126,18 @@
     font-weight: 600;
 }
 .extra--large--btn{
-    width: 60vh;
-    height: 8vh;
+    width: 92%;
+    height: 58px;
     font-size: 4vh;
+    /* font-size: 200%; */
     font-weight: 600;
+}
+
+@media screen and (max-width: 820px) {
+    .extra--large--btn{
+        width: 92%;
+        height: 85px;
+        font-size: 4vh;
+        font-weight: 600;
+    }
 }

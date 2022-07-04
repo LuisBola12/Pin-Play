@@ -14,12 +14,12 @@ const s3 = new S3({
 });
 
 //upload a file to s3
-export const uploadImageToAWS = (file) =>{
+export const uploadImageToAWS = (file, AWSFilePath) =>{
     const fileStream = fs.createReadStream(file.path);
     const uploadParams = {
         Bucket: bucketName,
         Body: fileStream,
-        Key: file.filename,
+        Key: AWSFilePath,
     }
     return s3.upload(uploadParams).promise();
 };
