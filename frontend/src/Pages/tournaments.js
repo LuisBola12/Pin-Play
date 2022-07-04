@@ -119,14 +119,10 @@ const Tournaments = () => {
       category: "Quinta Categoría",
     },
   ];
-  const addTournament = (data) => {
-    console.log(data);
-  }
-
 
   return (
     <>
-      <AddTournamentModal isOpen={isOpen} setIsOpen={setIsOpen} addTournament={addTournament} />
+      <AddTournamentModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="background-page">
         <div className="sticky-navbar">
           <Navbar />

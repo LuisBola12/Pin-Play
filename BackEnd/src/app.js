@@ -3,6 +3,7 @@ import config from './config';
 import routes from './routes/pinPlay.routes';
 import morgan from 'morgan';
 import cors from "cors";
+import fileUpload from 'express-fileupload';
 import swaggerUI from "swagger-ui-express";
 import swaggerFile from "./swagger.json"
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(fileUpload());
 app.use("/docs",swaggerUI.serve, swaggerUI.setup(swaggerFile))
 
 app.use(routes);

@@ -268,16 +268,25 @@ function AddTournamentModal(props) {
     console.log(event.target.value);
     setImage(event.target.value);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
       name: name,
       category: category,
-      location: location,
-      image: fileInput.current.files[0],
       date: date,
+      location: location,
     };
-    props.addTournament(data);
+    const image = fileInput.current.files[0];
+    // send data to server as formData
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("data", JSON.stringify(data));
+    const response = await fetch("http://localhost:4000/tournaments", {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
+    console.log(json);
     props.setIsOpen(false);
   };
   const handleClose = () => {
