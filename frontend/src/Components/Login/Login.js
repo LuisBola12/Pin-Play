@@ -4,11 +4,13 @@ import { setLogIn } from '../../Slices/user/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { React, useState } from 'react';
 import { Button } from '../Button/Button';
+import AddLoginEmailModal from './AddLoginEmailModal'
 import './LoginStyle.scss';
 
 export const LoginComp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
   const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
   const errorMessage = useSelector((state) => state.user.errorMessage);
@@ -24,17 +26,22 @@ export const LoginComp = () => {
   };
 
   const handleForgotPassword = () => {
+    setIsOpen(true)
     console.log('beunas')
+  }
+
+  const addTournament = (data) => {
+    console.log(data);
   }
 
   return userIsLoggedIn ? (
     <Navigate to='/torneos' />
   ) : (
     <div className='logIn-page'>
+      <AddLoginEmailModal isOpen={isOpen} setIsOpen={setIsOpen} addEmail={addTournament} />
       <div className='logIn-AppName-Media'>PinPlay</div>
       <div className='logIn-logo-box'>
         <div className='logIn-logo-AppName'>
-          {/* <div className='logIn-logo'></div> */}
           <div className='logIn-AppName'>PinPlay</div>
         </div>
         <p className='logIn-text'>  {`PinPlay te ayudara a encontrar torneos a lo 

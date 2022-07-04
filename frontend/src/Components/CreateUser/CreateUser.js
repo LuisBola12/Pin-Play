@@ -8,7 +8,7 @@ import { resetErrorMsg } from '../../Slices/user/userSlice';
 import { Button } from '../Button/Button';
 import './CreateUserStyle.scss';
 import {BsUpload} from "react-icons/bs"
-import {BiUserCircle} from "react-icons/bi"
+// import {BiUserCircle} from "react-icons/bi"
 
 export const CreateUser = () => {
   const dispatch = useDispatch();

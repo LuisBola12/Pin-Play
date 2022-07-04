@@ -77,7 +77,7 @@ export const recoverPassword = async (req, res) => {
   });
 
   if (!userData) {
-    res.status(401).send("Credenciales Invalidas");
+    res.status(401).json({errorMsg: "Credenciales Invalidas"});
     return;
   }
 
