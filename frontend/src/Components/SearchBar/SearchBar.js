@@ -5,6 +5,7 @@ import {AiOutlineArrowRight} from "react-icons/ai"
 import { Button } from "../Button/Button";
 import { useNavigate } from 'react-router-dom';
 import {getPlayersData } from "../../Utils/getPlayersData/getPlayersData";
+import { Loader } from "../Loader/Loader";
 
 const SearchBar = ({placeholder}) => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const SearchBar = ({placeholder}) => {
   useEffect(() => {
     getPlayersData(setPlayersData,setInfoReceived);
   }, []);
-  return !infoReceived ? <div className='loader'></div> : (
+  return !infoReceived ? <Loader/> : (
     <div className="pagina-jugadores">
       <div className="buscar">
         <div className="input-buscar">

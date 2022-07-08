@@ -14,33 +14,29 @@ import Tournaments from './Pages/tournaments';
 
 function App() {
   
-  const userRoll = useSelector((state) => state.user.user);
-
   return (
 
     <Router>
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={<Tournaments />} />
+        <Route path='login' element={<Login />} />
         <Route path='no-autorizado' element={<Unauthoraized />} />
         <Route path='registrarse' element={<Register />} />
         <Route path='home' element={<Home />} />
         <Route path='jugadores' element={<Players />} />
-        <Route path='torneos' element={<Tournaments />} />
         <Route path='clasificacion' element={<Clasificacion />} />
         <Route path='perfilJugador' element={<PlayerProfile />} />
 
-        {/* Routes for the employer */}
-        {userRoll && userRoll.Roles === 'admin' ? 
+        {/* {userRoll && userRoll.Roles === 'admin' ? 
         (
           <Route element={<PrivateRoute allowedRoles={['admin']} />}>
-          {/* <Route path='/' element={<SelectProject />} /> */}
-          
+        
           </Route>
         ) : (
           <Route element={<PrivateRoute allowedRoles={['emp']} />}>
           
           </Route>
-        ) }
+        ) } */}
       </Routes>
     </Router>
   );

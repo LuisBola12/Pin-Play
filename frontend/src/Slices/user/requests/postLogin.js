@@ -1,20 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentials) => {
-  const loginFetch = await fetch('https://api.ticolitas.com/usuarios/login',
+  const loginFetch = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}login`,
     {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        email: credentials.username,
+        email: credentials.email,
         password: credentials.password,
       }),
     });
 
   const userData = await loginFetch.json();
-  console.log(userData)
   return getData(userData, loginFetch);
 
 });

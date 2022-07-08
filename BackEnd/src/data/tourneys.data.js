@@ -45,3 +45,24 @@ export const tourneysPlayed = [
       s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
   },
 ]
+
+export const categories = [
+    {
+        Category: "Primera",
+    },
+    {
+        Category: "Segunda",
+    },
+    {
+        Category: "Tercera",
+    },
+    {
+        Category: "Cuarta",
+    },
+    {
+        Category: "Quinta",
+    },
+    {
+        Category: "Sexta",
+    },
+]

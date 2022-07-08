@@ -37,7 +37,7 @@ const AddLoginEmailModal = (props) => {
       email: email,
     };
     const dataSend = JSON.stringify(data)
-    const response = await fetch('http://localhost:4000/recoverPassword', {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}recoverPassword`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -61,7 +61,7 @@ const AddLoginEmailModal = (props) => {
       recoveryCodeRecv: code
     };
     const dataSend = JSON.stringify(data)
-    const response = await fetch('http://localhost:4000/resetPassword', {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}resetPassword`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

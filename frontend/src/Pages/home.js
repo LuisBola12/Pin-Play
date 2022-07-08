@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from '../Components/Navbar/Navbar';
+import { Footer } from '../Components/Footer/Footer';
 import '../App.css';
 
 export const Home = () => {
@@ -12,7 +13,7 @@ export const Home = () => {
         <div className='page-content'>
           <h1>Esto es el home page de la App</h1>
         </div>
-        <footer>&copy; PinPlay - UCR</footer> 
+        <Footer color={'black'} position={'relative'}></Footer>
       </div>
     </div>
   );
