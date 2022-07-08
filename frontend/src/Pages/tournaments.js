@@ -4,9 +4,11 @@ import AddTournamentButton from "../Components/TournamentGrid/AddTournamentButto
 import "../Components/TournamentGrid/styles.scss";
 import AddTournamentModal from "../Components/TournamentGrid/AddTournamentModal";
 import { useState } from "react";
+import { DropDown } from "../Components/DropDown/DropDown";
 
 const Tournaments = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [category, setCategory] = useState("Todas");
   // TODO: Get tournaments from API
   const dummyTournaments = [
     {
@@ -119,6 +121,32 @@ const Tournaments = () => {
       category: "Quinta Categoría",
     },
   ];
+  const categorias = [
+    {
+      Nombre: "Primera",
+    },
+    {
+      Nombre: "Segunda",
+    },
+    {
+      Nombre: "Tercera",
+    },
+    {
+      Nombre: "Cuarta",
+    },
+    {
+      Nombre: "Quinta",
+    },
+    {
+      Nombre: "Sexta",
+    },
+    {
+      Nombre: "Todas",
+    }
+  ];
+
+  const filterTournaments = (categoria) => {}
+
 
   return (
     <>
@@ -129,7 +157,7 @@ const Tournaments = () => {
         </div>
         <div className="page-content">
           <div className="tournaments__header">
-            <p className="tournaments__title">Torneos</p>
+            <DropDown title="Categoría" options={categorias} />
             <AddTournamentButton onClick={() => setIsOpen(true)}/>
           </div>
           <TournamentGrid tournaments={dummyTournaments} />
