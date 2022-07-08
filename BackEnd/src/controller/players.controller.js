@@ -83,7 +83,7 @@ const verifyAnIdExists = (id) => {
 }
 
 export const topPlayersCategory = (req, res) =>{
-    const { category, page, maxAmountPage } = req.body;
+    const { category, page, maxAmountPage } = req.query;
     console.log(req.body)
     let infoCategoryPlayers = [];
     players.forEach(element => {
@@ -113,8 +113,9 @@ export const topPlayersCategory = (req, res) =>{
         })
     })
     const infoToSend = [];
-    infoCategoryPlayers.slice(maxAmountPage*(page-1),maxAmountPage*page).forEach(element => {
+    infoCategoryPlayers.slice(maxAmountPage*(page-1),maxAmountPage*page).forEach((element, index) => {
         const data = {
+            position: element.position,
             name: element.name,
             firstLastname: element.firstLastname,
             s3Id: element.s3Id,

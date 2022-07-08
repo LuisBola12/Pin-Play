@@ -12,17 +12,19 @@ export const NavbarContainer = styled.div`
 export const LeftSection = styled.div`
   display: flex;
   height: 100%;
-  border: solid yellow;
+  // border: solid yellow;
 `;
 
 export const MiddleSection = styled.div`
   display: flex;
   flex: 2;
   height: 100%;
-  justify-content: center;
+  justify-content: left;
+  // border: solid green;
 `;
 
 export const RightSection = styled.div`
   display: flex;
+  // border: solid purple;
 `;
 

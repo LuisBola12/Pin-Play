@@ -12,8 +12,8 @@ const router = Router();
 router.get('/players',getAllPlayers);
 router.get('/playerTourneys/:licenseNumber',getPlayerTourneys);
 router.get('/playerImage/:s3Id',getPlayerImage);
-router.post('/topPlayersCategory', topPlayersCategory);
-router.post('/amountOfPages', amountOfLadderByCategory);
+router.get('/topPlayersCategory', topPlayersCategory);
+router.get('/amountOfPages', amountOfLadderByCategory);
 
 //Tournaments
 router.post('/tournaments',addTournament);

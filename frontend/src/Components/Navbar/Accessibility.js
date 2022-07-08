@@ -7,7 +7,8 @@ import { Button } from "../Button/Button";
 
 const AccessibilityContainer = styled.div`
   display: flex;
-  margin-left: 10px;
+  width: 100%;
+  justify-content: center;
 `;
 
 export const Accessibility = () => {

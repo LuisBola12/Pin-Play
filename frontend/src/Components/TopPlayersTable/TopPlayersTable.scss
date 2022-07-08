@@ -113,7 +113,7 @@
   font-size: 16px;
 }
 
-.topPlayers-victorias{
+.topPlayers-victories{
   background-color: #286ec5;
   width: 100%;
   height: 25px;
@@ -123,7 +123,7 @@
   border-radius: 5px 0px 0px 5px;
 }
 
-.topPlayers-derrotas{
+.topPlayers-loses{
   background-color: rgb(233, 33, 33);
   height: 25px;
   width: 100%;
@@ -133,7 +133,7 @@
   border-radius: 0px 5px 5px 0px;
 }
 
-.topPlayers-tasaVictorias{
+.topPlayers-winRate{
   display: flex;
   text-align: left;
   color: white;
@@ -143,16 +143,14 @@
   margin-right: auto;
 }
 
-.topPlayers-porcentaje{
+.topPlayers-percentage{
   color: black;
   font-size: 18px;
-  // font-size: 15px;
   text-align: right;
   font-weight: bold;
   height: 25px;
   line-height: 25px;
   margin-left: 15px;
-  // width: 42%;
 }
 
 .topPlayer-vic-count{
@@ -164,55 +162,12 @@
 }
 .topPlayers-pages{
   width: 100%;
-  // border: solid black;
   text-align: center;
   height: 26px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
   gap: 4px;
-
-  
-  &__div{
-    width: 3%;
-    height: 100%;
-    border: none;
-
-  }
-  &__button{
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  &__prevNext{
-    width: 3%;
-    height: 100%;
-    border: none;
-  }
-  &__prevNextDis{
-    width: 3%;
-    height: 100%;
-    border: none;
-  }
-  &__prevNext:hover{
-    background-color: rgb(224, 224, 224);
-    font-size: 15px;
-  }
-
-  &__button:hover{
-    background-color: rgb(224, 224, 224);
-    font-size: 15px;
-  }
-  &__button:active{
-    background-color: rgb(224, 224, 224);
-    font-size: 15px;
-    font-weight: bold;
-  }
-  &__button:focus{
-    background-color: rgb(224, 224, 224);
-    font-size: 15px;
-    font-weight: bold;
-  }
 }
 
 .topPlayer-focus{
