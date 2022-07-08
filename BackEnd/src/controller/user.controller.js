@@ -33,7 +33,6 @@ export const createUser = async (req, res) => {
 
     const tokenSesion = await tokenSign(req.body.email);
     res.send({ data: data, tokenSesion });
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -42,7 +41,6 @@ export const createUser = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
   let userData;
   users.forEach((element) => {
     if (Object.values(element).includes(email)) {
@@ -68,7 +66,6 @@ export const login = async (req, res) => {
 
 export const recoverPassword = async (req, res) => {
   const { email } = req.body;
-  console.log(req.body);
   let userData;
   users.forEach((element) => {
     if (Object.values(element).includes(email)) {
@@ -104,8 +101,6 @@ export const recoverPassword = async (req, res) => {
 
   recoveryCode.push(recoveryCodeData)
 
-  console.log(recoveryCode)
-
   sendRecoveyEmail(email,randomToken)
   
   res.status(200).send();
@@ -115,7 +110,6 @@ export const recoverPassword = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
   const { email, password, recoveryCodeRecv } = req.body;
-  console.log(req.body);
 
   let recoveryCodeData
   recoveryCode.forEach((element) => {
@@ -138,9 +132,7 @@ export const resetPassword = async (req, res) => {
 
   users.forEach((element) => {
     if (Object.values(element).includes(recoveryCodeData.userID)) {
-      console.log(element);
       element.password =  bcryptPassword;
-      console.log(element);
     }
   });
 

@@ -1,5 +1,4 @@
 export const getPlayersData = async(setPlayersData,setInfoReceived) =>{
-    console.log(process.env.REACT_APP_BACKEND_LOCALHOST);
     const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}players`;
     try {
         const response = await fetch(playersUrl);
