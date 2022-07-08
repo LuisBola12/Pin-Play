@@ -1,4 +1,5 @@
-import { players,tourneysPlayed,tourneysPlayersRelation } from "../data/players.data";
+import { players,tourneysPlayersRelation } from "../data/players.data";
+import { tourneysPlayed } from "../data/tourneys.data";
 import { getImageFromAWS } from "../s3";
 
 export const getAllPlayers = (req,res) =>{
