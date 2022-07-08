@@ -7,6 +7,7 @@ import AddLoginEmailModal from './AddLoginEmailModal'
 import './LoginStyle.scss';
 import { postLogin } from '../../Slices/user/requests/postLogin';
 import { Footer } from '../Footer/Footer';
+import { resetErrorMsg } from '../../Slices/user/userSlice';
 
 export const LoginComp = () => {
   const [email, setEmail] = useState('');
@@ -16,8 +17,11 @@ export const LoginComp = () => {
   const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
   const errorMessage = useSelector((state) => state.user.errorMessage);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const handleCancel = () => {
+    dispatch(resetErrorMsg());
+    navigate(-1);
+  };
   const handleRegister = () => {
     navigate('/registrarse');
   };
@@ -88,6 +92,9 @@ export const LoginComp = () => {
           </div>
           <Button onClick={handleRegister} buttonStyle="btn--register" buttonSize='extra--large--btn'>
             Registrarse
+          </Button>
+          <Button onClick={handleCancel} buttonStyle="btn--cancel" buttonSize="extra--large--btn">
+            Cancelar
           </Button>
         </div>
       </div>

@@ -12,7 +12,6 @@ const usePost = (url) => {
         },
         body: JSONBody
       });
-      console.log(postFetch);
     } catch (error) {
       setPostError(error);
     }

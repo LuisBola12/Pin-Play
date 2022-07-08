@@ -1,4 +1,4 @@
-import { validateEmail, validatePassword, validateName, validateNumber } from '../../Validate';
+import { validateEmail, validatePassword, validateName } from '../../Validate';
 
 const validate = (values) => {
   let errors = {};
