@@ -28,6 +28,7 @@
 .sticky-navbar {
   position: sticky;
   top: 0;
+  z-index: 20;
 }
 .player-profile-header{
     margin-top: 2%;

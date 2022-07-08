@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Accessibility } from "./Accessibility";
 import { MenuToggle } from "./MenuToggle";
+import { NavLink as Link } from "react-router-dom";
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -14,8 +15,7 @@ const LinksWrapper = styled.ul`
   margin-top: 15px;
   padding: 0;
   display: flex;
-  gap: 12px;
-  height: 18%;
+  height: 35%;
   list-style: none;
   background-color: #3673be;
   width: 100%;
@@ -27,18 +27,25 @@ const LinksWrapper = styled.ul`
 
 const LinkItem = styled.li`
   width: 100%;
-  padding: 0 1.1em;
+  height: 40px;
+  line-height: 40px;
   color: white;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   display: flex;
-  margin-bottom: 10px;
+  // margin-bottom: 5px;
+  // border: solid #255fa4;
 `;
 
-const Link = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   font-size: inherit;
+  width: 100%;
+  text-align: center;
+  &:hover {
+    background: #488adb;
+  }
 `;
 
 
@@ -51,13 +58,13 @@ export function MobileNavLinks(props) {
       {isOpen && (
         <LinksWrapper>
           <LinkItem>
-            <Link href="/torneos">Torneos</Link>
+            <NavLink to="/">Torneos</NavLink>
           </LinkItem>
           <LinkItem>
-            <Link href="/clasificacion">Clasificacion</Link>
+            <NavLink to="/clasificacion">Clasificacion</NavLink>
           </LinkItem>
           <LinkItem>
-            <Link href="/jugadores">Jugadores</Link>
+            <NavLink to="/jugadores">Jugadores</NavLink>
           </LinkItem>
         <Accessibility />
         </LinksWrapper>
