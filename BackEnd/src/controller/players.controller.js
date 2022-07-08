@@ -1,4 +1,4 @@
-import { players,tourneysPlayersRelation } from "../data/players.data";
+import { players,tourneysPlayersRelation, losesVictoryRate } from "../data/players.data";
 import { tourneysPlayed } from "../data/tourneys.data";
 import { getImageFromAWS } from "../s3";
 
@@ -124,12 +124,11 @@ export const topPlayersCategory = (req, res) =>{
         }
         infoToSend.push(data);
     });
-    console.log(infoToSend)
     res.status(200).json(infoToSend);
 } 
 
 export const amountOfLadderByCategory = (req, res) =>{
-    const { category, maxAmount } = req.body;
+    const { category, maxAmount } = req.query;
     let infoCategoryPlayers = [];
     players.forEach(element => {
         if(Object.values(element).includes(category)){

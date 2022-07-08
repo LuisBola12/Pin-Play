@@ -1,8 +1,7 @@
 import { Router } from "express";
-import { addTournament } from "../controller/tournaments.controller";
+import { addTournament, getCategories, getPageCount, getTournaments } from "../controller/tournaments.controller";
 import { createUser, login, recoverPassword, resetPassword } from '../controller/user.Controller';
 import { getAllPlayers,getPlayerTourneys ,getPlayerImage, topPlayersCategory, amountOfLadderByCategory} from '../controller/players.controller';
-import { getCategories } from '../controller/tourneys.controller';
 import playerSchema from '../schema/player.schema';
 import { validateSchema } from '../middlewares/validate.schema';
 import { checkAuth } from '../middlewares/auth';
@@ -28,6 +27,8 @@ router.post('/resetPassword', resetPassword)
 // router.post('/changePassword', [checkAuth], changePassword)
 
 // Tourneys
-router.get('/categories', getCategories)
+router.get('/categories', getCategories);
+router.get('/getTournaments', getTournaments);
+router.get('/getTournamentPages', getPageCount);
 
 export default router;
