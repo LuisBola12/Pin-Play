@@ -68,7 +68,7 @@
       background: none;
       box-shadow: none;
       width: 10vh;
-      gap: 3vh;
+      gap: 4vh;
     }
 }
 
@@ -77,6 +77,10 @@
     display: flex;
     gap: 2vh;
     @media screen and (max-width: 725px) {
+      flex-direction: column;
+      gap: 4vh;
+    }
+    @media screen and (max-width: 450px) {
       flex-direction: column;
       gap: 4vh;
     }
@@ -140,13 +144,13 @@
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
     background-color: none;
     @media screen and (max-width: 920px) {
-      top: 1rem;
+      top: 0.8rem;
       font-size: 1rem;
     }
-    @media screen and (max-width: 725px) {
-      top: 1.2rem;
-      font-size: 1.5rem;
-    }
+    // @media screen and (max-width: 725px) {
+    //   top: 1.2rem;
+    //   font-size: 1.5rem;
+    // }
     @media screen and (max-width: 450px) {
       top: 0.8rem;
       font-size: 1rem;
@@ -163,7 +167,7 @@
       height: 5vh;
     }
     @media screen and (max-width: 725px) {
-      width: 43vh;
+      width: 50vh;
       height: 6vh;
     }
     @media screen and (max-width: 450px) {
@@ -185,9 +189,12 @@
     margin: 0px;
   }
   @media screen and (max-width: 920px) {
-    top: -1.3rem;
-    font-size: 1.2rem;
-    left: 0.8rem;
+    top: -1rem;
+    font-size: 0.8rem;
+  }
+  @media screen and (max-width: 725px) {
+    top: -1rem;
+    font-size: 0.9rem;
   }
   @media screen and (max-width: 450px) {
     top: -1rem;
@@ -202,7 +209,20 @@
     height: 8vh;
     select{
       padding: 0px;
-      padding-left: 1rem;
+      padding-left: 1.25rem;
+      height: 8vh;
+      @media screen and (max-width: 920px) {
+        width: 49vh;
+        height: 6vh;
+      }
+      @media screen and (max-width: 725px) {
+        width: 50vh;
+        height: 6vh;
+      }
+      @media screen and (max-width: 450px) {
+        width: 40vh;
+        height: 5.5vh;
+      }
     }
     &__input {
       position: absolute;
@@ -248,10 +268,10 @@
       font-weight: 600;
       transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
       background-color: none;
-      // @media screen and (max-width: 920px) {
-      //   top: 1.2rem;
-      //   font-size: 1.5rem;
-      // }
+      @media screen and (max-width: 920px) {
+        top: 0.8rem;
+        font-size: 1rem;
+      }
       @media screen and (max-width: 450px) {
         top: 0.8rem;
         font-size: 1rem;
@@ -266,6 +286,10 @@
       @media screen and (max-width: 920px) {
         width: 49vh;
         height: 5vh;
+      }
+      @media screen and (max-width: 725px) {
+        width: 50vh;
+        height: 6vh;
       }
       @media screen and (max-width: 450px) {
         width: 40vh;
@@ -285,9 +309,12 @@
     margin: 0px;
   }
   @media screen and (max-width: 920px) {
-    top: -1.3rem;
-    font-size: 1.2rem;
-    left: 0.8rem;
+    top: -1rem;
+    font-size: 0.8rem;
+  }
+  @media screen and (max-width: 725px) {
+    top: -1rem;
+    font-size: 0.9rem;
   }
   @media screen and (max-width: 450px) {
     top: -1rem;
@@ -336,7 +363,7 @@
     font-weight: bold;
     @media screen and (max-width: 920px) {
       top: -1.1rem;
-      font-size: 1.4rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -360,8 +387,8 @@
     background: #f9f9f9;
     @media screen and (max-width: 920px) {
       padding: 0.59rem;
-      font-size: 1.5rem;
-      padding: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
     }
     @media screen and (max-width: 450px) {
       font-size: 1rem;
@@ -397,6 +424,10 @@
   @media screen and (max-width: 920px) {
     width: 31vh;
     height: 5vh;
+  }
+  @media screen and (max-width: 725px) {
+    width: 50vh;
+    height: 6vh;
   }
   @media screen and (max-width: 450px) {
     width: 40vh;

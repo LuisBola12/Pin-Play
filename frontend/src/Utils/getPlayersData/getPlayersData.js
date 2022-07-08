@@ -24,19 +24,9 @@ export const getPlayerTourneys = async(licenseNumber,setPlayerTourneys,setInfoRe
 }
 
 export const getPlayersInfo = async(category, page, maxAmountPage) =>{
-    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}topPlayersCategory`;
+    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}topPlayersCategory?category=${category}&page=${page}&maxAmountPage=${maxAmountPage}`;
     try {
-        const response = await fetch(playersUrl, {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json',
-              },
-            body: JSON.stringify({
-                category: category,
-                page: page,
-                maxAmountPage: maxAmountPage
-            }),
-          });
+        const response = await fetch(playersUrl);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -45,19 +35,9 @@ export const getPlayersInfo = async(category, page, maxAmountPage) =>{
 }
 
 export const getAmountPages = async(category,maxAmount) =>{
-    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}amountOfPages`;
+    const playersUrl = `${process.env.REACT_APP_BACKEND_LOCALHOST}amountOfPages?category=${category}&maxAmount=${maxAmount}`;
     try {
-        const response = await fetch(playersUrl,
-            {
-                method: "POST",
-                headers: {
-                    'Content-type': 'application/json',
-                  },
-                body: JSON.stringify({
-                    category: category,
-                    maxAmount: maxAmount
-                }),
-              });
+        const response = await fetch(playersUrl);
         const data = await response.json();
         return data;
     } catch (error) {

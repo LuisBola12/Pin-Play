@@ -85,18 +85,18 @@ export const TopPlayersTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {playersData.map((element, index) => (
+          {playersData.map(element => (
             <tr key={element.s3Id}>
-              <td data-label="#">{index + 1}</td>
+              <td data-label="#">{element.position}</td>
               <td data-label="">
                 <img className="topPlayers-img" src={element.s3Id} alt=""></img>
               </td>
               <td data-label="Jugador">{`${element.name} ${element.firstLastname}`}</td>
               <td data-label="Puntos">{element.points}pts</td>
               <td data-label="Tasa de Victorias">
-                <div className="topPlayers-tasaVictorias">
+                <div className="topPlayers-winRate">
                   <div
-                    className="topPlayers-victorias"
+                    className="topPlayers-victories"
                     style={{
                       width: `${calculateVictory(
                         element.victories,
@@ -107,7 +107,7 @@ export const TopPlayersTable = (props) => {
                     <div className="topPlayer-vic-count">{`${element.victories} V / ${element.loses} P`}</div>
                   </div>
                   <div
-                    className="topPlayers-derrotas"
+                    className="topPlayers-loses"
                     style={{
                       width: `${calculateLoses(
                         element.victories,
@@ -115,7 +115,7 @@ export const TopPlayersTable = (props) => {
                       )}%`,
                     }}
                   ></div>
-                  <div className="topPlayers-porcentaje">{`${calculatePercentage(
+                  <div className="topPlayers-percentage">{`${calculatePercentage(
                     element.victories,
                     element.loses
                   )}%`}</div>

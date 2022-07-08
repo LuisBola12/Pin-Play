@@ -181,3 +181,11 @@
         padding: 10px 20px;
     }
 }
+
+@media screen and (max-width: 950px) {
+    .small--btn{
+        font-size: 18px;
+        padding: 10px 20px;
+        margin-top: 30px;
+    }
+}

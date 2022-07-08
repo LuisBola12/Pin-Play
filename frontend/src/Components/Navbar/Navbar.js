@@ -1,6 +1,6 @@
 import React from "react";
 import { LeftSection, MiddleSection, NavbarContainer, RightSection } from "./NavbarElements";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { NavLinks } from "./NavLinks";
 import { Accessibility } from './Accessibility';
 import useMediaQuery from '@mui/material/useMediaQuery';

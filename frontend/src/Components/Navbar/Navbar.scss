@@ -1,5 +1,5 @@
 .navBar-logo {
-  width: 200px;
+  width: 145px;
   height: 100%;
   /* margin-top: 50px; */
   line-height: 50px;
@@ -7,6 +7,7 @@
   background-image: url(../../icons/logo.png);
   background-repeat: no-repeat;
   background-size: contain;
+  /* background: #255fa4; */
   /* border: solid black; */
 }
 
@@ -19,4 +20,8 @@
   display: flex;
   gap: 10px;
   justify-content: right;
+  @media screen and (max-width: 950px) {
+    justify-content: center;
+    gap: 80px;
+  }
 }

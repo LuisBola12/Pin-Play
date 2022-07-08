@@ -1,6 +1,7 @@
 export const players = [
     {
         userID: 1,
+        position: 1,
         name: "Gerardo",
         firstLastname : "Rodriguez",
         secondLastname : "Perez",
@@ -13,6 +14,7 @@ export const players = [
     },
     {
         userID: 19,
+        position: 2,
         name: "Jordan",
         firstLastname : "Calvo",
         secondLastname : "Bolanos",
@@ -25,6 +27,7 @@ export const players = [
     },
     {
         userID: 20,
+        position: 3,
         name: "Julio",
         firstLastname : "Lopez",
         secondLastname : "Perez",
@@ -37,6 +40,7 @@ export const players = [
     },
     {
         userID: 11,
+        position: 4,
         name: "Angelo",
         firstLastname : "Calvo",
         secondLastname : "Murillo",
@@ -49,6 +53,7 @@ export const players = [
     },
     {
         userID: 16,
+        position: 5,
         name: "Gerardo",
         firstLastname : "Bustamante",
         secondLastname : "Lopez",
@@ -61,6 +66,7 @@ export const players = [
     },
     {
         userID: 7,
+        position: 6,
         name: "Angie",
         firstLastname : "Rodriguez",
         secondLastname : "Hodgson",
@@ -73,6 +79,7 @@ export const players = [
     },
     {
         userID: 9,
+        position: 7,
         name: "David",
         firstLastname : "Atias",
         secondLastname : "Alpoena",
@@ -85,6 +92,7 @@ export const players = [
     },
     {
         userID: 3,
+        position: 8,
         name: "Jose",
         firstLastname : "Murillo",
         secondLastname : "Lopez",
@@ -97,6 +105,7 @@ export const players = [
     },
     {
         userID: 17,
+        position: 1,
         name: "Carmen",
         firstLastname : "Valverde",
         secondLastname : "Sanchéz",
@@ -109,6 +118,7 @@ export const players = [
     },
     {
         userID: 5,
+        position: 2,
         name: "Luis",
         firstLastname : "Bolanos",
         secondLastname : "Valverde",
@@ -121,6 +131,7 @@ export const players = [
     },
     {
         userID: 14,
+        position: 3,
         name: "Rebeca",
         firstLastname : "Perez",
         secondLastname : "Perez",
@@ -133,6 +144,7 @@ export const players = [
     },
     {
         userID: 2,
+        position: 4,
         name: "Jimena",
         firstLastname : "Ruiz",
         secondLastname : "Chacón",
@@ -145,6 +157,7 @@ export const players = [
     },
     {
         userID: 10,
+        position: 5,
         name: "Camila",
         firstLastname : "Rodriguez",
         secondLastname : "Valverde",
@@ -157,6 +170,7 @@ export const players = [
     },
     {
         userID: 13,
+        position: 1,
         name: "Yohan",
         firstLastname : "Blake",
         secondLastname : "Perez",
@@ -169,6 +183,7 @@ export const players = [
     },
     {
         userID: 15,
+        position: 2,
         name: "Melanny",
         firstLastname : "Arias",
         secondLastname : "Rodriguéz",
@@ -181,6 +196,7 @@ export const players = [
     },
     {
         userID: 18,
+        position: 3,
         name: "Jesus",
         firstLastname : "Navarro",
         secondLastname : "Perez",
@@ -193,6 +209,7 @@ export const players = [
     },
     {
         userID: 4,
+        position: 4,
         name: "Angela",
         firstLastname : "Valverde",
         secondLastname : "Esquivel",
@@ -205,6 +222,7 @@ export const players = [
     },
     {
         userID: 6,
+        position: 5,
         name: "Guillermo",
         firstLastname : "Rodriguez",
         secondLastname : "Lopez",
@@ -217,6 +235,7 @@ export const players = [
     },
     {
         userID: 12,
+        position: 6,
         name: "Kenneth",
         firstLastname : "Ali",
         secondLastname : "Perez",
@@ -229,6 +248,7 @@ export const players = [
     },
     {
         userID: 8,
+        position: 7,
         name: "Sofía",
         firstLastname : "Jimnez",
         secondLastname : "Calvo",
