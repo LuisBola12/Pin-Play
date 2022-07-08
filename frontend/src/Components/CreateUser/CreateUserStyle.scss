@@ -99,7 +99,7 @@
 .register-row-name-lastnames {
   position: relative;
   width: 35vh;
-  height: 8vh;
+  height: 7vh;
 
   &__input {
     position: absolute;
@@ -135,7 +135,7 @@
   &__label {
     position: absolute;
     left: 0.8rem;
-    top: 1.2rem;
+    top: 0.9rem;
     padding: 0 0.5rem;
     color: black;
     cursor: text;
@@ -147,10 +147,6 @@
       top: 0.8rem;
       font-size: 1rem;
     }
-    // @media screen and (max-width: 725px) {
-    //   top: 1.2rem;
-    //   font-size: 1.5rem;
-    // }
     @media screen and (max-width: 450px) {
       top: 0.8rem;
       font-size: 1rem;
@@ -206,11 +202,11 @@
 .register-row {
     position: relative;
     width: 53.5vh;
-    height: 8vh;
+    height: 7vh;
     select{
       padding: 0px;
       padding-left: 1.25rem;
-      height: 8vh;
+      height: 7vh;
       @media screen and (max-width: 920px) {
         width: 49vh;
         height: 6vh;
@@ -261,7 +257,7 @@
     &__label {
       position: absolute;
       left: 0.8rem;
-      top: 1.2rem;
+      top: 0.9rem;
       padding: 0 0.5rem;
       color: black;
       font-size: 1rem;
@@ -345,15 +341,12 @@
   background-color: lightgray;
   border: none;
   text-decoration: none;
-  // display: none;
-  // position:relative; 
-  // // top: 0.4rem;
 }
 .register-row-file{
   width:120px;
   height:120px;
   width: 53.5vh;
-  height: 8vh;
+  height: 7vh;
 
   &__label-tile{
     position: relative;
@@ -381,7 +374,7 @@
     height: 100%;
     border: solid red 1px;
     padding-left: 1.16rem;
-    padding: 1.25rem;
+    padding: 1rem;
     border: 1px solid gray;
     border-radius: 5px;
     background: #f9f9f9;
@@ -452,6 +445,7 @@
     align-items: center;
     justify-content: center;
     gap: 1.2vh;
+    margin-top: -4vh;
   }
 
 .register-footerCopyRights{

@@ -7,7 +7,7 @@ import { getCategories } from '../Utils/getTourneysData/getTourneysData';
 import { Footer } from '../Components/Footer/Footer';
 import { Loader } from '../Components/Loader/Loader';
 
-export const Clasificacion = () => {
+export const Classification = () => {
   const [infoReceived, setInfoReceived] = useState(false);
   const [categories, setCategories] = useState(false);
   const [category, setCategory] = useState('Primera');

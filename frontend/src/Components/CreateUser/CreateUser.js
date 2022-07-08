@@ -7,6 +7,8 @@ import { Button } from "../Button/Button";
 import "./CreateUserStyle.scss";
 import { BsUpload } from "react-icons/bs";
 import { Footer } from "../Footer/Footer";
+import { postNewUser } from "../../Utils/CreateUser/postNewUser";
+import { setLogIn } from "../../Slices/user/userSlice";
 
 export const CreateUser = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ export const CreateUser = () => {
     setImage(img);
   };
 
-  const handleSubmit1 = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let data = {
       name_register: name,
@@ -53,7 +55,7 @@ export const CreateUser = () => {
       lastname2_register: lastName2,
       email_register: email,
       password_register: password,
-      image_register: image.data,
+      image_register: image.data.name,
       age_register: age,
       club_register: club,
       genre_register: genre,
@@ -61,26 +63,9 @@ export const CreateUser = () => {
     };
     setErrors(validate(data));
     if (Object.keys(errors).length === 0) {
-      data = JSON.stringify(data);
-      let formData = new FormData();
-      formData.append("name_register", name);
-      formData.append("lastname1_register", lastName1);
-      formData.append("lastname2_register", lastName2);
-      formData.append("email_register", email);
-      formData.append("password_register", password);
-      formData.append("image_register", image.data);
-      formData.append("age_register", age);
-      formData.append("club_register", club);
-      formData.append("genre_register", genre);
-      formData.append("licenseNumber_register", licenseNumber);
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_LOCALHOST}createUser`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      console.log(response);
+      const response = await postNewUser(data, image.data);
+      dispatch(setLogIn(response))
+      navigate('/');
     }
   };
 
@@ -89,7 +74,7 @@ export const CreateUser = () => {
       <div className="register-bar">
         <div className="register-title"> PinPlay </div>
       </div>
-      <form className="register-full-form" onSubmit={handleSubmit1}>
+      <div className="register-full-form">
         <label className="register-profile-title"> Profile Photo</label>
         {image.data.name ? (
           <img src={image.preview} className="preview_image" alt="" />
@@ -387,14 +372,14 @@ export const CreateUser = () => {
           </div>
         </div>
         <div className="register-btn-box">
-          <Button buttonStyle="btn--register" buttonSize="large--btn">
+          <Button onClick={handleSubmit} buttonStyle="btn--register" buttonSize="large--btn">
             Registrarse
           </Button>
           <Button onClick={handleCancel} buttonStyle="btn--cancel" buttonSize="large--btn">
             Cancelar
           </Button>
         </div>
-      </form>
+      </div>
       <Footer color={'white'} position={'relative'}></Footer>
     </div>
   );

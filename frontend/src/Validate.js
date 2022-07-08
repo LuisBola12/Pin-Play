@@ -21,15 +21,3 @@ export const validateName = (name) =>{
       /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/
     );
 };
-
-export const validateNumber = (number) => {
-  return String(number)
-    .toLowerCase()
-    .match(
-      /^[1-9]$/
-    );
-}
-
-export const valideImage = (file) => {
-  
-}
