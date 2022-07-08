@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink as Link } from "react-router-dom";
+
 const NavLinksContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  border: solid red;
+  // border: solid red;
 `;
 
 const LinksWrapper = styled.ul`
@@ -25,16 +27,10 @@ const LinkItem = styled.li`
   align-items: center;
   justify-content: center;
   display: flex;
-  border-top: 2px solid transparent;
-  transition: all 220ms ease-in-out;
   width: 200px;
-  &:hover {
-    font-size: 18px;
-    font-weight: 600;
-  }
 `;
 
-const Link = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: white;
   font-size: 22px;
@@ -42,6 +38,26 @@ const Link = styled.a`
   width: 100%;
   text-align: center;
   line-height: 80px;
+  &:hover {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  &:active {
+    background-color: white;
+    color:#3673be;
+    font-size: 18px;
+    font-weight: 600;
+    height: 80%;
+    margin-top: 10px;
+  }
+  &:focus {
+    background-color: white;
+    color:#3673be;
+    font-size: 18px;
+    font-weight: 600;
+    height: 80%;
+    margin-top: 10px;
+  }
 `;
 
 export const NavLinks = () => {
@@ -49,13 +65,13 @@ export const NavLinks = () => {
     <NavLinksContainer>
       <LinksWrapper>
         <LinkItem>
-          <Link href="/">Torneos</Link>
+          <NavLink to="/" activestyle="true">Torneos</NavLink>
         </LinkItem>
         <LinkItem>
-          <Link href="/clasificacion">Clasificacion</Link>
+          <NavLink to="/clasificacion" activestyle="true">Clasificacion</NavLink>
         </LinkItem>
         <LinkItem>
-          <Link href="/jugadores">Jugadores</Link>
+          <NavLink to="/jugadores" activestyle="true">Jugadores</NavLink>
         </LinkItem>
       </LinksWrapper>
     </NavLinksContainer>

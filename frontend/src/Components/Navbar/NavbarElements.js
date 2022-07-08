@@ -12,6 +12,7 @@ export const NavbarContainer = styled.div`
 export const LeftSection = styled.div`
   display: flex;
   height: 100%;
+  border: solid yellow;
 `;
 
 export const MiddleSection = styled.div`
