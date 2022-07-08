@@ -1,0 +1,15 @@
+.footerCopyRights{
+  bottom: 0;
+  width: 100%;
+  font-size: 2.2vh;
+  height: 20px;
+  text-align: center;
+  padding-top: 2vh;
+  padding-bottom: 4vh;
+}
+
+@media screen and (max-width: 912px) {
+  .footerCopyRights{
+   display: none;
+  }
+ }

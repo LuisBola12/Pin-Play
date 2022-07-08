@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "../Components/Navbar/Navbar";
 import { Header } from "../Components/PlayerProfile/Header";
 import { RecentTourneys } from "../Components/PlayerProfile/RecentTourneys";
+import { Footer } from "../Components/Footer/Footer";
 import "../App.css";
 
 const PlayerProfile = () => {
@@ -18,7 +19,7 @@ const PlayerProfile = () => {
             <RecentTourneys/>
           </div>
       </div>
-      <footer>&copy; PinPlay - UCR</footer>
+      <Footer color={'black'} position={'relative'}></Footer>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from '../Components/Navbar/Navbar';
 import SearchBar from '../Components/SearchBar/SearchBar';
-
+import { Footer } from '../Components/Footer/Footer';
 
 export const Players = () => {
   return (
@@ -12,7 +12,7 @@ export const Players = () => {
       <div className='page-content'>
         <SearchBar placeholder='Ingrese el nombre de un jugador'/>
       </div>
-      <footer>&copy; PinPlay - UCR</footer> 
+      <Footer color={'black'} position={'relative'}></Footer> 
     </div>
   )
 }

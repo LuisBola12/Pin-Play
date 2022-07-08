@@ -1,11 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogIn } from '../../Slices/user/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { React, useState } from 'react';
 import { Button } from '../Button/Button';
 import AddLoginEmailModal from './AddLoginEmailModal'
 import './LoginStyle.scss';
+import { postLogin } from '../../Slices/user/requests/postLogin';
+import { Footer } from '../Footer/Footer';
 
 export const LoginComp = () => {
   const [email, setEmail] = useState('');
@@ -22,23 +23,18 @@ export const LoginComp = () => {
   };
 
   const logInBtn = async () => {
-    dispatch(setLogIn(email));
+    dispatch(postLogin({ email, password }));
   };
 
   const handleForgotPassword = () => {
     setIsOpen(true)
-    console.log('beunas')
-  }
-
-  const addTournament = (data) => {
-    console.log(data);
   }
 
   return userIsLoggedIn ? (
-    <Navigate to='/torneos' />
+    <Navigate to='/' />
   ) : (
     <div className='logIn-page'>
-      <AddLoginEmailModal isOpen={isOpen} setIsOpen={setIsOpen} addEmail={addTournament} />
+      <AddLoginEmailModal isOpen={isOpen} setIsOpen={setIsOpen}/>
       <div className='logIn-AppName-Media'>PinPlay</div>
       <div className='logIn-logo-box'>
         <div className='logIn-logo-AppName'>
@@ -95,7 +91,7 @@ export const LoginComp = () => {
           </Button>
         </div>
       </div>
-      <footer className='logIn-footerCopyRights'> &copy; PinPlay </footer>
+      <Footer color={'white'} position={'absolute'}></Footer>
     </div>
   );
 };

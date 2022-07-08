@@ -2,6 +2,7 @@ import {React,useState,useEffect} from 'react';
 import './RecentTourneys.scss';
 import { getPlayerTourneys } from '../../Utils/getPlayersData/getPlayersData';
 import { useLocation } from "react-router-dom";
+import { Loader } from '../Loader/Loader';
 
 export const RecentTourneys = () => {
   const [infoReceived,setInfoReceived] = useState(false);
@@ -10,7 +11,8 @@ export const RecentTourneys = () => {
   useEffect(() => {
     getPlayerTourneys(location.state.licenseNumber,setTourneyData,setInfoReceived);
   }, []);
-  return !infoReceived ? <div className='loader'></div> :(
+  
+  return !infoReceived ? <Loader/> :(
     <div className='player-tourneys'>
       <h2>Historial de Torneos Recientes</h2>
       <table className='recent-tourneys-table'>
