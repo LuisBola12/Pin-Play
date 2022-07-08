@@ -129,15 +129,55 @@
     width: 92%;
     height: 58px;
     font-size: 4vh;
-    /* font-size: 200%; */
     font-weight: 600;
 }
 
 @media screen and (max-width: 820px) {
     .extra--large--btn{
-        width: 92%;
-        height: 85px;
-        font-size: 4vh;
+        width: 70%;
+        height: 60px;
+        font-size: 3.2vh;
         font-weight: 600;
+    }
+}
+@media screen and (max-width: 912px) {
+    .extra--large--btn{
+        width: 85%;
+        height: 80px;
+        font-size: 3.2vh;
+        font-weight: 600;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .extra--large--btn{
+        width: 85%;
+        height: 55px;
+        font-size: 3vh;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .large--btn{
+        width:20vh;
+        height: 6vh;
+        font-size: 3vh;
+        font-weight: 600;
+    }
+}
+@media screen and (max-width: 450px) {
+    .large--btn{
+        width:16vh;
+        height: 5vh;
+        font-size: 2.5vh;
+        font-weight: 600;
+        margin-top: 1vh;
+    }
+}
+
+@media screen and (max-width: 912px) {
+    .medium--btn{
+        font-size: 2vh;
+        padding: 10px 20px;
     }
 }

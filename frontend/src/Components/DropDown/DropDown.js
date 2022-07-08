@@ -1,15 +1,19 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { React, useState } from 'react';
-// import { Button } from '../Button/Button';
+import { React } from 'react';
 import './DropDown.scss';
 
-export const DropDown = ({title, options}) =>{
-  
+export const DropDown = (props) =>{
+  const handleChange = (e) => {
+    e.preventDefault();
+    props.setCategory(e.target.value);
+    props.setActualPage(1);
+  };
   return(
     <div className='clasify-dropdwon'>
-      <select>
-        {options.map((element) => (
-          <option key={element.value} value={element.Nombre}>{element.Nombre}</option>
+      <select
+      onChange={(e) => { handleChange(e)} }
+      >
+        {props.options.map((element) => (
+          <option key={element.Category} value={element.Category}>{element.Category}</option>
         ))}
   </select>
     </div>

@@ -1,7 +1,6 @@
 import { validateEmail, validatePassword, validateName, validateNumber } from '../../Validate';
 
 const validate = (values) => {
-  console.log(values)
   let errors = {};
   if(values.email_register){
     if(!validateEmail(values.email_register)){

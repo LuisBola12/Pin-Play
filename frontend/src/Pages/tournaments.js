@@ -4,6 +4,7 @@ import AddTournamentButton from "../Components/TournamentGrid/AddTournamentButto
 import "../Components/TournamentGrid/styles.scss";
 import AddTournamentModal from "../Components/TournamentGrid/AddTournamentModal";
 import { useState } from "react";
+import { Footer } from "../Components/Footer/Footer";
 
 const Tournaments = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,7 +139,7 @@ const Tournaments = () => {
           </div>
           <TournamentGrid tournaments={dummyTournaments} />
         </div>
-        <footer>&copy; PinPlay - UCR</footer>
+        <Footer color={'black'} position={'relative'}></Footer>
       </div>
     </>
   );

@@ -7,7 +7,7 @@ export const tokenSign = async(user) => {
   },
   process.env.JW_Token,
   {
-    expiresIn: "2h",
+    expiresIn: "20h",
   }
   )
 }

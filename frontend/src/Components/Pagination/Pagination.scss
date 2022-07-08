@@ -1,0 +1,24 @@
+.pagination {
+  width: 3%;
+  height: 100%;
+  border: none;
+  &__button {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  &__button:hover{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+  }
+  &__button:active{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+    font-weight: bold;
+  }
+  &__button:focus{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+    font-weight: bold;
+  }
+}

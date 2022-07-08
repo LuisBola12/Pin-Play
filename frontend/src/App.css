@@ -72,26 +72,7 @@ footer{
   border-collapse:separate;
   border-spacing:0 25px;
 }
-.loader {
-  border: 16px solid #f3f3f3;
-  /* Light grey */
-  border-top: 16px solid #3498db;
-  /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  margin-top: 10%;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
 
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .left-td{
   padding-left: 2%;
   text-align: left;
@@ -102,5 +83,11 @@ footer{
 
 .topPlayers-table-data{
   width: 88%;
-  margin-top: 3%;
+  margin-top: 20px;
+}
+
+.topPlayers-dropdown-data{
+  width: 76.6%;
+  margin-top: 35px;
+  /* border: solid black; */
 }

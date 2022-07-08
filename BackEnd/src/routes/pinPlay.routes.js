@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { createUser, login, recoverPassword, resetPassword } from '../controller/user.Controller';
-import { getAllPlayers,getPlayerTourneys ,getPlayerImage } from '../controller/players.controller';
+import { getAllPlayers,getPlayerTourneys ,getPlayerImage, topPlayersCategory, amountOfLadderByCategory} from '../controller/players.controller';
+import { getCategories } from '../controller/tourneys.controller';
 import multer from 'multer';
 import playerSchema from '../schema/player.schema';
 import { validateSchema } from '../middlewares/validate.schema';
@@ -22,6 +23,8 @@ const router = Router();
 router.get('/players',getAllPlayers);
 router.get('/playerTourneys/:licenseNumber',getPlayerTourneys);
 router.get('/playerImage/:s3Id',getPlayerImage);
+router.post('/topPlayersCategory', topPlayersCategory);
+router.post('/amountOfPages', amountOfLadderByCategory);
 
 // users
 router.post('/createUser', [upload.single('image_register'), validateSchema(playerSchema)], createUser)
@@ -31,7 +34,7 @@ router.post('/resetPassword', resetPassword)
 
 // router.post('/changePassword', [checkAuth], changePassword)
 
-
-
+// Tourneys
+router.get('/categories', getCategories)
 
 export default router;

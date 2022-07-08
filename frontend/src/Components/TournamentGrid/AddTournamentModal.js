@@ -258,14 +258,12 @@ function AddTournamentModal(props) {
     setName(event.target.value);
   };
   const handleCategoryChange = (event, value) => {
-    console.log(value);
     setCategory(value);
   };
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
   const handleImageChange = (event) => {
-    console.log(event.target.value);
     setImage(event.target.value);
   };
   const handleSubmit = (event) => {

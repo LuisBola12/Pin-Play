@@ -3,7 +3,27 @@
 @apiTourneysPlayed = http://localhost:4000/playerTourneys
 @apiPassword = http://localhost:4000/changePassword
 @apiRecoverPassword = http://localhost:4000/recoverPassword
+@apiTopPlayers = http://localhost:4000/topPlayersCategory
+@apiTopPlayersAmount = http://localhost:4000/amountOfPlayers
 
+post {{apiTopPlayersAmount}}
+Content-Type: application/json
+
+{
+  "category":"Primera",
+  "maxAmount":3
+}
+###
+post {{apiTopPlayers}}
+Content-Type: application/json
+
+{
+  "category":"Primera",
+  "page": 1,
+  "maxAmountPage": 5
+}
+
+###
 get {{apiPlayers}}
 
 ###

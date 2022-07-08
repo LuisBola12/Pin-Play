@@ -1,4 +1,4 @@
-import { players,tourneysPlayed,tourneysPlayersRelation } from "../data/players.data";
+import { players,tourneysPlayed,tourneysPlayersRelation, losesVictoryRate } from "../data/players.data";
 import { getImageFromAWS } from "../s3";
 
 export const getAllPlayers = (req,res) =>{
@@ -17,6 +17,8 @@ const findPlayerTourneys = (licenseNumber)=>{
             participationInfo.push(element);
         }
     });
+
+    
     participationInfo.forEach(elementParticipation => {
         tourneysPlayed.forEach(elementTourneys=>{
             if(Object.values(elementTourneys).includes(parseInt(elementParticipation.Tourney_id))){
@@ -30,6 +32,7 @@ const findPlayerTourneys = (licenseNumber)=>{
 const addKeyValue = (obj, key, data) =>{
     obj[key] = data;
 }
+
 export const getPlayerTourneys = (req,res) => {
     const {licenseNumber} = req.params;
     try {
@@ -77,3 +80,69 @@ const verifyAnIdExists = (id) => {
     });
     return exists;
 }
+
+export const topPlayersCategory = (req, res) =>{
+    const { category, page, maxAmountPage } = req.body;
+    console.log(req.body)
+    let infoCategoryPlayers = [];
+    players.forEach(element => {
+        if(Object.values(element).includes(category)){
+            infoCategoryPlayers.push(element);
+        }
+    });
+
+    infoCategoryPlayers.forEach(elementParticipation => {
+        let points = 0
+        tourneysPlayersRelation.forEach(elementTourneys=>{
+            if(Object.values(elementTourneys).includes(parseInt(elementParticipation.licenseNumber))){
+                points += elementTourneys.PtsEarned;
+            }
+        })
+        addKeyValue(elementParticipation, "points", points);
+    })
+
+    infoCategoryPlayers.forEach(elementParticipation => {
+        addKeyValue(elementParticipation, "victories", 0);
+        addKeyValue(elementParticipation, "loses", 0);
+        losesVictoryRate.forEach(elementRate=>{
+            if(Object.values(elementRate).includes(parseInt(elementParticipation.licenseNumber))){
+                elementParticipation.victories = elementRate.victories,
+                elementParticipation.loses = elementRate.loses
+            }
+        })
+    })
+    const infoToSend = [];
+    infoCategoryPlayers.slice(maxAmountPage*(page-1),maxAmountPage*page).forEach(element => {
+        const data = {
+            name: element.name,
+            firstLastname: element.firstLastname,
+            s3Id: element.s3Id,
+            points: element.points,
+            loses: element.loses,
+            victories: element.victories,
+        }
+        infoToSend.push(data);
+    });
+    console.log(infoToSend)
+    res.status(200).json(infoToSend);
+} 
+
+export const amountOfLadderByCategory = (req, res) =>{
+    const { category, maxAmount } = req.body;
+    let infoCategoryPlayers = [];
+    players.forEach(element => {
+        if(Object.values(element).includes(category)){
+            infoCategoryPlayers.push(element);
+        }
+    });
+    const size = infoCategoryPlayers.length
+    const count = Math.ceil(size/maxAmount)
+    const infoSend = []
+    for (let index = 0; index < count; index++) {
+        const data = {
+            page: index+1
+        }
+        infoSend.push(data)
+    }
+    res.status(200).json(infoSend)
+} 

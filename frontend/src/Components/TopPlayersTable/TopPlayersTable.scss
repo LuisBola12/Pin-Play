@@ -1,0 +1,278 @@
+.topPlayers{
+  width: 87%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topPlayers-table-header{
+  background: #3673be;
+  color: white;
+  height: 50px;
+  text-align: left;
+}
+
+.left-topPlayers-th{
+  width: 5%;
+  padding-left: 1%;
+}
+
+.left-center-topPlayers-th{
+  width: 25%;
+  padding-left: 8%;
+
+}
+.right-center-topPlayers-th{
+  width: 25%;
+  padding-left: 8%;
+
+}
+.right-topPlayers-th{
+  width: 45%;
+  padding-left: 8%;
+}
+.topPlayers-values{
+  background-color: rgb(240, 239, 239);
+  height: 50px;
+}
+.left-topPlayers-td{
+  width: 5%;
+  padding-left: 1%;
+}
+.left-center-topPlayers-td{
+  width: 25%;
+  padding-left: 8%;
+
+}
+.right-center-topPlayers-td{
+  width: 25%;
+  padding-left: 8%;
+
+}
+.right-topPlayers-td{
+  width: 45%;
+  padding-left: 8%;
+
+}
+
+.topPlayers-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.topPlayers-table{
+  width: 100%;
+  border: none;
+  border-collapse:separate;
+  border-spacing:0 15px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.topPlayers-table th {
+  height: 50px;
+  background-color: #3673be;
+  font-weight: bold;
+  color: white;
+}
+.topPlayers-table th:nth-child(1){
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.topPlayers-table th:nth-child(3){
+  text-align: left;
+}
+.topPlayers-table th:nth-child(5){
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.topPlayers-table td:nth-child(1){
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 10px;
+}
+.topPlayers-table td:nth-child(3){
+  text-align: left;
+}
+.topPlayers-table td:nth-child(5){
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.topPlayers-table tr{
+  background-color: rgb(240, 239, 239);
+  border: none;
+  height: 55px;
+}
+
+.topPlayers-table td, .topPlayers-table tr{
+  padding: 12px, 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.topPlayers-victorias{
+  background-color: #286ec5;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 10px;
+  text-align: left;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.topPlayers-derrotas{
+  background-color: rgb(233, 33, 33);
+  height: 25px;
+  width: 100%;
+  line-height: 25px;
+  padding-right: 10px;
+  text-align: right;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.topPlayers-tasaVictorias{
+  display: flex;
+  text-align: left;
+  color: white;
+  width: 80%;
+  font-size:15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topPlayers-porcentaje{
+  color: black;
+  font-size: 18px;
+  // font-size: 15px;
+  text-align: right;
+  font-weight: bold;
+  height: 25px;
+  line-height: 25px;
+  margin-left: 15px;
+  // width: 42%;
+}
+
+.topPlayer-vic-count{
+  position: absolute;
+}
+.topPlayer-loss-count{
+  position:absolute;
+  text-align: right;
+}
+.topPlayers-pages{
+  width: 100%;
+  // border: solid black;
+  text-align: center;
+  height: 26px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  
+  &__div{
+    width: 3%;
+    height: 100%;
+    border: none;
+
+  }
+  &__button{
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  &__prevNext{
+    width: 3%;
+    height: 100%;
+    border: none;
+  }
+  &__prevNextDis{
+    width: 3%;
+    height: 100%;
+    border: none;
+  }
+  &__prevNext:hover{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+  }
+
+  &__button:hover{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+  }
+  &__button:active{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+    font-weight: bold;
+  }
+  &__button:focus{
+    background-color: rgb(224, 224, 224);
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+.topPlayer-focus{
+  background-color: rgb(224, 224, 224);
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media (max-width: 847px) {
+  .player-tourneys h2{
+    text-align: center;
+    font-size: 18px;
+  }
+  .topPlayers-table {
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    font-size: 20px;
+  }
+  .topPlayers-table tr{
+    background-color: #ffffff;
+  }
+  .topPlayers-table tbody{
+    width: 100%;
+  }
+  .topPlayers-table thead {
+    display: none;
+  }
+  .topPlayers-table,
+  .topPlayers-table tbody,
+  .topPlayers-table td{
+    display: table;
+    width: 100%;
+  }
+  .topPlayers-table td:nth-child(2) {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .topPlayers-table td:nth-child(3) {
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .topPlayers-table td:nth-child(4) {
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .topPlayers-table td:nth-child(5) {
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .topPlayers-table td:first-child{
+    background-color:#3673be;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .topPlayers-tasaVictorias{
+    font-size: 18px;
+  }
+}
