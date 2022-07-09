@@ -1,0 +1,22 @@
+{
+  "env": {
+    "PORT": {
+      "value": "4000"
+    },
+    "AWS_BUCKET_NAME": {
+      "value": "pin-play-ci0137"
+    },
+    "AWS_BUCKET_REGION": {
+      "value": "us-east-1"
+    },
+    "AWS_KEY_ID": {
+      "value": "AKIAUTKXIYVCUX4TE7LG"
+    },
+    "AWS_KEY_SECRET": {
+      "value": "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"
+    },
+    "JW_Token": {
+      "value": "123456"
+    }
+  }
+}
