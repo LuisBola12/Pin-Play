@@ -5,7 +5,6 @@ import { getImageFromAWS } from "../s3";
 export const getAllPlayers = (req,res) =>{
     try {  
         res.json(players);
-        console.log('Players info sent');
     } catch (error) {
         res.status(500);
         res.send("An error ocurred on the server");
@@ -41,13 +40,12 @@ export const getPlayerTourneys = (req,res) => {
         if(exists===true){
             const playerTourneys = findPlayerTourneys(licenseNumber);
             res.json(playerTourneys);
-            console.log(`Tourneys played by ${licenseNumber} sent`);
         }else{
             res.status(404).send();
         }
     } catch (error) {
         res.status(500);
-        res.send("An error ocurred on the server");
+        res.send(error);
     }
 }
 export const getPlayerImage = (req,res) =>{
@@ -59,7 +57,6 @@ export const getPlayerImage = (req,res) =>{
             try {
                 const bucketId = `jugadores/${s3Id}.jpg`
                 const readStream = getImageFromAWS(bucketId);
-                console.log(readStream)
                 readStream.pipe(res);
             } catch (error) {
                 console.log(error)
@@ -84,7 +81,6 @@ const verifyAnIdExists = (id) => {
 
 export const topPlayersCategory = (req, res) =>{
     const { category, page, maxAmountPage } = req.query;
-    console.log(req.body)
     let infoCategoryPlayers = [];
     players.forEach(element => {
         if(Object.values(element).includes(category)){

@@ -1,6 +1,8 @@
 import express from 'express';
 import config from './config';
-import routes from './routes/pinPlay.routes';
+import routerPlayers from './routes/players.routes';
+import routerTourneys from './routes/tourneys.routes';
+import routerUsers from './routes/user.routes';
 import morgan from 'morgan';
 import cors from "cors";
 import fileUpload from 'express-fileupload';
@@ -19,6 +21,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(fileUpload());
 app.use("/docs",swaggerUI.serve, swaggerUI.setup(swaggerFile))
 
-app.use(routes);
+// Routes
+app.use(routerPlayers);
+app.use(routerTourneys);
+app.use(routerUsers);
 
 export default app;
