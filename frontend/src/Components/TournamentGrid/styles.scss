@@ -12,8 +12,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
-    margin: 18px 0 42px 0;
+    width: 76.6%;
+    margin: 35px 0 42px 0;
     
   }
 
@@ -41,7 +41,7 @@
   &__button {
     width: 133px;
     height: 41px;
-    background: #0077b6;
+    background: #3673be;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -60,9 +60,6 @@
       border-radius: 100px;
     }
 
-    &:hover {
-      background: #0076b6de;
-    }
     & p {
       width: 93px;
       height: 30px;
@@ -104,12 +101,11 @@
   &-grid {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     column-gap: 65.22px;
     row-gap: 15.97px;
     width: 80%;
-    // height: 522px;
+    min-height: 850px;
     padding: 30px;
     flex-wrap: wrap;
     overflow: scroll;

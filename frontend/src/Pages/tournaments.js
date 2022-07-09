@@ -29,15 +29,7 @@ const Tournaments = () => {
         setCategories([{Category: "Todas"}, ...categories]);
       }
     }
-    const getTourneyPageCount = async () =>{
-      const amountPages = await getPageCount(category, 12);
-      if(amountPages){
-        setPageCountReceived(true);
-        setAmountPages(amountPages);
-      }
-    }
     getCategoriesInfo();
-    getTourneyPageCount();
   }, []);
 
   useEffect(() => {
@@ -48,12 +40,16 @@ const Tournaments = () => {
         setTournaments(tourneys);
       }
     }
+    const getTourneyPageCount = async () =>{
+      const amountPages = await getPageCount(category, 12);
+      if(amountPages){
+        setPageCountReceived(true);
+        setAmountPages(amountPages);
+      }
+    }
     getTournamentsInfo();
+    getTourneyPageCount();
   }, [category, actualPage]);
-
-
-
-  const filterTournaments = (categoria) => {}
 
   return !tournamentsReceived || !categoriesReceived || !pageCountReceived ? <Loader/> : (
     <>

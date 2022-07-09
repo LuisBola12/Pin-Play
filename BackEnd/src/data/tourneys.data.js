@@ -6,7 +6,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Primera",
       MaxPlayers: 24,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
   },
   {
       Tourney_id: 2,
@@ -15,7 +15,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Primera",
       MaxPlayers: 24,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
   },
   {
       Tourney_id: 3,

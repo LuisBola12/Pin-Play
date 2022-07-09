@@ -1,5 +1,4 @@
 export const users = [
-
   {
     userID: 1,
     email: 'jdvenegas50@gmail.com',
