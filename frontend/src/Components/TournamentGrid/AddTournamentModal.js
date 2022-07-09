@@ -252,6 +252,8 @@ function AddTournamentModal(props) {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [validForm, setValidForm] = useState(false);
+  // get token from session storage
+  const userData = useSelector((state) => state.user);
 
   const handleDateChange = (newValue) => {
     setDate(newValue);
@@ -268,9 +270,8 @@ function AddTournamentModal(props) {
   const handleImageChange = (event) => {
     setImage(event.target.value);
   };
-  const useHandleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = useSelector((state) => state.user.user.tokenSesion);
     const image = fileInput.current.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -280,10 +281,11 @@ function AddTournamentModal(props) {
     formData.append("location", location);
     formData.append("maxPlayers", 24);
     try {
+    console.log(userData.user.tokenSesion);
     const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`, {
       // SEND TOKEN obtained from sessionStorage
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${userData.user.tokenSesion}`,
       },
       method: "POST",
       body: formData,
@@ -435,7 +437,7 @@ function AddTournamentModal(props) {
               variant="contained"
               size="large"
               type="submit"
-              onClick={useHandleSubmit}
+              onClick={handleSubmit}
               sx={{ backgroundColor: `#3673be` }}
               disabled={!validForm}
             >
