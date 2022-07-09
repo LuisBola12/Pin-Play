@@ -1,17 +1,13 @@
 import { React, useState, useEffect } from "react";
 import {
-  getPlayersInfo,
-  getAmountPages,
+  getPlayersInfo
 } from "../../Utils/getPlayersData/getPlayersData";
-import { Pagination } from "../Pagination/Pagination";
 import "./TopPlayersTable.scss";
 import { Loader } from "../Loader/Loader";
 
 export const TopPlayersTable = (props) => {
   const [playersReceived, setPlayersReceived] = useState(false);
-  const [maxPagesReceived, setMaxPagesReceived] = useState(false);
   const [playersData, setPlayersData] = useState([]);
-  const [amountPages, setAmountPages] = useState([]);
 
   const calculateVictory = (victories, loses) => {
     if (victories === 0 && loses === 0) {
@@ -43,18 +39,7 @@ export const TopPlayersTable = (props) => {
     }
   };
 
-  const handlePage = (element) => {
-    props.setActualPage(element);
-  };
-
   useEffect(() => {
-    const getAmountPagesCategory = async () => {
-      const dataAmountPages = await getAmountPages(props.category, 6);
-      if (dataAmountPages) {
-        setMaxPagesReceived(true);
-        setAmountPages(dataAmountPages);
-      }
-    };
     const getPlayersData = async () => {
       const playersData = await getPlayersInfo(
         props.category,
@@ -66,11 +51,10 @@ export const TopPlayersTable = (props) => {
         setPlayersData(playersData);
       }
     };
-    getAmountPagesCategory();
     getPlayersData();
   }, [props.category, props.actualPage]);
 
-  return !playersReceived && !maxPagesReceived ? (
+  return !playersReceived ? (
     <Loader />
   ) : (
     <div className="topPlayers">
@@ -125,13 +109,6 @@ export const TopPlayersTable = (props) => {
           ))}
         </tbody>
       </table>
-
-      <div className="topPlayers-pages">
-        <Pagination
-          handlePage={handlePage}
-          amountPages={amountPages}
-        ></Pagination>
-      </div>
     </div>
   );
 };
