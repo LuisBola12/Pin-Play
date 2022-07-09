@@ -24,7 +24,7 @@ export const getCategories = (req, res) =>{
   try{
     res.status(200).json(categories)
   }catch(error){
-    res.status(400).send('Error De Servidor')
+    res.status(500).send('Error De Servidor')
   }
 }
 

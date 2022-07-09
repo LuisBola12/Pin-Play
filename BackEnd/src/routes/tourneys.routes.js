@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getCategories, addTournament, getTournaments, getPageCount } from '../controller/tourneys.controller';
+import { getCategories, addTournament, getTournaments, getPageCount } from '../controller/tournaments.controller';
 
 const routerTourneys = Router();
 

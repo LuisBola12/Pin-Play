@@ -24,7 +24,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Primera",
       MaxPlayers: 24,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
   },
   {
       Tourney_id: 4,
@@ -33,7 +33,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Segunda",
       MaxPlayers: 48,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
   },
   {
       Tourney_id: 5,
@@ -42,7 +42,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Tercera",
       MaxPlayers: 24,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id: "https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
   },
  {
       Tourney_id: 6,
@@ -51,7 +51,7 @@ export const tourneysPlayed = [
       Location: "San Jose",
       Category: "Primera",
       MaxPlayers: 128,
-      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/jugadores/jugador_13.jpg",
+      s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
   },
     {
         Tourney_id: 7,
@@ -60,7 +60,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Primera",
         MaxPlayers: 24,
-        s3Id: "https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id: "https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
     },
     {
         Tourney_id: 8,
@@ -69,7 +69,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Primera",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
     },
     {
         Tourney_id: 9,
@@ -78,7 +78,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Primera",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
     },
     {
         Tourney_id: 10,
@@ -87,7 +87,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Primera",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
     },
     {
         Tourney_id: 11,
@@ -96,7 +96,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Sexta",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
     },
     {
         Tourney_id: 12,
@@ -105,7 +105,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Quinta",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
     },
     {
         Tourney_id: 13,
@@ -114,7 +114,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Cuarta",
         MaxPlayers: 48,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
     },
     {
         Tourney_id: 14,
@@ -123,7 +123,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Sexta",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+26.jpeg",
     },
     {
         Tourney_id: 15,
@@ -132,7 +132,7 @@ export const tourneysPlayed = [
         Location: "San Jose",
         Category: "Sexta",
         MaxPlayers: 24,
-        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_TorneoLuis.jpg",
+        s3Id:"https://pin-play-ci0137.s3.amazonaws.com/torneos/torneo_Torneo+Sabana.jpeg",
     }
 ];
 
