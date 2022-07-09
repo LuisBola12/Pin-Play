@@ -1,8 +1,12 @@
 import { Router } from 'express';
-import { getCategories } from '../controller/tourneys.controller';
+import { getCategories, addTournament, getTournaments, getPageCount } from '../controller/tournaments.controller';
 
 const routerTourneys = Router();
 
-routerTourneys.get('/categories', getCategories)
+routerTourneys.post('/tournaments',addTournament);
+routerTourneys.get('/categories', getCategories);
+routerTourneys.get('/getTournaments', getTournaments);
+routerTourneys.get('/getTournamentPages', getPageCount);
+
 
 export default routerTourneys;

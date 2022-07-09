@@ -6,11 +6,11 @@ import { players } from "../data/players.data";
 import {sendRecoveyEmail} from "../services/mailer"
 
 export const createUser = async (req, res) => {
-  const photo = req.file;
+  const photo = req.files.image_register;
   try {
     let filePath = "user_icon2.png";
     if (photo) {
-      const fileExtension = photo.filename.split(".").pop();
+      const fileExtension = photo.name.split(".").pop();
       filePath = `jugadores/jugador_${req.body.licenseNumber_register}.${fileExtension}`;
       try {
         await uploadImageToAWS(photo, filePath);

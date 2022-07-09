@@ -1,5 +1,4 @@
 import S3 from 'aws-sdk/clients/s3';
-import fs from 'fs';
 import config from './config';
 
 
@@ -15,10 +14,9 @@ const s3 = new S3({
 
 //upload a file to s3
 export const uploadImageToAWS = (file, AWSFilePath) =>{
-    const fileStream = fs.createReadStream(file.path);
     const uploadParams = {
         Bucket: bucketName,
-        Body: fileStream,
+        Body: file.data,
         Key: AWSFilePath,
     }
     return s3.upload(uploadParams).promise();

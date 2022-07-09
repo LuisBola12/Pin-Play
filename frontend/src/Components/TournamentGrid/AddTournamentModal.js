@@ -12,6 +12,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { useState, useRef, useEffect } from "react";
+import Swal from 'sweetalert2'
 
 const ModalFrame = styled("div")(({ theme }) => ({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -219,7 +220,7 @@ const CancelButton = styled("div")({
 const Cancel = styled("div")(({ theme }) => ({
   textAlign: `left`,
   whiteSpace: `pre-wrap`,
-  color: `#0077b6`,
+  color: `#3673be`,
   fontStyle: `normal`,
   fontFamily: `Roboto`,
   fontWeight: `400`,
@@ -266,18 +267,43 @@ function AddTournamentModal(props) {
   const handleImageChange = (event) => {
     setImage(event.target.value);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
       name: name,
       category: category,
-      location: location,
-      image: fileInput.current.files[0],
       date: date,
+      location: location,
     };
-    props.addTournament(data);
-    props.setIsOpen(false);
+    const image = fileInput.current.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("data", JSON.stringify(data));
+    try {
+    const response = await fetch("http://localhost:4000/tournaments", {
+      method: "POST",
+      body: formData,
+    });
+      const json = await response.json(); 
+      if (json) {
+        Swal.fire({
+          icon: 'success',
+          title: json.message,
+          confirmButtonColor: '#3673be',
+        })
+      }
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Ups! Ha ocurrido un error',
+      text: 'Intente de nuevo',
+
+      confirmButtonColor: '#3673be',
+    })
+  }
+  handleClose();
   };
+
   const handleClose = () => {
     props.setIsOpen(false);
     setName("");
@@ -398,7 +424,7 @@ function AddTournamentModal(props) {
               size="large"
               type="submit"
               onClick={handleSubmit}
-              sx={{ backgroundColor: `#0077b6` }}
+              sx={{ backgroundColor: `#3673be` }}
               disabled={!validForm}
             >
               CREAR TORNEO
