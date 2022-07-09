@@ -2,9 +2,8 @@ import { uploadImageToAWS } from "../s3";
 import { categories, tourneysPlayed } from "../data/tourneys.data"
 
 export const addTournament = async (req, res) => {
-    const { name, date, location, category } = JSON.parse(req.body.data);
+    const { name, date, location, category } = req.body;
     const image = req.files.image;
-    
     if (image) {
       const fileExtension = image.name.split(".").pop();
       const filePath = `torneos/torneo_${name}.${fileExtension}`;
@@ -12,7 +11,6 @@ export const addTournament = async (req, res) => {
         await uploadImageToAWS(image, filePath);
       } catch (error) {
         console.log("Error al subir la imagen");
-        console.log(error);
       }
     }
     res.status(200).json({

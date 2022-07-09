@@ -1,14 +1,17 @@
 .navBar-logo {
   width: 145px;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* margin-top: 50px; */
   line-height: 50px;
-  background-color: transparent;
-  background-image: url(../../icons/logo.png);
-  background-repeat: no-repeat;
-  background-size: contain;
   /* background: #255fa4; */
   /* border: solid black; */
+
+  & > img {
+    height: 80%;
+  }
 }
 
 .register-logIn-btns{

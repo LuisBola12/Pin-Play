@@ -6,7 +6,7 @@ export const getPlayersData = async(setPlayersData,setInfoReceived) =>{
         setPlayersData(data);
         setInfoReceived(true);
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }   
 }
 
@@ -18,7 +18,7 @@ export const getPlayerTourneys = async(licenseNumber,setPlayerTourneys,setInfoRe
         setPlayerTourneys(data);
         setInfoReceived(true);
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }   
 }
 
@@ -29,7 +29,7 @@ export const getPlayersInfo = async(category, page, maxAmountPage) =>{
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }   
 }
 
@@ -40,6 +40,6 @@ export const getAmountPages = async(category,maxAmount) =>{
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }   
 }
