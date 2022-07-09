@@ -36,7 +36,7 @@ export const Classification = () => {
     getAmountPagesCategory();
   }, []);
   
-  return !categoriesReceived && !maxPagesReceived ? <Loader/> : (
+  return !categoriesReceived || !maxPagesReceived ? <Loader/> : (
     <div className='background-page'>
       <div className='sticky-navbar'>
         <Navbar />
