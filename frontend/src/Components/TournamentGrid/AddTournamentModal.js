@@ -12,6 +12,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Swal from 'sweetalert2'
 
 const ModalFrame = styled("div")(({ theme }) => ({
@@ -251,6 +252,7 @@ function AddTournamentModal(props) {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [validForm, setValidForm] = useState(false);
+  const token = useSelector((state) => state.user.user.tokenSesion);
 
   const handleDateChange = (newValue) => {
     setDate(newValue);
@@ -269,21 +271,31 @@ function AddTournamentModal(props) {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = {
-      name: name,
-      category: category,
-      date: date,
-      location: location,
-    };
     const image = fileInput.current.files[0];
     const formData = new FormData();
     formData.append("image", image);
-    formData.append("data", JSON.stringify(data));
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("date", date.toString());
+    formData.append("location", location);
+    formData.append("maxPlayers", 24);
     try {
-    const response = await fetch("http://localhost:4000/tournaments", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`, {
+      // SEND TOKEN obtained from sessionStorage
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       method: "POST",
       body: formData,
     });
+    if (response.status !== 200) {
+      Swal.fire({
+        icon: 'error',
+        title: `Error ${response.status}`,
+        text: `Ups! Algo salió mal`,
+        confirmButtonColor: '#3673be',
+      })
+    } else {
       const json = await response.json(); 
       if (json) {
         Swal.fire({
@@ -292,12 +304,12 @@ function AddTournamentModal(props) {
           confirmButtonColor: '#3673be',
         })
       }
+    }
   } catch (error) {
     Swal.fire({
       icon: 'error',
       title: 'Ups! Ha ocurrido un error',
       text: 'Intente de nuevo',
-
       confirmButtonColor: '#3673be',
     })
   }

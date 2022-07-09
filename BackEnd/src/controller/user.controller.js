@@ -16,7 +16,6 @@ export const createUser = async (req, res) => {
         await uploadImageToAWS(photo, filePath);
       } catch (error) {
         console.log("Error al subir la imagen");
-        console.log(error);
       }
     }
     const data = {

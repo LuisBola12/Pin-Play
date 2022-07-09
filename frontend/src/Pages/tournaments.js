@@ -4,6 +4,7 @@ import AddTournamentButton from "../Components/TournamentGrid/AddTournamentButto
 import "../Components/TournamentGrid/styles.scss";
 import AddTournamentModal from "../Components/TournamentGrid/AddTournamentModal";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { DropDown } from "../Components/DropDown/DropDown";
 import { Footer } from "../Components/Footer/Footer";
 import { getCategories, getTournaments, getPageCount } from "../Utils/getTourneysData/getTourneysData";
@@ -20,6 +21,7 @@ const Tournaments = () => {
   const [tournamentsReceived, setTournamentsReceived] = useState(false);
   const [categoriesReceived, setCategoriesReceived] = useState(false);
   const [pageCountReceived, setPageCountReceived] = useState(false);
+  const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
 
   useEffect(() => {
     const getCategoriesInfo = async () =>{
@@ -61,7 +63,7 @@ const Tournaments = () => {
         <div className="page-content">
           <div className="tournaments__header">
             <DropDown options={categories} setCategory={setCategory} setActualPage={setActualPage} />
-            <AddTournamentButton onClick={() => setIsOpen(true)}/>
+            {userIsLoggedIn && <AddTournamentButton onClick={() => setIsOpen(true)}/>}
           </div>
           <TournamentGrid tournaments={tournaments} />
           <div className="topPlayers-pages">
