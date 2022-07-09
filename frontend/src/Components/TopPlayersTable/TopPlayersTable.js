@@ -49,7 +49,7 @@ export const TopPlayersTable = (props) => {
 
   useEffect(() => {
     const getAmountPagesCategory = async () => {
-      const dataAmountPages = await getAmountPages(props.category, 3);
+      const dataAmountPages = await getAmountPages(props.category, 6);
       if (dataAmountPages) {
         setMaxPagesReceived(true);
         setAmountPages(dataAmountPages);
@@ -59,7 +59,7 @@ export const TopPlayersTable = (props) => {
       const playersData = await getPlayersInfo(
         props.category,
         props.actualPage,
-        3
+        6
       );
       if (playersData) {
         setPlayersReceived(true);

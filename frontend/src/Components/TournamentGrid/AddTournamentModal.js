@@ -252,7 +252,6 @@ function AddTournamentModal(props) {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [validForm, setValidForm] = useState(false);
-  const token = useSelector((state) => state.user.user.tokenSesion);
 
   const handleDateChange = (newValue) => {
     setDate(newValue);
@@ -269,8 +268,9 @@ function AddTournamentModal(props) {
   const handleImageChange = (event) => {
     setImage(event.target.value);
   };
-  const handleSubmit = async (event) => {
+  const useHandleSubmit = async (event) => {
     event.preventDefault();
+    const token = useSelector((state) => state.user.user.tokenSesion);
     const image = fileInput.current.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -435,7 +435,7 @@ function AddTournamentModal(props) {
               variant="contained"
               size="large"
               type="submit"
-              onClick={handleSubmit}
+              onClick={useHandleSubmit}
               sx={{ backgroundColor: `#3673be` }}
               disabled={!validForm}
             >
