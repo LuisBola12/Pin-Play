@@ -45,7 +45,7 @@ export const TopPlayersTable = (props) => {
       const playersData = await getPlayersInfo(
         props.category,
         props.actualPage,
-        6
+        10
       );
       if (playersData) {
         setPlayersReceived(true);
