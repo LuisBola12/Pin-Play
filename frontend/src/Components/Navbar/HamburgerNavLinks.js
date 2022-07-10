@@ -5,7 +5,7 @@ import { MenuToggle } from "./MenuToggle";
 import { NavLink as Link } from "react-router-dom";
 
 const NavLinksContainer = styled.div`
-  height: 100%;
+  height: 1 00%;
   display: flex;
   align-items: center;
 `;
