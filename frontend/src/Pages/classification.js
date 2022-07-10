@@ -19,7 +19,7 @@ export const Classification = () => {
   
   useEffect(() => {
     const getAmountPagesCategory = async () => {
-      const dataAmountPages = await getAmountPages(category, 6);
+      const dataAmountPages = await getAmountPages(category, 10);
       if (dataAmountPages) {
         setMaxPagesReceived(true);
         setAmountPages(dataAmountPages);
