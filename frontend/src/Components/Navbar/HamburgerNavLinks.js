@@ -15,7 +15,7 @@ const LinksWrapper = styled.ul`
   margin-top: 15px;
   padding: 0;
   display: flex;
-  height: 35%;
+  height: 230px;
   list-style: none;
   background-color: #3673be;
   width: 100%;

@@ -7,7 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { MobileNavLinks } from './HamburgerNavLinks';
 
 export const Navbar = () => {
-  const needHamburger = useMediaQuery('(max-width: 950px)');
+  const needHamburger = useMediaQuery('(max-width: 990px)');
   return (
     <NavbarContainer>
       <LeftSection>

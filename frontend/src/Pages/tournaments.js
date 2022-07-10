@@ -37,6 +37,7 @@ const Tournaments = () => {
 
   useEffect(() => {
     const getTournamentsInfo = async () =>{
+      setTournaments([]);
       const tourneys = await getTournaments(category, actualPage, 12);
       if(tourneys){
         setTournamentsReceived(true);
