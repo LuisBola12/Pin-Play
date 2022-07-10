@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
+import Mixpanel from "../../services/mixpanel";
+import { useSelector } from "react-redux";
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -58,17 +60,24 @@ const NavLink = styled(Link)`
 `;
 
 export const NavLinks = () => {
+  const userLogIn = useSelector((state) => state.user.userIsLoggedIn);
   return (
     <NavLinksContainer>
       <LinksWrapper>
         <LinkItem>
-          <NavLink to="/" activestyle="true">Torneos</NavLink>
+          <NavLink onClick={()=>{
+            Mixpanel.track(Mixpanel.TYPES.GO_TO_TOURNEYS,{userLogIn});
+          }} to="/" activestyle="true">Torneos</NavLink>
         </LinkItem>
         <LinkItem>
-          <NavLink to="/clasificacion" activestyle="true">Clasificacion</NavLink>
+          <NavLink onClick={()=>{
+            Mixpanel.track(Mixpanel.TYPES.GO_TO_CLASIFICATION,{userLogIn});
+          }} to="/clasificacion" activestyle="true">Clasificacion</NavLink>
         </LinkItem>
         <LinkItem>
-          <NavLink to="/jugadores" activestyle="true">Jugadores</NavLink>
+          <NavLink onClick={()=>{
+            Mixpanel.track(Mixpanel.TYPES.GO_TO_PLAYERS,{userLogIn});
+          }} to="/jugadores" activestyle="true">Jugadores</NavLink>
         </LinkItem>
       </LinksWrapper>
     </NavLinksContainer>

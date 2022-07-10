@@ -13,7 +13,8 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Mixpanel from "../../services/mixpanel";
 
 const ModalFrame = styled("div")(({ theme }) => ({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -281,7 +282,6 @@ function AddTournamentModal(props) {
     formData.append("location", location);
     formData.append("maxPlayers", 24);
     try {
-    console.log(userData.user.tokenSesion);
     const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`, {
       // SEND TOKEN obtained from sessionStorage
       headers: {
@@ -305,6 +305,7 @@ function AddTournamentModal(props) {
           title: json.message,
           confirmButtonColor: '#3673be',
         })
+        Mixpanel.track(Mixpanel.TYPES.CREATE_TOURNEY,{name:name,category:category});
       }
     }
   } catch (error) {

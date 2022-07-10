@@ -10,6 +10,7 @@ import { Footer } from "../Components/Footer/Footer";
 import { getCategories, getTournaments, getPageCount } from "../Utils/getTourneysData/getTourneysData";
 import { Loader } from "../Components/Loader/Loader";
 import { Pagination } from "../Components/Pagination/Pagination";
+import Mixpanel from "../services/mixpanel";
 
 const Tournaments = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +52,7 @@ const Tournaments = () => {
     }
     getTournamentsInfo();
     getTourneyPageCount();
+    Mixpanel.track(Mixpanel.TYPES.VIEW_TOURNAMENTS,{category,actualPage});
   }, [category, actualPage]);
 
   return !tournamentsReceived || !categoriesReceived || !pageCountReceived ? <Loader/> : (

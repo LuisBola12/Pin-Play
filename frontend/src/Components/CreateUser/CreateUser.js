@@ -9,6 +9,7 @@ import { BsUpload } from "react-icons/bs";
 import { Footer } from "../Footer/Footer";
 import { postNewUser } from "../../Utils/CreateUser/postNewUser";
 import { setLogIn } from "../../Slices/user/userSlice";
+import Mixpanel from "../../services/mixpanel";
 
 export const CreateUser = () => {
   const dispatch = useDispatch();
@@ -64,8 +65,17 @@ export const CreateUser = () => {
     setErrors(validate(data));
     if (Object.keys(errors).length === 0) {
       const response = await postNewUser(data, image.data);
-      dispatch(setLogIn(response))
-      navigate('/');
+      const userData = await response.json();
+      if(userData.status === 200){
+        dispatch(setLogIn(response));
+        Mixpanel.identify(userData.userID);
+        Mixpanel.people.set({
+          $first_name:userData.name,
+          $licenseNumber:userData.licenseNumber
+        });
+        Mixpanel.track(Mixpanel.TYPES.REGISTER_USER,{email});
+        navigate('/');
+      }
     }
   };
 
