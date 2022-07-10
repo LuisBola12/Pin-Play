@@ -310,7 +310,7 @@ function AddTournamentModal(props) {
     formData.append("category", category);
     formData.append("date", date.toString());
     formData.append("location", location);
-    formData.append("maxPlayers", 24);
+    formData.append("maxPlayers", players);
     try {
       console.log(userData.user.tokenSesion);
       const response = await fetch(
