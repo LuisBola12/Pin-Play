@@ -13,7 +13,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import Mixpanel from "../../services/mixpanel";
 
 const ModalFrame = styled("div")(({ theme }) => ({
@@ -24,7 +24,8 @@ const ModalFrame = styled("div")(({ theme }) => ({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: `500px`,
+  width: `80vw`,
+  maxWidth: `500px`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -55,8 +56,7 @@ const Form = styled("div")({
   padding: `0px 10px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
-  height: `363px`,
-  margin: `0px`,
+  marginBottom: `25px`,
 });
 
 const ModalHeader = styled("div")({
@@ -98,10 +98,14 @@ const TitleText = styled("div")(({ theme }) => ({
   textTransform: `none`,
   alignSelf: `stretch`,
   margin: `0px`,
+  ["@media (max-width:450px)"]: {
+    textAlign: `center`,
+    fontSize: `20px`,
+  },
 }));
 
 const FrameX = styled("div")({
-  display: `flex`,
+  display: `none`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
@@ -111,6 +115,9 @@ const FrameX = styled("div")({
   boxSizing: `border-box`,
   margin: `0px`,
   cursor: `pointer`,
+  ["@media (min-width:450px)"]: {
+    display: `flex`,
+  },
 });
 
 const X = styled("img")({
@@ -120,6 +127,10 @@ const X = styled("img")({
 });
 
 const NameInput = styled(TextField)({
+  alignSelf: `stretch`,
+  margin: `30px 0px 0px 0px`,
+});
+const PlayersInput = styled(TextField)({
   alignSelf: `stretch`,
   margin: `30px 0px 0px 0px`,
 });
@@ -133,14 +144,23 @@ const Section1 = styled("div")({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: `53px`,
-  width: `410px`,
+  // height: `53px`,
+  width: `100%`,
   margin: `30px 0px 0px 0px`,
+  ["@media (max-width:600px)"]: {
+    flexDirection: `column`,
+    alignItems: `center`,
+    justifyContent: `center`,
+    rowGap: `30px`,
+  },
 });
 
 const CategoryInput = styled(Autocomplete)({
-  width: `185px`,
+  width: `100%`,
   marginRight: `30px`,
+  ["@media (max-width:600px)"]: {
+    marginRight: `0px`,
+  },
 });
 
 const Section2 = styled("div")({
@@ -152,7 +172,7 @@ const Section2 = styled("div")({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `400px`,
+  width: `100%`,
   margin: `30px 0px 0px 0px`,
 });
 
@@ -170,11 +190,12 @@ const Photo = styled("div")({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `400px`,
+  width: `100%`,
   margin: `30px 0px 0px 0px`,
 });
 
 const PhotoInput = styled(TextField)({
+  alignSelf: `stretch`,
   flexGrow: `1`,
   margin: `0px`,
 });
@@ -236,6 +257,11 @@ const Cancel = styled("div")(({ theme }) => ({
 
 const ButtonOutlined = styled(Button)({
   margin: `0px 0px 0px 30px`,
+  minWidth: `120px`,
+  ["@media (max-width:430px)"]: {
+    fontSize: `12px`,
+    padding: `8px`,
+  },
 });
 
 function AddTournamentModal(props) {
@@ -249,11 +275,12 @@ function AddTournamentModal(props) {
   ];
   const [date, setDate] = useState(new Date());
   const [name, setName] = useState("");
+  const [players, setPlayers] = useState(2);
+  const [validPlayers, setValidPlayers] = useState(true);
   const [category, setCategory] = useState(null);
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [validForm, setValidForm] = useState(false);
-  // get token from session storage
   const userData = useSelector((state) => state.user);
 
   const handleDateChange = (newValue) => {
@@ -261,6 +288,10 @@ function AddTournamentModal(props) {
   };
   const handleNameChange = (event) => {
     setName(event.target.value);
+  };
+  const handlePlayersChange = (event) => {
+    validatePlayers(event.target.value);
+    setPlayers(event.target.value);
   };
   const handleCategoryChange = (event, value) => {
     setCategory(value);
@@ -280,43 +311,48 @@ function AddTournamentModal(props) {
     formData.append("category", category);
     formData.append("date", date.toString());
     formData.append("location", location);
-    formData.append("maxPlayers", 24);
+    formData.append("maxPlayers", players);
     try {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`, {
-      // SEND TOKEN obtained from sessionStorage
-      headers: {
-        Authorization: `Bearer ${userData.user.tokenSesion}`,
-      },
-      method: "POST",
-      body: formData,
-    });
-    if (response.status !== 200) {
-      Swal.fire({
-        icon: 'error',
-        title: `Error ${response.status}`,
-        text: `Ups! Algo salió mal`,
-        confirmButtonColor: '#3673be',
-      })
-    } else {
-      const json = await response.json(); 
-      if (json) {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`,
+        {
+          headers: {
+            Authorization: `Bearer ${userData.user.tokenSesion}`,
+          },
+          method: "POST",
+          body: formData,
+        }
+      );
+      if (response.status !== 200) {
         Swal.fire({
-          icon: 'success',
-          title: json.message,
-          confirmButtonColor: '#3673be',
-        })
-        Mixpanel.track(Mixpanel.TYPES.CREATE_TOURNEY,{name:name,category:category});
+          icon: "error",
+          title: `Error ${response.status}`,
+          text: `Ups! Algo salió mal`,
+          confirmButtonColor: "#3673be",
+        });
+      } else {
+        const json = await response.json();
+        if (json) {
+          Swal.fire({
+            icon: "success",
+            title: json.message,
+            confirmButtonColor: "#3673be",
+          });
+          Mixpanel.track(Mixpanel.TYPES.CREATE_TOURNEY, {
+            name: name,
+            category: category,
+          });
+        }
       }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Ups! Ha ocurrido un error",
+        text: "Intente de nuevo",
+        confirmButtonColor: "#3673be",
+      });
     }
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Ups! Ha ocurrido un error',
-      text: 'Intente de nuevo',
-      confirmButtonColor: '#3673be',
-    })
-  }
-  handleClose();
+    handleClose();
   };
 
   const handleClose = () => {
@@ -326,20 +362,33 @@ function AddTournamentModal(props) {
     setLocation("");
     setImage("");
     setDate(new Date());
-  }
+  };
 
   const validateForm = () => {
-    if (name.length > 0 && category !== null && location.length > 0) {
+    if (
+      name.length > 0 &&
+      category !== null &&
+      location.length > 0 &&
+      validPlayers
+    ) {
       setValidForm(true);
     } else {
       setValidForm(false);
     }
-  }
+  };
+
+  const validatePlayers = (playerCount) => {
+    if (playerCount > 1 && playerCount <= 256) {
+      setValidPlayers(true);
+    } else {
+      setValidPlayers(false);
+    }
+  };
 
   useEffect(() => {
     validateForm();
-  } , [name, category, location]);
-  
+  }, [name, category, location, players]);
+
   const fileInput = useRef(null);
   return (
     <Dialog open={props.isOpen} onClose={handleClose}>
@@ -361,18 +410,26 @@ function AddTournamentModal(props) {
               value={name}
               onChange={handleNameChange}
             />
+            <PlayersInput
+              variant="standard"
+              size="small"
+              label={`Jugadores Máximos`}
+              value={players}
+              type="number"
+              onChange={handlePlayersChange}
+              error={!validPlayers}
+            />
             <Section1>
               <CategoryInput
                 value={category}
                 onChange={handleCategoryChange}
                 options={options}
-                sx={{ width: 185 }}
                 renderInput={(params) => (
                   <TextField {...params} variant="standard" label="Categoría" />
                 )}
               />
               <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Stack spacing={3} alignItems="stretch">
+                <Stack spacing={3} alignItems="stretch" sx={{ width: "100%" }}>
                   <DesktopDatePicker
                     label="Fecha del Torneo"
                     inputFormat="dd/MM/yyyy"
@@ -382,7 +439,11 @@ function AddTournamentModal(props) {
                       <TextField
                         {...params}
                         variant="standard"
-                        sx={{ width: 185 }}
+                        sx={{
+                          width: "100%",
+                          marginRight: "30px",
+                          "@media (max-width: 600px)": { marginRight: "0px" },
+                        }}
                         size="medium"
                       />
                     )}
