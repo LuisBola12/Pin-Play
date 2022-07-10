@@ -1,6 +1,6 @@
 import { validateEmail, validatePassword, validateName } from '../../Validate';
 
-const validate = (values) => {
+const validate = async(values) => {
   let errors = {};
   if(values.email_register){
     if(!validateEmail(values.email_register)){

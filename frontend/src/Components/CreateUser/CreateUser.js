@@ -23,7 +23,7 @@ export const CreateUser = () => {
   const [club, setClub] = useState("");
   const [genre, setGenre] = useState("");
   const [licenseNumber, setLicenseNumber] = useState("");
-  const [errors, setErrors] = useState({ err: 0 });
+  const [errors, setErrors] = useState({});
   const genreTypes = [
     {
       genre: 'Masculino'
@@ -62,8 +62,9 @@ export const CreateUser = () => {
       genre_register: genre,
       licenseNumber_register: licenseNumber,
     };
-    setErrors(validate(data));
-    if (Object.keys(errors).length === 0) {
+    setErrors(await validate(data));
+    const errorsToVerify  = await validate(data);
+    if (Object.keys(errorsToVerify).length===0) {
       const response = await postNewUser(data, image.data);
       const userData = await response.json();
       if(response.status === 200){
