@@ -3,8 +3,8 @@ import { categories, tourneysPlayed } from "../data/tourneys.data"
 
 export const addTournament = async (req, res) => {
     const { name, date, location, category } = req.body;
-    const image = req.files.image;
-    if (image) {
+    if (req.files) {
+      const image = req.files.image;
       const fileExtension = image.name.split(".").pop();
       const filePath = `torneos/torneo_${name}.${fileExtension}`;
       try {
