@@ -6,6 +6,7 @@ import { Button } from "../Button/Button";
 import { useNavigate } from 'react-router-dom';
 import {getPlayersData } from "../../Utils/getPlayersData/getPlayersData";
 import { Loader } from "../Loader/Loader";
+import Mixpanel from "../../services/mixpanel";
 
 const SearchBar = ({placeholder}) => {
   const navigate = useNavigate();
@@ -51,7 +52,11 @@ const SearchBar = ({placeholder}) => {
                     ${value.secondLastname}`}</td>
                     <td>{`Carnet: ${value.licenseNumber}`}</td>
                     <td className=" right-td">
-                        <Button onClick={()=>handleClick(value)}
+                        <Button onClick={()=>{
+                          Mixpanel.track(Mixpanel.TYPES.SEARCH_PLAYER,{licenseNumber:value.licenseNumber,name:value.name,lastname:value.firstLastname});
+                          handleClick(value);
+                        }
+                      }
                         buttonType="btn--i"
                         buttonStyle="btn--transparent--solid"
                         buttonSize="medium--btn"

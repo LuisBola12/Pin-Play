@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import Mixpanel from '../../../services/mixpanel';
 
 export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentials) => {
   const loginFetch = await fetch(`${process.env.REACT_APP_BACKEND_LOCALHOST}login`,
@@ -12,15 +13,18 @@ export const postLogin = createAsyncThunk('usuarios/postLogin', async (credentia
         password: credentials.password,
       }),
     });
-
   const userData = await loginFetch.json();
   return getData(userData, loginFetch);
 
 });
 
 const getData = (userData, loginFetch) => {
-
   if (loginFetch.status === 200) {
+    Mixpanel.identify(userData.userID);
+    Mixpanel.people.set({
+      $first_name:userData.name,
+      $licenseNumber:userData.licenseNumber
+    });
     return userData;
   } else {
     return {

@@ -8,6 +8,7 @@ import './LoginStyle.scss';
 import { postLogin } from '../../Slices/user/requests/postLogin';
 import { Footer } from '../Footer/Footer';
 import { resetErrorMsg } from '../../Slices/user/userSlice';
+import Mixpanel from '../../services/mixpanel';
 
 export const LoginComp = () => {
   const [email, setEmail] = useState('');
@@ -77,7 +78,9 @@ export const LoginComp = () => {
         </div>
            
         <div className='logIn-btn-box'>
-          <Button onClick={logInBtn} buttonStyle="btn--logIn--logIn" buttonSize='extra--large--btn'>
+          <Button onClick={()=>{
+            logInBtn();
+          }} buttonStyle="btn--logIn--logIn" buttonSize='extra--large--btn'>
             Iniciar Sesion
           </Button>
           <div>

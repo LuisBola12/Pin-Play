@@ -10,7 +10,10 @@ export const DropDown = (props) =>{
   return(
     <div className='clasify-dropdwon'>
       <select
-      onChange={(e) => { handleChange(e)} }
+      onChange={(e) => { 
+        handleChange(e)
+      }
+     }
       >
         {props.options.map((element) => (
           <option key={element.Category} value={element.Category}>{element.Category}</option>

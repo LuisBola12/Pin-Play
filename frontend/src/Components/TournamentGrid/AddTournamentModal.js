@@ -14,6 +14,7 @@ import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import Mixpanel from "../../services/mixpanel";
 
 const ModalFrame = styled("div")(({ theme }) => ({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -291,7 +292,7 @@ function AddTournamentModal(props) {
   const handlePlayersChange = (event) => {
     validatePlayers(event.target.value);
     setPlayers(event.target.value);
-  }
+  };
   const handleCategoryChange = (event, value) => {
     setCategory(value);
   };
@@ -312,7 +313,6 @@ function AddTournamentModal(props) {
     formData.append("location", location);
     formData.append("maxPlayers", players);
     try {
-      console.log(userData.user.tokenSesion);
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_LOCALHOST}tournaments`,
         {
@@ -338,6 +338,10 @@ function AddTournamentModal(props) {
             title: json.message,
             confirmButtonColor: "#3673be",
           });
+          Mixpanel.track(Mixpanel.TYPES.CREATE_TOURNEY, {
+            name: name,
+            category: category,
+          });
         }
       }
     } catch (error) {
@@ -361,7 +365,12 @@ function AddTournamentModal(props) {
   };
 
   const validateForm = () => {
-    if (name.length > 0 && category !== null && location.length > 0 && validPlayers) {
+    if (
+      name.length > 0 &&
+      category !== null &&
+      location.length > 0 &&
+      validPlayers
+    ) {
       setValidForm(true);
     } else {
       setValidForm(false);
@@ -374,7 +383,7 @@ function AddTournamentModal(props) {
     } else {
       setValidPlayers(false);
     }
-  }
+  };
 
   useEffect(() => {
     validateForm();

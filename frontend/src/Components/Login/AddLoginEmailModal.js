@@ -21,6 +21,8 @@ import {
   ErrorMsg
 } from "./ModalElements"
 import { validateEmail } from "../../Validate";
+import Mixpanel from "../../services/mixpanel";
+import Swal from 'sweetalert2';
 
 const AddLoginEmailModal = (props) => {
   const [email, setEmail] = useState("");
@@ -46,10 +48,23 @@ const AddLoginEmailModal = (props) => {
     })
     if(response.status !== 200){
       const responseData = await response.json()
-      setErrorMessage(responseData.errorMsg)
-      setVerifyEmail(undefined)
+      setErrorMessage(responseData.errorMsg);
+      setVerifyEmail(undefined);
     }else{
-      setVerifyEmail(true)
+      Mixpanel.track(Mixpanel.TYPES.FORGET_PASSWORD,{email});
+      props.setIsOpen(false);
+      Swal.fire({
+        icon: 'success',
+        title: "Correo Enviado!",
+        text: "Se te ha enviado un correo con un código de verificación!",
+        confirmButtonColor: '#3673be',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setErrorMessage("");
+          props.setIsOpen(true);
+          setVerifyEmail(true);
+        }
+      })
     }
   };
 
@@ -76,7 +91,12 @@ const AddLoginEmailModal = (props) => {
       setEmail("");
       setPassword("");
       setCode("");
-      setErrorMessage("")
+      setErrorMessage("");
+      Swal.fire({
+        icon: 'success',
+        text: "Tu Contraseña ha sido cambiada correctamente!",
+        confirmButtonColor: '#3673be',
+      })
     }
   };
 
@@ -85,8 +105,8 @@ const AddLoginEmailModal = (props) => {
     setEmail("");
     setPassword("");
     setCode("");
-    setErrorMessage("")
-    setVerifyEmail(undefined)
+    setErrorMessage("");
+    setVerifyEmail(undefined);
   }
 
   const validateFormEmail = () => {
@@ -134,7 +154,7 @@ const AddLoginEmailModal = (props) => {
               onChange={(e) => {setEmail(e.target.value);}}
             />
             {
-              errorMessage && (<ErrorMsg>*Email No Existente*</ErrorMsg>)
+              errorMessage && (<ErrorMsg>{`*${errorMessage}*`}</ErrorMsg>)
             }
           </Form1>
         </Content>
@@ -188,13 +208,14 @@ const AddLoginEmailModal = (props) => {
             <Inputs
             placeholder=""
               variant="standard"
+              type="password"
               size="small"
               label={`Nueva Contraseña`}
               value={password}
               onChange={(e) => {setPassword(e.target.value);}}
             />
             {
-              errorMessage && (<ErrorMsg>*{errorMessage}*</ErrorMsg>)
+              errorMessage && (<ErrorMsg>{`*${errorMessage}*`}</ErrorMsg>)
             }
           </Form2>
         </Content>

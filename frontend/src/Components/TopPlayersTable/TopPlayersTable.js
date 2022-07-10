@@ -4,6 +4,7 @@ import {
 } from "../../Utils/getPlayersData/getPlayersData";
 import "./TopPlayersTable.scss";
 import { Loader } from "../Loader/Loader";
+import Mixpanel from "../../services/mixpanel";
 
 export const TopPlayersTable = (props) => {
   const [playersReceived, setPlayersReceived] = useState(false);
@@ -52,6 +53,7 @@ export const TopPlayersTable = (props) => {
       }
     };
     getPlayersData();
+    Mixpanel.track(Mixpanel.TYPES.VIEW_CLASIFICATION,{category:props.category,page:props.actualPage});
   }, [props.category, props.actualPage]);
 
   return !playersReceived ? (
