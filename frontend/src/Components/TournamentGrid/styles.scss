@@ -124,6 +124,7 @@
     font-size: 12px;
     line-height: 15px;
     margin: 10.98px auto;
+    text-align: center;
   }
 
   &__divider {
@@ -184,4 +185,17 @@
   background-image: linear-gradient(#fff, #caf7f8);
   min-height: 100vh;
   z-index: -1;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
