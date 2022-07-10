@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import {
+  getAmountPages,
   getPlayersInfo
 } from "../../Utils/getPlayersData/getPlayersData";
 import "./TopPlayersTable.scss";
@@ -8,6 +9,7 @@ import Mixpanel from "../../services/mixpanel";
 
 export const TopPlayersTable = (props) => {
   const [playersReceived, setPlayersReceived] = useState(false);
+  const [maxPagesReceived, setMaxPagesReceived] = useState(false);
   const [playersData, setPlayersData] = useState([]);
 
   const calculateVictory = (victories, loses) => {
@@ -41,6 +43,13 @@ export const TopPlayersTable = (props) => {
   };
 
   useEffect(() => {
+    const getAmountPagesCategory = async () => {
+      const dataAmountPages = await getAmountPages(props.category, 10);
+      if (dataAmountPages) {
+        setMaxPagesReceived(true);
+        props.setAmountPages(dataAmountPages);
+      }
+    };
     const getPlayersData = async () => {
       setPlayersData([]);
       const playersData = await getPlayersInfo(
@@ -54,10 +63,11 @@ export const TopPlayersTable = (props) => {
       }
     };
     getPlayersData();
+    getAmountPagesCategory();
     Mixpanel.track(Mixpanel.TYPES.VIEW_CLASIFICATION,{category:props.category,page:props.actualPage});
   }, [props.category, props.actualPage]);
 
-  return !playersReceived ? (
+  return !playersReceived || !maxPagesReceived ? (
     <Loader />
   ) : (
     <div className="topPlayers">
