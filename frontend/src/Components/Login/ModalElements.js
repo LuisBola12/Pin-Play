@@ -12,7 +12,8 @@ export const ModalFrame = styled("div")(({ theme }) => ({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: `500px`,
+  width: `80vw`,
+  maxWidth: `500px`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -30,6 +31,7 @@ export const Content = styled("div")({
   padding: `40px 40px 15px 40px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
+  width: `100%`,
   margin: `0px`,
 });
 
@@ -44,6 +46,7 @@ export const Form1 = styled("div")({
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   height: `160px`,
+  width: `100%`,
   margin: `0px`,
 });
 
@@ -66,12 +69,13 @@ export const ModalHeader = styled("div")({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
-  justifyContent: `flex-start`,
+  justifyContent: `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
+  width: `100%`,
 });
 
 export const Title = styled("div")({
@@ -83,7 +87,7 @@ export const Title = styled("div")({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  flexGrow: `1`,
+  // flexGrow: `1`,
   margin: `0px`,
 });
 
@@ -100,10 +104,14 @@ export const TitleText = styled("div")(({ theme }) => ({
   textTransform: `none`,
   alignSelf: `stretch`,
   margin: `0px`,
+  ['@media (max-width:450px)']: {
+    textAlign: `center`,
+    fontSize: `20px`,
+  }
 }));
 
 export const FrameX = styled("div")({
-  display: `flex`,
+  display: `none`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
@@ -113,6 +121,9 @@ export const FrameX = styled("div")({
   boxSizing: `border-box`,
   margin: `0px`,
   cursor: `pointer`,
+  ['@media (min-width:450px)']: {
+    display: `flex`,
+  }
 });
 
 export const X = styled("img")({

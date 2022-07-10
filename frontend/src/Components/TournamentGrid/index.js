@@ -3,8 +3,8 @@ import "./styles.scss";
 
 const TournamentGrid = ({ tournaments }) => {
   const renderTournaments = (tournaments) => {
-    return tournaments.map((tournament) => {
-      return <TournamentCard key={tournament.id} {...tournament} />;
+    return tournaments.map((tournament, index) => {
+      return <TournamentCard key={index} {...tournament} />;
     });
   };
 

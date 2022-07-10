@@ -42,6 +42,7 @@ export const TopPlayersTable = (props) => {
 
   useEffect(() => {
     const getPlayersData = async () => {
+      setPlayersData([]);
       const playersData = await getPlayersInfo(
         props.category,
         props.actualPage,
@@ -71,8 +72,8 @@ export const TopPlayersTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {playersData.map(element => (
-            <tr key={element.s3Id}>
+          {playersData.map((element,index) => (
+            <tr key={index}>
               <td data-label="#">{element.position}</td>
               <td data-label="">
                 <img className="topPlayers-img" src={element.s3Id} alt=""></img>
