@@ -16,8 +16,7 @@ export const postNewUser = async(data, image) =>{
         method: "POST",
         body: formData,
       });
-      const data = await response.json();
-      return data;
+      return response;
   } catch (error) {
       console.log(error)
   }

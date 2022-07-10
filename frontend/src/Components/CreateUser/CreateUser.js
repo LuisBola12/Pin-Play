@@ -66,12 +66,12 @@ export const CreateUser = () => {
     if (Object.keys(errors).length === 0) {
       const response = await postNewUser(data, image.data);
       const userData = await response.json();
-      if(userData.status === 200){
-        dispatch(setLogIn(response));
-        Mixpanel.identify(userData.userID);
+      if(response.status === 200){
+        dispatch(setLogIn(userData));
+        Mixpanel.identify(userData.licenseNumber);
         Mixpanel.people.set({
           $first_name:userData.name,
-          $licenseNumber:userData.licenseNumber
+          $email:userData.email,
         });
         Mixpanel.track(Mixpanel.TYPES.REGISTER_USER,{email});
         navigate('/');
